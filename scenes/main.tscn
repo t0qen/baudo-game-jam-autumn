@@ -22,10 +22,11 @@ offset_bottom = 40.0
 [node name="team_gardes" parent="team_container" instance=ExtResource("3_tbgi4")]
 
 [node name="Terrain 1" parent="." instance=ExtResource("4_jyhfs")]
-position = Vector2(651, 128)
+position = Vector2(55, -123)
 
 [node name="Grenade" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(697, 373)
+position = Vector2(181, -529)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(586, 325)
+zoom = Vector2(0.1, 0.1)

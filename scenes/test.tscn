@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh4p3p65lhrtp"]
+
+[ext_resource type="PackedScene" uid="uid://bw3r886kkmx2f" path="res://scenes/Terrains/terrain_1.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://qhiky2b1pngi" path="res://scenes/projectiles/grenade.tscn" id="2_bl13t"]
+
+[node name="test" type="Node2D"]
+
+[node name="Terrain 1" parent="." instance=ExtResource("1_errlg")]
+position = Vector2(122, -224)
+
+[node name="Grenade" parent="Terrain 1" instance=ExtResource("2_bl13t")]
+position = Vector2(408, 273)

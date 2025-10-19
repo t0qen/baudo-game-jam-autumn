@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _explode():
-	var terrain = get_parent().get_node("Terrain 1")
+	var terrain = get_parent()
 	terrain.destroy_area(global_position, 50.0)
