@@ -21,8 +21,8 @@ folder_colors={
 "res://assets/": "green",
 "res://scenes/": "red",
 "res://scenes/projectiles/": "purple",
-"res://scenes/templates/": "orange",
-"res://scripts/": "pink"
+"res://scenes/scripts/": "pink",
+"res://scenes/templates/": "orange"
 }
 
 [rendering]
