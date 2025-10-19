@@ -1,3 +1,3 @@
 [gd_scene format=3 uid="uid://qhiky2b1pngi"]
 
-[node name="Grenade" type="Node2D"]
+[node name="Grenade" type="RigidBody2D"]

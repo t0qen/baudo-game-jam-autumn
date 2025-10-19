@@ -7,3 +7,5 @@
 [node name="shape" type="CollisionShape2D" parent="."]
 
 [node name="ui" type="Node2D" parent="."]
+
+[node name="weapon" type="Node2D" parent="."]
