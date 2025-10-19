@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwi1lisxq6bq"]
+
+[ext_resource type="PackedScene" uid="uid://dbwvne6sg5yvg" path="res://scenes/templates/team_template.tscn" id="1_g6awa"]
+
+[node name="team_gardes" instance=ExtResource("1_g6awa")]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dreipx6w1ycb6"]
+
+[node name="bidule_template" type="Node2D"]
+
+[node name="sprite" type="Node2D" parent="."]
+
+[node name="character" type="Node2D" parent="sprite"]
+
+[node name="errants" type="Node2D" parent="sprite/character"]
+
+[node name="gardes" type="Node2D" parent="sprite/character"]
+
+[node name="weapons" type="Node2D" parent="sprite"]
+
+[node name="ui_elements" type="Node2D" parent="."]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://0i16f2ggsc6b"]
+
+[ext_resource type="PackedScene" uid="uid://dreipx6w1ycb6" path="res://scenes/templates/bidule_template.tscn" id="1_nbgwk"]
+
+[node name="gardes" instance=ExtResource("1_nbgwk")]

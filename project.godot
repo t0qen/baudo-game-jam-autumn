@@ -14,6 +14,16 @@ config/name="Baudo Game Jam Autumn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "green",
+"res://scenes/": "red",
+"res://scenes/projectiles/": "purple",
+"res://scenes/scripts/": "pink",
+"res://scenes/templates/": "orange"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
