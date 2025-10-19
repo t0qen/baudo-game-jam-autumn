@@ -25,7 +25,7 @@ offset_bottom = 40.0
 position = Vector2(651, 128)
 
 [node name="Grenade" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(715, 354)
+position = Vector2(697, 373)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(586, 325)
