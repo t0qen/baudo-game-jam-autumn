@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=4 format=3 uid="uid://c1836v71tkimw"]
 
-[ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scenes/scripts/main.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dwi1lisxq6bq" path="res://scenes/team_gardes.tscn" id="3_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://bw3r886kkmx2f" path="res://scenes/Terrains/terrain_1.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://qhiky2b1pngi" path="res://scenes/projectiles/grenade.tscn" id="5_tbgi4"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
@@ -20,17 +18,3 @@ offset_bottom = 40.0
 [node name="team_errants" parent="team_container" instance=ExtResource("2_jyhfs")]
 
 [node name="team_gardes" parent="team_container" instance=ExtResource("3_tbgi4")]
-
-<<<<<<< HEAD
-[node name="Terrain 1" parent="." instance=ExtResource("4_jyhfs")]
-position = Vector2(55, -123)
-
-[node name="Grenade" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(181, -529)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(586, 325)
-zoom = Vector2(0.1, 0.1)
-=======
-[node name="terrain" type="Node2D" parent="."]
->>>>>>> parent of f252673 (asset and terrain)
