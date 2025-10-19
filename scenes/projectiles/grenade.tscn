@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://qhiky2b1pngi"]
+[gd_scene load_steps=2 format=3 uid="uid://qhiky2b1pngi"]
+
+[ext_resource type="Script" uid="uid://3y4umfk3vg5k" path="res://scripts/grenade.gd" id="1_1mnvm"]
 
 [node name="Grenade" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_1mnvm")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-14, -10, 18, -10, 18, 11, -17, 11)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-14, -10, 18, -10, 18, 11, -17, 11)

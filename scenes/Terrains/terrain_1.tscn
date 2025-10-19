@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://bw3r886kkmx2f"]
+[gd_scene load_steps=2 format=3 uid="uid://bw3r886kkmx2f"]
+
+[ext_resource type="Script" uid="uid://3c7mwfv7py2h" path="res://scripts/terrain_1.gd" id="1_20ooj"]
 
 [node name="Terrain 1" type="Node2D"]
+script = ExtResource("1_20ooj")
+
+[node name="Background" type="Polygon2D" parent="."]
+color = Color(0, 0.41338828, 0.6311083, 1)
+polygon = PackedVector2Array(-1753, -1149, 2391, -954, 3507, 1569, -987, 2134, -2070, 916)
+
+[node name="TerrainPolygon" type="Polygon2D" parent="."]
+color = Color(0.25877285, 0.77024513, 0, 1)
+polygon = PackedVector2Array(-204, 347, 16, 438, 115, 430, 195, 290, 102, 186, 276, 158, 351, 474, 566, 384, 898, 518, 1069, 435, 1503, 596, 1897, 814, 1360, 895, 870, 928, 333, 874, -183, 848, -362, 723, -349, 500)
+uv = PackedVector2Array(-204, 347, 16, 438, 115, 430, 195, 290, 102, 186, 276, 158, 351, 474, 566, 384, 898, 518, 1069, 435, 1503, 596, 1897, 814, 1360, 895, 870, 928, 333, 874, -183, 848, -362, 723, -349, 500)
+
+[node name="Destructible" type="StaticBody2D" parent="."]
+position = Vector2(684.2893, 505.94733)
+collision_layer = 3
+collision_mask = 3
+
+[node name="TerrainCollision" type="CollisionPolygon2D" parent="Destructible"]
+polygon = PackedVector2Array(-1033.2893, -5.9473267, -888.2893, -158.94733, -666.2893, -66.94733, -568.2893, -75.94733, -489.2893, -214.94733, -582.2893, -319.94733, -408.2893, -347.94733, -333.2893, -31.947327, -118.28931, -121.94733, 213.7107, 12.052673, 385.7107, -70.94733, 819.7107, 90.05267, 1218.7107, 311.05267, 671.7107, 389.05267, 185.7107, 422.05267, -350.2893, 368.05267, -867.2893, 342.05267, -1003.2893, 247.05267, -1047.2893, 217.05267)
