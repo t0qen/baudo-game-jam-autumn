@@ -2,6 +2,13 @@ extends RigidBody2D
 
 @export var is_selected : bool = false
 
+# NODES
+@onready var jump_timer: Timer = $jump_timer
+
+
+# BOOLEAN
+var can_jump : bool = true
+
 # MOVEMENTS VARS
 @export var speed : int = 800
 @export var jump_force : int = 1200
@@ -16,9 +23,8 @@ var direction : int = 0
 
 func get_inputs():
 	wanna_jump = Input.is_action_just_pressed("jump")
-	wanna_left = Input.is_action_just_pressed("left")
-	wanna_right = Input.is_action_just_pressed("right")
-	
+	wanna_left = Input.is_action_pressed("left")
+	wanna_right = Input.is_action_pressed("right")
 	
 func _ready() -> void:
 	change_state(STATE.CONTROL)
@@ -87,12 +93,15 @@ func update_state():
 		STATE.IDLE:
 			pass
 		STATE.CONTROL:
+			direction = 0
 			if wanna_left:
 				direction = -1
 			elif wanna_right:
 				direction = 1
-			else:
-				direction = 0
+
+			if direction != 0:
+				print("ok dir")
+				apply_central_force(Vector2(direction * speed, 0))
 			
 			#limite la vitesse, sinon c exponentiel
 			if linear_velocity.x > max_h_speed:
@@ -100,10 +109,12 @@ func update_state():
 			elif linear_velocity.x < -max_h_speed:
 				linear_velocity.x = -max_h_speed
 
-			if wanna_jump:
+			if wanna_jump and can_jump:
+				can_jump = false
+				jump_timer.start()
 				apply_central_impulse(Vector2(0, -jump_force))
 
-			apply_central_force(Vector2(direction * speed, 0))
+			
 		STATE.ROCKET:
 			pass
 		STATE.GRENADE:
@@ -111,3 +122,7 @@ func update_state():
 		STATE.POMPE:
 			pass
 #endregion
+
+
+func _on_jump_timer_timeout() -> void:
+	can_jump = true

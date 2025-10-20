@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=7 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Texture2D" uid="uid://hht7qnmjl72w" path="res://icon.svg" id="1_3iy2t"]
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
+friction = 0.5
+bounce = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lqgl"]
 atlas = ExtResource("1_3iy2t")
@@ -22,6 +26,10 @@ animations = [{
 size = Vector2(128, 128)
 
 [node name="bidule_template" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_6lqgl")
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
@@ -33,3 +41,10 @@ shape = SubResource("RectangleShape2D_3dxvg")
 [node name="ui" type="Node2D" parent="."]
 
 [node name="weapon" type="Node2D" parent="."]
+
+[node name="jump_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]

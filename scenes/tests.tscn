@@ -10,10 +10,13 @@ distance = -84.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -42)
 
-[node name="errants" parent="." instance=ExtResource("1_738vk")]
-position = Vector2(-1, -42)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_tcuvc")
+
+[node name="errants" parent="." instance=ExtResource("1_738vk")]
+position = Vector2(7, -53)
+is_selected = true
+jump_force = 400
+max_h_speed = 400
