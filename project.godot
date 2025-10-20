@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Baudo Game Jam Autumn"
+run/main_scene="uid://ct3cra0khvoto"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +24,10 @@ folder_colors={
 "res://scenes/templates/": "orange",
 "res://scripts/": "pink"
 }
+
+[global_group]
+
+destructible=""
 
 [rendering]
 

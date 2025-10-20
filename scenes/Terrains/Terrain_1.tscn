@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccrg7xo42addi"]
+
+[ext_resource type="Script" uid="uid://bjadow1jjrn4o" path="res://scripts/terrain_1.gd" id="1_b1e4u"]
+
+[node name="Terrain1" type="Node2D" groups=["destructible"]]
+script = ExtResource("1_b1e4u")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(19, -99)
+color = Color(0.18232295, 0.58661586, 1, 1)
+polygon = PackedVector2Array(-156, 640, 103, 460, 562, 514, 1260, 439, 1488, 777, 680, 850, -109, 893)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-137, 541, 122, 361, 581, 415, 1279, 340, 1507, 678, 699, 751, -90, 794)
