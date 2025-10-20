@@ -1,10 +1,34 @@
-[gd_scene format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=6 format=3 uid="uid://dreipx6w1ycb6"]
 
-[node name="bidule_template" type="CharacterBody2D"]
+[ext_resource type="Texture2D" uid="uid://hht7qnmjl72w" path="res://icon.svg" id="1_3iy2t"]
+[ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lqgl"]
+atlas = ExtResource("1_3iy2t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8amhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lqgl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxvg"]
+size = Vector2(128, 128)
+
+[node name="bidule_template" type="RigidBody2D"]
+script = ExtResource("1_6lqgl")
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8amhk")
 
 [node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3dxvg")
 
 [node name="ui" type="Node2D" parent="."]
 

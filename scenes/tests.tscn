@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://boi8shbqr4l2c"]
+
+[ext_resource type="PackedScene" uid="uid://b2et76gt1x6je" path="res://scenes/errants.tscn" id="1_738vk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tcuvc"]
+distance = -84.0
+
+[node name="tests" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, -42)
+
+[node name="errants" parent="." instance=ExtResource("1_738vk")]
+position = Vector2(-1, -42)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_tcuvc")
