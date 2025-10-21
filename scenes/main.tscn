@@ -29,29 +29,37 @@ offset_bottom = 40.0
 
 [node name="errants" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-240, 95)
+jump_force = 1200
 
 [node name="errants2" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-315, -97)
+jump_force = 1200
 
 [node name="errants3" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-147, -61)
+jump_force = 1200
 
 [node name="errants4" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-477, 71)
+jump_force = 1200
 
 [node name="team_gardes" parent="team_container" instance=ExtResource("3_tbgi4")]
 
 [node name="gardes" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(256, 43)
+jump_force = 1200
 
 [node name="gardes2" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(452, -198)
+jump_force = 1200
 
 [node name="gardes3" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(434, 57)
+jump_force = 1200
 
 [node name="gardes4" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(212, -199)
+jump_force = 1200
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -31,6 +31,7 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
+jump_force = 300
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8amhk")
