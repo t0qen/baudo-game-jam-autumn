@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc00vx8w53ssx"]
+
+[ext_resource type="Script" uid="uid://cirlbe2taub67" path="res://scripts/testcterrain.gd" id="1_crty7"]
+[ext_resource type="Script" uid="uid://d15ayypla04li" path="res://scripts/DestructiblePolygon2D.gd" id="2_pq4jt"]
+[ext_resource type="Texture2D" uid="uid://hht7qnmjl72w" path="res://icon.svg" id="3_crty7"]
+
+[node name="testcollsions" type="Node2D"]
+script = ExtResource("1_crty7")
+
+[node name="DestructiblePolygon2D" type="Node2D" parent="."]
+script = ExtResource("2_pq4jt")
+collidable = true
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D"]
+position = Vector2(-360, -3)
+scale = Vector2(2.6692073, 1.0056751)
+texture = ExtResource("3_crty7")
+texture_offset = Vector2(2, 0)
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(30.069122, -1.7166405, 5.0088196, 7.9219437, -0.0032348633, 20.644878, -2.3164978, 44.93411, -1.6226196, 227.02655, 9.400299, 250.35156, 21.275024, 254.59253, 229.92899, 253.74463, 247.74109, 244.83858, 251.98206, 232.96384, 253.25319, 25.581188, 249.01219, 18.371529, 245.19533, 9.041378, 232.8965, -2.4092588)
+uv = PackedVector2Array(30.069122, -1.7166405, 5.0088196, 7.9219437, -0.0032348633, 20.644878, -2.3164978, 44.93411, -1.6226196, 227.02655, 9.400299, 250.35156, 21.275024, 254.59253, 229.92899, 253.74463, 247.74109, 244.83858, 251.98206, 232.96384, 253.25319, 25.581188, 249.01219, 18.371529, 245.19533, 9.041378, 232.8965, -2.4092588)
+
+[node name="Camera2D" type="Camera2D" parent="."]
