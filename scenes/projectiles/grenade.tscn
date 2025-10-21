@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ooydtmusoxcv"]
+[gd_scene load_steps=4 format=3 uid="uid://ooydtmusoxcv"]
 
 [ext_resource type="Script" uid="uid://dthvwivuxn4bg" path="res://scripts/grenade.gd" id="1_1mnvm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mnvm"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7x1w"]
+radius = 31.0
 
 [node name="Grenade" type="RigidBody2D"]
 script = ExtResource("1_1mnvm")
@@ -10,18 +16,17 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1mnvm")
+
+[node name="ground_detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_detection"]
+shape = SubResource("CircleShape2D_b7x1w")
+
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-2, 0)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, -15, 20, -15, 20, 15, -16, 15)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-18, -15, 18, -15, 18, 15, -18, 15)
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-45, -39, 3, -55, 42, -44, 60, 9, 51, 53, -15, 63, -63, 36, -64, 0)
-disabled = true
+polygon = PackedVector2Array(-18, -20, 22, -20, 22, 20, -18, 20)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
