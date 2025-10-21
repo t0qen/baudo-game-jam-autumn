@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc00vx8w53ssx"]
+
+[ext_resource type="Script" uid="uid://cirlbe2taub67" path="res://scripts/testcterrain.gd" id="1_crty7"]
+[ext_resource type="Script" uid="uid://d15ayypla04li" path="res://scripts/DestructiblePolygon2D.gd" id="2_pq4jt"]
+[ext_resource type="Texture2D" uid="uid://btcm76yd82541" path="res://pngtree-floating-grassy-landmass-defying-gravity-in-the-sky-png-image_14654596.png" id="3_0t81j"]
+[ext_resource type="PackedScene" uid="uid://c57lqhed2hh6r" path="res://scenes/mannequin.tscn" id="4_pq4jt"]
+
+[node name="testcollsions" type="Node2D"]
+script = ExtResource("1_crty7")
+
+[node name="DestructiblePolygon2D" type="Node2D" parent="."]
+script = ExtResource("2_pq4jt")
+collidable = true
+simplification = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D"]
+texture = ExtResource("3_0t81j")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(352.5, 229, 400.5, 234, 451.5, 223, 507.5, 203, 559.5, 203, 580.5, 249, 655.5, 264, 659.5, 292, 655.5, 327, 622.5, 368, 602.5, 391, 577.5, 401, 565.5, 388, 533.5, 402, 501.5, 424, 467.5, 429, 411.5, 435, 394.5, 452, 388.5, 462, 363.5, 467, 330.5, 453, 311.5, 444, 296.5, 439, 264.5, 429, 217.5, 430, 193.5, 427, 165.5, 424, 136.5, 416, 122.5, 402, 108.5, 384, 97.5, 367, 83.5, 354, 60.5, 329, 58.5, 323, 50.5, 305, 49.5, 295, 79.5, 270, 98.5, 255, 137.5, 241, 154.5, 235, 179.5, 221, 202.5, 213, 226.5, 212, 270.5, 218, 294.5, 224, 327.5, 224, 339.5, 225)
+uv = PackedVector2Array(352.5, 229, 400.5, 234, 451.5, 223, 507.5, 203, 559.5, 203, 580.5, 249, 655.5, 264, 659.5, 292, 655.5, 327, 622.5, 368, 602.5, 391, 577.5, 401, 565.5, 388, 533.5, 402, 501.5, 424, 467.5, 429, 411.5, 435, 394.5, 452, 388.5, 462, 363.5, 467, 330.5, 453, 311.5, 444, 296.5, 439, 264.5, 429, 217.5, 430, 193.5, 427, 165.5, 424, 136.5, 416, 122.5, 402, 108.5, 384, 97.5, 367, 83.5, 354, 60.5, 329, 58.5, 323, 50.5, 305, 49.5, 295, 79.5, 270, 98.5, 255, 137.5, 241, 154.5, 235, 179.5, 221, 202.5, 213, 226.5, 212, 270.5, 218, 294.5, 224, 327.5, 224, 339.5, 225)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(340, 210)
+
+[node name="mannequin" parent="." instance=ExtResource("4_pq4jt")]
+position = Vector2(359, 226)
