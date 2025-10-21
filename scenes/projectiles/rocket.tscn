@@ -1,3 +1,37 @@
-[gd_scene format=3 uid="uid://beywwft4c0mlq"]
+[gd_scene load_steps=4 format=3 uid="uid://beywwft4c0mlq"]
 
-[node name="Rocket" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bxtjwc1i5gogk" path="res://assets/Sprites/Pomme de terre.png" id="1_r4mtq"]
+[ext_resource type="Texture2D" uid="uid://sdw4lwb4ukgf" path="res://assets/Sprites/Feu.png" id="2_r4bah"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4mtq"]
+radius = 9.0
+height = 34.516273
+
+[node name="Rocket" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.09068969
+scale = Vector2(0.044921875, 0.044921875)
+texture = ExtResource("1_r4mtq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1.0000001, 0)
+rotation = -1.5652608
+scale = Vector2(1.0832561, 1.1706394)
+shape = SubResource("CapsuleShape2D_r4mtq")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(25, 0)
+scale = Vector2(2.6763544, 3.5752976)
+texture = ExtResource("2_r4bah")
+fixed_fps = 60
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(100, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+tangential_accel_min = 30.0
+tangential_accel_max = 40.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
