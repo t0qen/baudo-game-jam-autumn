@@ -9,6 +9,10 @@ extends RigidBody2D
 # BOOLEAN
 var can_jump : bool = true
 
+# VIE
+@export var base_life : int = 100
+var current_life : int = base_life 
+
 # MOVEMENTS VARS
 @export var speed : int = 800
 @export var jump_force : int = 1200
@@ -28,7 +32,19 @@ func get_inputs():
 	
 func _ready() -> void:
 	change_state(STATE.CONTROL)
-	
+	BiduleManager.selected_mob_changed.connect(_on_selected_bidule_changed)
+
+func _on_selected_bidule_changed(new_bidule):
+	if new_bidule == self:
+		print("SELECTED !!!!!!!!!!!")
+		is_selected = true
+		modulate = Color(0, 1, 1, 1)
+		change_state(STATE.CONTROL)
+	else:
+		print("UNSELECTED !!!!!!!!!!!")
+		is_selected = false
+		modulate = Color(1, 1, 1, 1)
+		
 func _process(delta: float) -> void:
 	pass
 
@@ -37,10 +53,19 @@ func _physics_process(delta: float) -> void:
 		get_inputs()
 		update_state()
 
+func take_damage(amount : int):
+	current_life = current_life - amount
+	if current_life < 1:
+		die()
+	
+func die():
+	pass
+	
 #region STATE MACHINE
 # -- STATE MACHINE --
 enum STATE {
 	IDLE, # ne bouge pas 
+	JUSTBEINGSELECTED, # viens juste d'etre selectionne, on sait pas encore ce quil veut faire
 	CONTROL,
 	ROCKET,
 	GRENADE,
@@ -70,7 +95,7 @@ func enter_state(new_state : STATE):
 			pass
 		STATE.POMPE:
 			pass
-		
+
 #pareil que enter_state sauf que la c quand on quitte un state
 #ex: quand on quitte le state "falling" on joue l'animation d'atterrissage (landing)
 func exit_state(last_state):
@@ -113,7 +138,6 @@ func update_state():
 				can_jump = false
 				jump_timer.start()
 				apply_central_impulse(Vector2(0, -jump_force))
-
 			
 		STATE.ROCKET:
 			pass
