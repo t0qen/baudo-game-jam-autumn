@@ -29,7 +29,8 @@ func _ready():
 
 ## Clips [param polygon] against itself [param at_global_position], and returns the destructed area in pixels.
 func destruct(polygon: PackedVector2Array, at_global_position := Vector2.ZERO) -> float:
-	var mask = Transform2D(0, at_global_position - global_position) * polygon
+	var mask = Transform2D(0, to_local(at_global_position)) * polygon
+	print("OK")
 	var minX = INF
 	var minY = INF
 	var maxX = -INF

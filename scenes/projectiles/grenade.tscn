@@ -22,5 +22,6 @@ polygon = PackedVector2Array(-18, -15, 18, -15, 18, 15, -18, 15)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-45, -39, 3, -55, 42, -44, 60, 9, 51, 53, -15, 63, -63, 36, -64, 0)
+disabled = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
