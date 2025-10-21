@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c57lqhed2hh6r"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_esfef"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esfef"]
+radius = 64.31417
+
+[node name="mannequin" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.7683716e-07, -64.625)
+scale = Vector2(129.5, 128.75)
+texture = SubResource("CanvasTexture_esfef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -65)
+shape = SubResource("CircleShape2D_esfef")
