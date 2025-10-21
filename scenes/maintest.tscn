@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://ct3cra0khvoto"]
 
 [ext_resource type="Script" uid="uid://mi4jhc4pjrym" path="res://scripts/maintest.gd" id="1_527u3"]
-[ext_resource type="PackedScene" uid="uid://ccrg7xo42addi" path="res://scenes/Terrains/Terrain_1.tscn" id="1_yqf3a"]
 [ext_resource type="PackedScene" uid="uid://c57lqhed2hh6r" path="res://scenes/mannequin.tscn" id="3_527u3"]
+[ext_resource type="PackedScene" uid="uid://8k66wp0me4m7" path="res://scenes/Terrains/Terrain_2.tscn" id="3_yoalb"]
 
 [node name="Maintest" type="Node2D"]
 script = ExtResource("1_527u3")
 
-[node name="Terrain1" parent="." instance=ExtResource("1_yqf3a")]
-
 [node name="mannequin" parent="." instance=ExtResource("3_527u3")]
 position = Vector2(722, 355)
+
+[node name="Terrain_2" parent="." instance=ExtResource("3_yoalb")]
