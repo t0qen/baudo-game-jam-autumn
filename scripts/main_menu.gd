@@ -8,8 +8,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if $PopUp.visible == true:
+		if Input.is_action_just_pressed("sortir"):
+			$PopUp.hide()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

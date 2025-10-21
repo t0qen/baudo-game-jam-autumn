@@ -5,8 +5,8 @@ extends Node2D
 
 @onready var camera_2d: Camera2D = $Camera2D
 
-var nb_errants: int = 4
-var nb_gardes: int = 4
+#var nb_errants: int = 4
+#var nb_gardes: int = 4
 
 var errants = preload("res://scenes/errants.tscn")
 var gardes = preload("res://scenes/gardes.tscn")
@@ -55,7 +55,7 @@ func start():
 	print("GAME STARTS !!")
 	update_mob_array()
 	select_mob()
-	partie_timer.start()
+	partie_timer.start(VarBidules.duree_tour_sec)
 	
 # TODO connecter un signal pour chaque mob comme ca quand il y en a un qui meurt main.gd le sait et update_mob_array()
 func update_game():
@@ -98,46 +98,4 @@ func select_mob(): # on regarde quel bidule doit jouer
 	
 func _on_partie_timeout() -> void:
 	update_game() # quand le timer de la partie est finie on update -> changement de team
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
