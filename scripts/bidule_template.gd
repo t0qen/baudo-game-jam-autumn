@@ -10,8 +10,8 @@ extends RigidBody2D
 var can_jump : bool = true
 
 # VIE
-@export var base_life : int = 100
-var current_life : int = base_life 
+#@export var base_life : int = 100
+var current_life : int = VarBidules.base_life
 
 # MOVEMENTS VARS
 @export var speed : int = 800

@@ -1,13 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://p863dt6yy82r"]
+[gd_scene load_steps=6 format=3 uid="uid://p863dt6yy82r"]
 
 [ext_resource type="Script" uid="uid://4qrqpwst0ix" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="AudioStream" uid="uid://cuxhf2qrqnlae" path="res://assets/sound/menu/cursed_apocalyptic_1.mp3" id="2_ekxnf"]
+[ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="3_bqqt6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
+corner_radius_top_left = 130
+corner_radius_top_right = 130
+corner_radius_bottom_right = 130
+corner_radius_bottom_left = 130
+shadow_color = Color(0, 0, 0, 0.45882353)
+shadow_size = 1
+shadow_offset = Vector2(15.545, 17.345)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font = ExtResource("3_bqqt6")
+font_size = 61
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.5529412)
+shadow_offset = Vector2(2.84, 2.84)
 
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_l6cm7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
 
 [node name="CursedApocalyptic1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ekxnf")
@@ -20,10 +38,10 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 433.0
-offset_top = 260.0
-offset_right = 719.0
-offset_bottom = 383.0
+offset_left = -800.0
+offset_top = -251.0
+offset_right = -375.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -31,11 +49,199 @@ text = "Start
 "
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 472.0
-offset_top = 416.0
-offset_right = 683.0
-offset_bottom = 524.0
+offset_left = -747.0
+offset_top = 88.0
+offset_right = -427.0
+offset_bottom = 243.0
 text = "Quit"
+
+[node name="PopUp" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -648.0
+offset_top = -362.0
+offset_right = 648.0
+offset_bottom = 362.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekxnf")
+
+[node name="Points de vie Button" type="OptionButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 52.0
+offset_right = 984.615
+offset_bottom = 102.619995
+scale = Vector2(1.5, 1.5)
+item_count = 4
+popup/item_0/text = "50"
+popup/item_0/id = 50
+popup/item_1/text = "75"
+popup/item_1/id = 75
+popup/item_2/text = "100"
+popup/item_2/id = 100
+popup/item_3/text = "125"
+popup/item_3/id = 125
+
+[node name="Points de vie" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 56.0
+offset_right = 613.0
+offset_bottom = 132.0
+text = "Points de vie"
+label_settings = SubResource("LabelSettings_wu84c")
+vertical_alignment = 1
+
+[node name="Errants Button" type="OptionButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 153.0
+offset_right = 984.615
+offset_bottom = 203.62
+scale = Vector2(1.5, 1.5)
+item_count = 9
+popup/item_0/text = "2"
+popup/item_0/id = 2
+popup/item_1/text = "3"
+popup/item_1/id = 3
+popup/item_2/text = "4"
+popup/item_2/id = 4
+popup/item_3/text = "5"
+popup/item_3/id = 5
+popup/item_4/text = "6"
+popup/item_4/id = 6
+popup/item_5/text = "7"
+popup/item_5/id = 7
+popup/item_6/text = "8"
+popup/item_6/id = 8
+popup/item_7/text = "9"
+popup/item_7/id = 9
+popup/item_8/text = "10"
+popup/item_8/id = 10
+
+[node name="Errants" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 157.0
+offset_right = 613.0
+offset_bottom = 233.0
+text = "Errants"
+label_settings = SubResource("LabelSettings_wu84c")
+vertical_alignment = 1
+
+[node name="Gardes Button" type="OptionButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 252.0
+offset_right = 984.615
+offset_bottom = 302.62
+scale = Vector2(1.5, 1.5)
+item_count = 9
+popup/item_0/text = "2"
+popup/item_0/id = 2
+popup/item_1/text = "3"
+popup/item_1/id = 3
+popup/item_2/text = "4"
+popup/item_2/id = 4
+popup/item_3/text = "5"
+popup/item_3/id = 5
+popup/item_4/text = "6"
+popup/item_4/id = 6
+popup/item_5/text = "7"
+popup/item_5/id = 7
+popup/item_6/text = "8"
+popup/item_6/id = 8
+popup/item_7/text = "9"
+popup/item_7/id = 9
+popup/item_8/text = "10"
+popup/item_8/id = 10
+
+[node name="Gardes" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 256.0
+offset_right = 613.0
+offset_bottom = 332.0
+text = "Gardes"
+label_settings = SubResource("LabelSettings_wu84c")
+vertical_alignment = 1
+
+[node name="Durée de la partie Button" type="OptionButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 353.0
+offset_right = 984.615
+offset_bottom = 403.62
+scale = Vector2(1.5, 1.5)
+item_count = 3
+popup/item_0/text = "15min"
+popup/item_0/id = 900
+popup/item_1/text = "30min"
+popup/item_1/id = 1800
+popup/item_2/text = "1heure"
+popup/item_2/id = 3600
+
+[node name="Durée de la partie" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 357.0
+offset_right = 613.0
+offset_bottom = 433.0
+text = "Durée de la partie"
+label_settings = SubResource("LabelSettings_wu84c")
+vertical_alignment = 1
+
+[node name="Durée du tour Button" type="OptionButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 458.0
+offset_right = 984.615
+offset_bottom = 508.62
+scale = Vector2(1.5, 1.5)
+item_count = 6
+popup/item_0/text = "15s"
+popup/item_0/id = 15
+popup/item_1/text = "25s"
+popup/item_1/id = 25
+popup/item_2/text = "35s"
+popup/item_2/id = 35
+popup/item_3/text = "45s"
+popup/item_3/id = 45
+popup/item_4/text = "1min"
+popup/item_4/id = 60
+popup/item_5/text = "1min30s"
+popup/item_5/id = 90
+
+[node name="Durée du tour" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 461.0
+offset_right = 613.0
+offset_bottom = 537.0
+text = "Durée du tour"
+label_settings = SubResource("LabelSettings_wu84c")
+vertical_alignment = 1
+
+[node name="Commencer" type="Button" parent="PopUp"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -218.5
+offset_top = -156.0
+offset_right = 218.5
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Commencer"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PopUp/Commencer" to="." method="_on_commencer_pressed"]
