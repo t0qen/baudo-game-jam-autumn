@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0ib7p04k11ne"]
+
+[ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="1_3o1fj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j7yof"]
+font = ExtResource("1_3o1fj")
+font_size = 61
+
+[sub_resource type="Animation" id="Animation_3o1fj"]
+resource_name = "defilement"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-657.5, -265.625), Vector2(-657.5, -1620.21)]
+}
+
+[sub_resource type="Animation" id="Animation_j7yof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-657.5, -447)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmshm"]
+_data = {
+&"RESET": SubResource("Animation_j7yof"),
+&"defilement": SubResource("Animation_3o1fj")
+}
+
+[node name="Crédits" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -1147.0
+offset_top = -637.0
+offset_right = 1197.0
+offset_bottom = 672.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -657.5
+offset_top = -447.0
+offset_right = 657.5
+offset_bottom = 1274.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "//CRÉDITS//
+
+//Développeurs//
+Al's (youtube.com/@ALsMC)
+t0qen (github.com/t0qen)
+
+//Graphiste//
+OBCD
+(youtube.com/@OBCDanimation)
+
+//Compositeur//
+DarkPhoenix3254
+
+//SFX//
+Pixabay.com
+
+github.com/t0qen/baudo-game-jam-autumn
+
+Réalisé en octobre 2025 lors de la
+baudo game jam
+d'automne
+
+Merci d'avoir joué"
+label_settings = SubResource("LabelSettings_j7yof")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nmshm")
+}
+autoplay = "defilement"
