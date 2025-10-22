@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=39 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
+[ext_resource type="Texture2D" uid="uid://bd1ejnp7vha11" path="res://assets/Sprites/Garde/Bras/patator_1.png" id="2_81lal"]
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="2_cow7b"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="3_uh30e"]
 [ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="4_81lal"]
@@ -37,6 +38,20 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
 friction = 0.0
 bounce = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxvg"]
+size = Vector2(128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvjia"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_81lal")
+}],
+"loop": true,
+"name": &"garde_patator",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8amhk"]
 animations = [{
@@ -152,9 +167,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxvg"]
-size = Vector2(128, 128)
-
 [node name="bidule_template" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_6lqgl")
 lock_rotation = true
@@ -163,16 +175,30 @@ max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
 jump_force = 300
 
-[node name="sprites" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_8amhk")
-animation = &"garde_saut"
-
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3dxvg")
 
 [node name="ui" type="Node2D" parent="."]
 
 [node name="weapon" type="Node2D" parent="."]
+
+[node name="aim" type="Node2D" parent="."]
+position = Vector2(111, -76.00001)
+rotation = -0.47647488
+
+[node name="main" type="Node2D" parent="aim"]
+position = Vector2(326, 10)
+
+[node name="hands" type="AnimatedSprite2D" parent="aim"]
+position = Vector2(-104.61212, 43.259693)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_fvjia")
+animation = &"garde_patator"
+
+[node name="sprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_8amhk")
+animation = &"garde_saut"
 
 [node name="jump_timer" type="Timer" parent="."]
 one_shot = true
