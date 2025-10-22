@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgqyy88s7arpf"]
+[gd_scene load_steps=5 format=3 uid="uid://cgqyy88s7arpf"]
 
 [ext_resource type="Texture2D" uid="uid://b7dr8rk4jyebd" path="res://assets/Sprites/beautiful-island-isolated-png.png" id="2_bbm1k"]
 [ext_resource type="PackedScene" uid="uid://beywwft4c0mlq" path="res://scenes/projectiles/rocket.tscn" id="2_lqml1"]
 [ext_resource type="Script" uid="uid://ch41sfxp6t1uw" path="res://scripts/destructible_terrain_node.gd" id="2_yff4a"]
+[ext_resource type="PackedScene" uid="uid://ooydtmusoxcv" path="res://scenes/projectiles/grenade.tscn" id="4_bbm1k"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(147.38, -353.47)
-zoom = Vector2(0.7, 0.7)
+offset = Vector2(147.38, -200.955)
+zoom = Vector2(1.105, 1.105)
 
 [node name="DestructiblePolygon2D" type="Node2D" parent="." groups=["ground"]]
 script = ExtResource("2_yff4a")
@@ -26,5 +27,8 @@ uv = PackedVector2Array(-894.98395, 429.8797, -936.5928, 411.5436, -911.20435, 3
 position = Vector2(216.00002, -3163)
 rotation = -1.5707964
 scale = Vector2(1, 1.0047942)
+
+[node name="Grenade" parent="." instance=ExtResource("4_bbm1k")]
+position = Vector2(-42, -305)
 
 [connection signal="body_entered" from="Rocket" to="Rocket" method="_on_body_entered"]
