@@ -20,8 +20,8 @@ func _on_detection_max_degat_body_entered(body: Node2D) -> void:
 		polygon.append(Vector2(cos(angle), sin(angle)) * radius)
 	
 	# "Destruct" prend un polygone (forme du trou) et une position globale
-	var destroyed_area = terrain.destruct(polygon, global_position)
-	print("Destroyed area:", destroyed_area)
+	#var destroyed_area = terrain.destruct(polygon, global_position)
+	#print("Destroyed area:", destroyed_area)
 	queue_free()
 		
 		

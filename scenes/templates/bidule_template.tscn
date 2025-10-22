@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=46 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="Texture2D" uid="uid://bd1ejnp7vha11" path="res://assets/Sprites/Garde/Bras/patator_1.png" id="2_81lal"]
@@ -39,9 +39,10 @@
 [ext_resource type="Texture2D" uid="uid://d4i5pt1xpsg7c" path="res://assets/Sprites/Garde/Bras/grande_bras_1.png" id="36_nlu60"]
 [ext_resource type="Texture2D" uid="uid://dg06lfrhe0dgi" path="res://assets/Sprites/Garde/Bras/patator_2.png" id="37_77s6n"]
 [ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="38_e0nlx"]
+[ext_resource type="Texture2D" uid="uid://hht7qnmjl72w" path="res://icon.svg" id="40_77s6n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
-friction = 0.0
+friction = 0.1
 bounce = 0.1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvjia"]
@@ -252,11 +253,21 @@ position = Vector2(46, -73)
 position = Vector2(-189, 79)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_kxtwb")
-animation = &"garde_patator"
+animation = &"garde_pompe"
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 112)
 shape = SubResource("CapsuleShape2D_nlu60")
+
+[node name="pivot2" type="Node2D" parent="."]
+
+[node name="depart_proj" type="Node2D" parent="pivot2"]
+position = Vector2(-409, -49)
+
+[node name="Icon" type="Sprite2D" parent="pivot2"]
+visible = false
+position = Vector2(-415, -50)
+texture = ExtResource("40_77s6n")
 
 [node name="jump_timer" type="Timer" parent="."]
 wait_time = 2.0

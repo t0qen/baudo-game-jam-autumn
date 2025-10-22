@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dreipx6w1ycb6" path="res://scenes/templates/bidule_template.tscn" id="1_nbgwk"]
 
 [node name="gardes" instance=ExtResource("1_nbgwk")]
+light_mask = 2
+visibility_layer = 7
+
+[node name="pivot2" parent="." index="6"]
+rotation = 0.010338243

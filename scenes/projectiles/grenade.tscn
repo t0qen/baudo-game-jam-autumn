@@ -4,37 +4,46 @@
 [ext_resource type="Texture2D" uid="uid://dn8f4ti1wa647" path="res://assets/Sprites/grenade.png" id="2_b7x1w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7x1w"]
-radius = 31.0
+radius = 634.0032
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3382y"]
-radius = 20.024984
+radius = 52.773098
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqjs3"]
-size = Vector2(11, 16)
+size = Vector2(27, 30)
 
 [node name="Grenade" type="RigidBody2D"]
+mass = 0.1
 script = ExtResource("1_1mnvm")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
 [node name="ground_detection" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_detection"]
 shape = SubResource("CircleShape2D_b7x1w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
-scale = Vector2(0.07965277, 0.07965277)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_b7x1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 7)
 shape = SubResource("CircleShape2D_3382y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -26)
+position = Vector2(0.5, -59)
 shape = SubResource("RectangleShape2D_oqjs3")
 
+[node name="mob_detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="mob_detection"]
+shape = SubResource("CircleShape2D_b7x1w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="ground_detection" to="." method="_on_ground_detection_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

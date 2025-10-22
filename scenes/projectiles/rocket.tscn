@@ -17,8 +17,8 @@ radius = 23.0
 height = 76.0
 
 [node name="Rocket" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_l0y3s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -44,15 +44,15 @@ debug_color = Color(0.9875497, 0, 0.31682128, 0.41960785)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -4)
 rotation = 0.63676685
-scale = Vector2(0.052949224, 0.052949224)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_l0y3s")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(20, 20)
 amount = 10
 texture = ExtResource("2_r4bah")
-lifetime = 1.5
-speed_scale = 3.0
+lifetime = 3.0
+speed_scale = 6.0
 randomness = 0.1
 fixed_fps = 60
 emission_shape = 1
@@ -61,6 +61,6 @@ gravity = Vector2(0, -100)
 tangential_accel_min = 30.0
 tangential_accel_max = 40.0
 scale_amount_min = 0.01
-scale_amount_max = 0.07
+scale_amount_max = 0.3
 
 [connection signal="body_entered" from="DetectionMaxDegat" to="." method="_on_detection_max_degat_body_entered"]

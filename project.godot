@@ -100,6 +100,13 @@ aim_right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="errant"
+2d_physics/layer_2="garde"
+2d_physics/layer_3="ground"
+2d_physics/layer_4="projectiles"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

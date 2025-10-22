@@ -4,8 +4,10 @@ extends RigidBody2D
 
 # NODES
 @onready var jump_timer: Timer = $jump_timer
+var grenade_scene = preload("res://scenes/projectiles/grenade.tscn")
+var rocket_scene = preload("res://scenes/projectiles/rocket.tscn")
 
-
+@export var grenarde_velocity : int = 6000
 # BOOLEAN
 var can_jump : bool = true
 
@@ -14,9 +16,9 @@ var can_jump : bool = true
 var current_life : int = VarBidules.base_life
 
 # MOVEMENTS VARS
-@export var speed : int = 800
-@export var jump_force : int = 1200
-@export var max_h_speed : int = 300
+@export var speed : int = 1000
+@export var jump_force : int = 800
+@export var max_h_speed : int = 400
 
 # INPUTS VARS
 var wanna_jump : bool
@@ -29,7 +31,11 @@ var wanna_aim_left : bool
 var wanna_aim_right : bool
 var direction : int = 0
 
+var can_bombe : bool = true
+var can_rocket : bool = true
+
 var prev_dir : int = direction
+var last_dir_nozero : int = direction 
 
 enum MOB_POSSIBILITY {
 	GARDE,
@@ -80,13 +86,38 @@ func take_damage(amount : int):
 		die()
 
 func aim():
-	print("aim")
+	print($aim_droite.rotation_degrees)
 	if wanna_aim_left:
-		$aim_droite.rotation_degrees += 5
-		$aim_gauche.rotation_degrees += 5
-	elif wanna_aim_right:
 		$aim_droite.rotation_degrees -= 5
 		$aim_gauche.rotation_degrees -= 5
+		$pivot2.rotation_degrees -= 5
+		
+	elif wanna_aim_right:
+		$aim_droite.rotation_degrees += 5
+		$aim_gauche.rotation_degrees += 5
+		$pivot2.rotation_degrees += 5
+	
+	if last_dir_nozero == 1:
+		print("dir 1")
+		if $aim_droite.rotation_degrees < -100:
+			$aim_droite.rotation_degrees = -100
+			$aim_gauche.rotation_degrees = -100
+			$pivot2.rotation_degrees = -100
+		if $aim_droite.rotation_degrees > 40:
+			$aim_droite.rotation_degrees = 40
+			$aim_gauche.rotation_degrees = 40
+			$pivot2.rotation_degrees = 40
+	elif last_dir_nozero == -1:
+		print("dir -1")
+		if $aim_droite.rotation_degrees > 100:
+			$aim_droite.rotation_degrees = 100
+			$aim_gauche.rotation_degrees = 100
+			$pivot2.rotation_degrees = 100
+		if $aim_droite.rotation_degrees < -40:
+			$aim_droite.rotation_degrees = -40
+			$aim_gauche.rotation_degrees = -40
+			$pivot2.rotation_degrees = -40
+			
 func die():
 	queue_free()
 	BiduleManager.ask_to_update_mob_array()
@@ -150,7 +181,7 @@ enum STATE {
 var current_state : STATE = STATE.IDLE
 
 func change_state(new_state : STATE):
-	#si le nouveau state est le meme que l'actuel alors on quitte pour ne pas rejouer enter_state et exit_state
+	#si le nouveau state est le meme que l'actuel alors on quitte pour ne pas rejouer _state et exit_state
 	if new_state == current_state:
 		return
 	exit_state(current_state)
@@ -166,6 +197,7 @@ func enter_state(new_state : STATE):
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
 			$aim_droite.rotation_degrees = 0
+			$pivot2.rotation_degrees = 0
 			play_animation("idle")
 			play_bras_animation("idle")
 		STATE.CONTROL:
@@ -173,6 +205,7 @@ func enter_state(new_state : STATE):
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
 			$aim_droite.rotation_degrees = 0
+			$pivot2.rotation_degrees = 0
 			play_animation("control")
 			play_bras_animation("idle")
 		STATE.ROCKET:
@@ -180,6 +213,7 @@ func enter_state(new_state : STATE):
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
 			$aim_droite.rotation_degrees = 0
+			$pivot2.rotation_degrees = 0
 			play_animation("idle")
 			play_bras_animation("patator")
 		STATE.GRENADE:
@@ -187,6 +221,7 @@ func enter_state(new_state : STATE):
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
 			$aim_droite.rotation_degrees = 0
+			$pivot2.rotation_degrees = 0
 			play_animation("idle")
 			play_bras_animation("grenade")
 		STATE.POMPE:
@@ -194,6 +229,7 @@ func enter_state(new_state : STATE):
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
 			$aim_droite.rotation_degrees = 0
+			$pivot2.rotation_degrees = 0
 			play_animation("idle")
 			play_bras_animation("pompe")
 
@@ -248,15 +284,20 @@ func update_state():
 					$aim_droite.scale.x = -1
 					$aim_droite.position.x = 46 
 					$aim_gauche.scale.x = -1
+					$pivot2.scale.x = -1
 					$aim_gauche.position.x = -35 
 				elif direction == -1:
 					$pivot.scale.x = 1
 					$aim_droite.scale.x = 1
 					$aim_droite.position.x = -35
 					$aim_gauche.scale.x = 1
+					$pivot2.scale.x = 1
 					$aim_gauche.position.x = 46 
 			
 			prev_dir = direction
+			if direction != 0:
+				last_dir_nozero = direction
+				
 			if direction != 0:
 				apply_central_force(Vector2(direction * speed, 0))
 			else:
@@ -286,6 +327,18 @@ func update_state():
 				change_state(STATE.POMPE)
 
 			aim()
+			
+			if wanna_rocket && can_rocket:
+				can_rocket = false
+				#launch grenade
+				var rocket = rocket_scene.instantiate()
+				rocket.global_position = $pivot2/depart_proj.global_position
+				var direction = $pivot2/depart_proj.global_transform.x.normalized()
+				rocket.linear_velocity = direction * -5000
+						
+				get_tree().current_scene.add_child(rocket)
+				await get_tree().create_timer(10).timeout
+				can_rocket = true
 		STATE.GRENADE:
 			if wanna_left || wanna_right || wanna_jump:
 				change_state(STATE.CONTROL)
@@ -294,6 +347,19 @@ func update_state():
 			if wanna_rocket:
 				change_state(STATE.ROCKET)
 			aim()
+			
+			if wanna_bomb && can_bombe:
+				can_bombe = false
+				#launch grenade
+				var grenade = grenade_scene.instantiate()
+				grenade.global_position = $pivot2/depart_proj.global_position
+				var direction = $pivot2/depart_proj.global_transform.x.normalized()
+				grenade.apply_central_impulse(direction * -2500)
+						
+				get_tree().current_scene.add_child(grenade)
+				await get_tree().create_timer(10).timeout
+				can_bombe = true
+				
 		STATE.POMPE:
 			if wanna_left || wanna_right || wanna_jump:
 				change_state(STATE.CONTROL)
@@ -302,6 +368,8 @@ func update_state():
 			if wanna_rocket:
 				change_state(STATE.ROCKET)
 			aim()
+			
+			
 #endregion
 
 
