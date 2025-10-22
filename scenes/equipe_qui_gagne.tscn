@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjogh5j76tshk"]
+[gd_scene load_steps=29 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
 [ext_resource type="Script" uid="uid://bkk4qexdiemxh" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b3bjia3qfcp8e" path="res://assets/Sprites/Garde/idle/frame_14_delay-0.04s.png" id="15_mtc1i"]
 [ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="16_mcgsm"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="18_t02st"]
+[ext_resource type="AudioStream" uid="uid://djj03ob2y43dy" path="res://assets/sound/SFX/Victoire.mp3" id="19_eqkym"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
 font = ExtResource("18_t02st")
@@ -268,3 +269,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_1jcgm")
 }
 autoplay = "IdleMainErrant"
+
+[node name="Victoire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_eqkym")
+bus = &"SFX"

@@ -4,6 +4,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Victoire.play()
 	if VarBidules.is_errant_winner == true:
 		$Label.text = "Les errants ont gagnés !"
 		$mainerrant.scale.x = -1.2
