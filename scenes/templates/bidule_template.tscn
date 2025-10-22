@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=44 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="Texture2D" uid="uid://bd1ejnp7vha11" path="res://assets/Sprites/Garde/Bras/patator_1.png" id="2_81lal"]
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="2_cow7b"]
+[ext_resource type="Texture2D" uid="uid://bd2asu1t7h1r5" path="res://assets/Sprites/Garde/Bras/granade_bras_2.png" id="2_vgj7r"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="3_uh30e"]
 [ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="4_81lal"]
 [ext_resource type="Texture2D" uid="uid://b1w0nnvnhpygf" path="res://assets/Sprites/Garde/idle/frame_03_delay-0.04s.png" id="5_fvjia"]
@@ -34,6 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://bisf52acqu5ya" path="res://assets/Sprites/Garde/Marche/frame_14_delay-0.04s.png" id="31_0gdmd"]
 [ext_resource type="Texture2D" uid="uid://dp1p5ijjatfcm" path="res://assets/Sprites/Garde/Marche/frame_15_delay-0.04s.png" id="32_r3e01"]
 [ext_resource type="Texture2D" uid="uid://c8qhopbbm2csd" path="res://assets/Sprites/Garde/man_saute.png" id="33_uh30e"]
+[ext_resource type="Texture2D" uid="uid://d4i5pt1xpsg7c" path="res://assets/Sprites/Garde/Bras/grande_bras_1.png" id="36_nlu60"]
+[ext_resource type="Texture2D" uid="uid://dg06lfrhe0dgi" path="res://assets/Sprites/Garde/Bras/patator_2.png" id="37_77s6n"]
+[ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="38_e0nlx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
 friction = 0.0
@@ -46,10 +50,23 @@ size = Vector2(128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_vgj7r")
+}],
+"loop": true,
+"name": &"garde_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_81lal")
 }],
 "loop": true,
 "name": &"garde_patator",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"garde_pompe",
 "speed": 5.0
 }]
 
@@ -167,6 +184,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxtwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_nlu60")
+}],
+"loop": true,
+"name": &"garde_grenade",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_77s6n")
+}],
+"loop": true,
+"name": &"garde_patator",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_e0nlx")
+}],
+"loop": true,
+"name": &"garde_pompe",
+"speed": 5.0
+}]
+
 [node name="bidule_template" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_6lqgl")
 lock_rotation = true
@@ -182,23 +226,28 @@ shape = SubResource("RectangleShape2D_3dxvg")
 
 [node name="weapon" type="Node2D" parent="."]
 
-[node name="aim" type="Node2D" parent="."]
+[node name="aim_droite" type="Node2D" parent="."]
 position = Vector2(114, -69)
-rotation = 0.08654936
 
-[node name="main" type="Node2D" parent="aim"]
-position = Vector2(326, 10)
-
-[node name="hands" type="AnimatedSprite2D" parent="aim"]
+[node name="bras_droite" type="AnimatedSprite2D" parent="aim_droite"]
 position = Vector2(-97.71663, 62.613556)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_fvjia")
-animation = &"garde_patator"
+animation = &"garde_pompe"
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_8amhk")
-animation = &"garde_saut"
+animation = &"garde_idle"
+
+[node name="aim_gauche" type="Node2D" parent="."]
+position = Vector2(194, -81)
+
+[node name="bras_gauche" type="AnimatedSprite2D" parent="aim_gauche"]
+position = Vector2(-189, 79)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_kxtwb")
+animation = &"garde_pompe"
 
 [node name="jump_timer" type="Timer" parent="."]
 one_shot = true
