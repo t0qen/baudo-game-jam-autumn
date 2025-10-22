@@ -19,6 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="16_mcgsm"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="18_t02st"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
+font = ExtResource("18_t02st")
+font_size = 140
+shadow_color = Color(0, 0, 0, 0.65882355)
+shadow_offset = Vector2(8, 8)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7tqxj"]
 animations = [{
 "frames": [{
@@ -199,17 +205,32 @@ _data = {
 &"RESET": SubResource("Animation_1jcgm")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
-font = ExtResource("18_t02st")
-font_size = 100
-font_color = Color(0.84844077, 0.7701662, 0.62400573, 1)
-
 [node name="Equipe qui gagne" type="Node2D"]
 script = ExtResource("1_qmkxp")
 
 [node name="Background" type="Polygon2D" parent="."]
+color = Color(0.62512267, 0.56442195, 0.47100878, 1)
+polygon = PackedVector2Array(-1069, -630, 1175, -636, 1163, 604, -1141, 638)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -911.0
+offset_top = -468.0
+offset_right = 911.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Les errants ont gagnés !"
+label_settings = SubResource("LabelSettings_eqkym")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="garde" type="AnimatedSprite2D" parent="."]
 position = Vector2(541.99994, 178.99997)
@@ -247,20 +268,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_1jcgm")
 }
 autoplay = "IdleMainErrant"
-
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -642.0
-offset_top = -289.0
-offset_right = 642.0
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Les errants ont gagnés !"
-label_settings = SubResource("LabelSettings_eqkym")
-horizontal_alignment = 1
-vertical_alignment = 1
