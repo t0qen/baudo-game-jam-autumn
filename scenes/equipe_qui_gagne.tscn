@@ -1,0 +1,202 @@
+[gd_scene load_steps=22 format=3 uid="uid://bsc56muftkqs2"]
+
+[ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
+[ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="2_mcgsm"]
+[ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="3_qmkxp"]
+[ext_resource type="Texture2D" uid="uid://b1w0nnvnhpygf" path="res://assets/Sprites/Garde/idle/frame_03_delay-0.04s.png" id="4_t02st"]
+[ext_resource type="Texture2D" uid="uid://c4e40j2echrud" path="res://assets/Sprites/Garde/idle/frame_04_delay-0.04s.png" id="5_eqkym"]
+[ext_resource type="Texture2D" uid="uid://d3k1m02u6acgg" path="res://assets/Sprites/Garde/idle/frame_05_delay-0.04s.png" id="6_1jcgm"]
+[ext_resource type="Texture2D" uid="uid://dlkhemwjmrd8f" path="res://assets/Sprites/Garde/idle/frame_06_delay-0.04s.png" id="7_lyscy"]
+[ext_resource type="Texture2D" uid="uid://or6p3etdxvp3" path="res://assets/Sprites/Garde/idle/frame_07_delay-0.04s.png" id="8_gc7sm"]
+[ext_resource type="Texture2D" uid="uid://dgn4sve6v4jjv" path="res://assets/Sprites/Garde/idle/frame_08_delay-0.04s.png" id="9_tjvf5"]
+[ext_resource type="Texture2D" uid="uid://2xpj0drgaio3" path="res://assets/Sprites/Garde/idle/frame_09_delay-0.04s.png" id="10_26hq7"]
+[ext_resource type="Texture2D" uid="uid://nuxkto26jyur" path="res://assets/Sprites/Garde/idle/frame_10_delay-0.04s.png" id="11_ahdrq"]
+[ext_resource type="Texture2D" uid="uid://mbmw5ra1qtjn" path="res://assets/Sprites/Garde/idle/frame_11_delay-0.04s.png" id="12_8sssv"]
+[ext_resource type="Texture2D" uid="uid://ctlj4t8kr2kku" path="res://assets/Sprites/Garde/idle/frame_12_delay-0.04s.png" id="13_b722l"]
+[ext_resource type="Texture2D" uid="uid://bkle0j6yqxgyk" path="res://assets/Sprites/Garde/idle/frame_13_delay-0.04s.png" id="14_68c3h"]
+[ext_resource type="Texture2D" uid="uid://b3bjia3qfcp8e" path="res://assets/Sprites/Garde/idle/frame_14_delay-0.04s.png" id="15_mtc1i"]
+[ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="16_mcgsm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7tqxj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lt04c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mcgsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qmkxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t02st")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eqkym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1jcgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lyscy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gc7sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tjvf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_26hq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ahdrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8sssv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b722l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_68c3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mtc1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5hwm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lt04c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mcgsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qmkxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t02st")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eqkym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1jcgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lyscy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gc7sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tjvf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_26hq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ahdrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8sssv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b722l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_68c3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mtc1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_qmkxp"]
+resource_name = "IdleGardeMain"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("maingarde:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(549.00006, 183), Vector2(549, 194), Vector2(549.00006, 183)]
+}
+
+[sub_resource type="Animation" id="Animation_t02st"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("maingarde:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(549.00006, 183)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqkym"]
+_data = {
+&"IdleGardeMain": SubResource("Animation_qmkxp"),
+&"RESET": SubResource("Animation_t02st")
+}
+
+[node name="Equipe qui gagne" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="garde" type="AnimatedSprite2D" parent="."]
+position = Vector2(541.99994, 178.99997)
+scale = Vector2(0.8466667, 0.8466667)
+sprite_frames = SubResource("SpriteFrames_7tqxj")
+autoplay = "default"
+frame = 2
+frame_progress = 0.7083717
+
+[node name="maingarde" type="Sprite2D" parent="."]
+position = Vector2(549.00006, 183)
+scale = Vector2(0.847, 0.847)
+texture = ExtResource("16_mcgsm")
+
+[node name="errant" type="AnimatedSprite2D" parent="."]
+position = Vector2(-558, 185.00003)
+scale = Vector2(-0.847, 0.847)
+sprite_frames = SubResource("SpriteFrames_e5hwm")
+autoplay = "default"
+frame_progress = 0.36884344
+
+[node name="mainerrant" type="Sprite2D" parent="."]
+position = Vector2(-565, 195)
+scale = Vector2(-0.847, 0.847)
+texture = ExtResource("16_mcgsm")
+
+[node name="MainErrant" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eqkym")
+}
+autoplay = "IdleGardeMain"
+
+[node name="MainGarde" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eqkym")
+}
+autoplay = "IdleGardeMain"
