@@ -44,9 +44,6 @@
 friction = 0.0
 bounce = 0.1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxvg"]
-size = Vector2(128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvjia"]
 animations = [{
 "frames": [{
@@ -215,6 +212,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlu60"]
+radius = 61.0
+height = 688.0
+
 [node name="bidule_template" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_6lqgl")
 lock_rotation = true
@@ -222,9 +223,6 @@ contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
 jump_force = 300
-
-[node name="shape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3dxvg")
 
 [node name="ui" type="Node2D" parent="."]
 
@@ -242,7 +240,8 @@ animation = &"garde_patator"
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_8amhk")
-animation = &"garde_idle"
+animation = &"garde_run"
+frame_progress = 0.8000228
 
 [node name="aim_gauche" type="Node2D" parent="."]
 position = Vector2(194, -81)
@@ -252,6 +251,10 @@ position = Vector2(-189, 79)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_kxtwb")
 animation = &"garde_patator"
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(143, 110)
+shape = SubResource("CapsuleShape2D_nlu60")
 
 [node name="jump_timer" type="Timer" parent="."]
 one_shot = true

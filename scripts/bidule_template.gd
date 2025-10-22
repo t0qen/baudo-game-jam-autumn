@@ -57,12 +57,11 @@ func _on_selected_bidule_changed(new_bidule):
 	if new_bidule == self:
 		print("SELECTED !!!!!!!!!!!")
 		is_selected = true
-		modulate = Color(0, 1, 1, 1)
 		change_state(STATE.CONTROL)
 	else:
 		print("UNSELECTED !!!!!!!!!!!")
 		is_selected = false
-		modulate = Color(1, 1, 1, 1)
+		change_state(STATE.IDLE)
 		
 func _process(delta: float) -> void:
 	pass

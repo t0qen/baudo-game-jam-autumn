@@ -3,6 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://dreipx6w1ycb6" path="res://scenes/templates/bidule_template.tscn" id="1_qhai5"]
 
 [node name="errants" instance=ExtResource("1_qhai5")]
-
-[node name="sprites" parent="." index="0"]
-modulate = Color(0.633158, 0.67903495, 3.85046e-07, 1)
