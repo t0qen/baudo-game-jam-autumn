@@ -237,7 +237,7 @@ position = Vector2(114, -69)
 position = Vector2(-97.71663, 62.613556)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_fvjia")
-animation = &"garde_pompe"
+animation = &"garde_patator"
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 0)
@@ -251,7 +251,7 @@ position = Vector2(194, -81)
 position = Vector2(-189, 79)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_kxtwb")
-animation = &"garde_pompe"
+animation = &"garde_patator"
 
 [node name="jump_timer" type="Timer" parent="."]
 one_shot = true
