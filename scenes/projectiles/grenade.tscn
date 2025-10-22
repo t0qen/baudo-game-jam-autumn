@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ooydtmusoxcv"]
+[gd_scene load_steps=7 format=3 uid="uid://ooydtmusoxcv"]
 
 [ext_resource type="Script" uid="uid://dthvwivuxn4bg" path="res://scripts/grenade.gd" id="1_1mnvm"]
 [ext_resource type="Texture2D" uid="uid://dn8f4ti1wa647" path="res://assets/Sprites/grenade.png" id="2_b7x1w"]
+[ext_resource type="AudioStream" uid="uid://nmywdue76kpd" path="res://assets/sound/SFX/Explosion patate et grenade.mp3" id="3_3382y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7x1w"]
 radius = 634.0032
@@ -45,5 +46,10 @@ shape = SubResource("CircleShape2D_b7x1w")
 wait_time = 5.0
 one_shot = true
 
+[node name="ExplosionPatateEtGrenade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3382y")
+bus = &"SFX"
+
 [connection signal="body_entered" from="ground_detection" to="." method="_on_ground_detection_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="ExplosionPatateEtGrenade" to="." method="_on_explosion_patate_et_grenade_finished"]

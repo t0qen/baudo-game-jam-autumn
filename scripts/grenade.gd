@@ -1,9 +1,11 @@
 extends RigidBody2D
 
 func _ready() -> void:
+	self.show()
 	$Timer.start()
 
 func _on_timer_timeout() -> void:
+	
 	# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
 	var terrain = get_parent().get_node("DestructiblePolygon2D")
 	
@@ -17,4 +19,10 @@ func _on_timer_timeout() -> void:
 	# "Destruct" prend un polygone (forme du trou) et une position globale
 	#var destroyed_area = terrain.destruct(polygon, global_position)
 	#print("Destroyed area:", destroyed_area)
+	$ExplosionPatateEtGrenade.play()
+	self.hide()
+	
+
+
+func _on_explosion_patate_et_grenade_finished() -> void:
 	queue_free()

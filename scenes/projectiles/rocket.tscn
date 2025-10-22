@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://beywwft4c0mlq"]
+[gd_scene load_steps=8 format=3 uid="uid://beywwft4c0mlq"]
 
 [ext_resource type="Script" uid="uid://dlv6bafe1o4v8" path="res://scripts/rocket.gd" id="1_l0y3s"]
 [ext_resource type="Texture2D" uid="uid://beeml8clnve47" path="res://assets/Sprites/patage.png" id="2_l0y3s"]
 [ext_resource type="Texture2D" uid="uid://sdw4lwb4ukgf" path="res://assets/Sprites/Feu.png" id="2_r4bah"]
+[ext_resource type="AudioStream" uid="uid://nmywdue76kpd" path="res://assets/sound/SFX/Explosion patate et grenade.mp3" id="4_8rgcg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4mtq"]
 radius = 9.0
@@ -63,4 +64,9 @@ tangential_accel_max = 40.0
 scale_amount_min = 0.01
 scale_amount_max = 0.3
 
+[node name="ExplosionPatateEtGrenade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8rgcg")
+bus = &"SFX"
+
 [connection signal="body_entered" from="DetectionMaxDegat" to="." method="_on_detection_max_degat_body_entered"]
+[connection signal="finished" from="ExplosionPatateEtGrenade" to="." method="_on_explosion_patate_et_grenade_finished"]

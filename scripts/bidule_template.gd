@@ -199,7 +199,7 @@ func enter_state(new_state : STATE):
 			$aim_droite.rotation_degrees = 0
 			$pivot2.rotation_degrees = 0
 			play_animation("idle")
-			play_bras_animation("idle")
+			#play_bras_animation("idle")
 		STATE.CONTROL:
 			linear_velocity.x = 0
 			linear_velocity.x = 0
@@ -207,7 +207,7 @@ func enter_state(new_state : STATE):
 			$aim_droite.rotation_degrees = 0
 			$pivot2.rotation_degrees = 0
 			play_animation("control")
-			play_bras_animation("idle")
+			play_bras_animation("patator")
 		STATE.ROCKET:
 			linear_velocity.x = 0
 			linear_velocity.x = 0
@@ -334,6 +334,7 @@ func update_state():
 				var rocket = rocket_scene.instantiate()
 				rocket.global_position = $pivot2/depart_proj.global_position
 				var direction = $pivot2/depart_proj.global_transform.x.normalized()
+				$LancePatateLaunch.play()
 				rocket.linear_velocity = direction * -5000
 						
 				get_tree().current_scene.add_child(rocket)
@@ -354,6 +355,7 @@ func update_state():
 				var grenade = grenade_scene.instantiate()
 				grenade.global_position = $pivot2/depart_proj.global_position
 				var direction = $pivot2/depart_proj.global_transform.x.normalized()
+				$LancerGrenade.play()
 				grenade.apply_central_impulse(direction * -2500)
 						
 				get_tree().current_scene.add_child(grenade)

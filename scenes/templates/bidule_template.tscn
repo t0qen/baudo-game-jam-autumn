@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=48 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="Texture2D" uid="uid://bd1ejnp7vha11" path="res://assets/Sprites/Garde/Bras/patator_1.png" id="2_81lal"]
@@ -40,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://dg06lfrhe0dgi" path="res://assets/Sprites/Garde/Bras/patator_2.png" id="37_77s6n"]
 [ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="38_e0nlx"]
 [ext_resource type="Texture2D" uid="uid://hht7qnmjl72w" path="res://icon.svg" id="40_77s6n"]
+[ext_resource type="AudioStream" uid="uid://b4uifmkpl0hyt" path="res://assets/sound/SFX/Lance patate launch.mp3" id="41_e0nlx"]
+[ext_resource type="AudioStream" uid="uid://dm25f75lcg4qx" path="res://assets/sound/SFX/Lancer grenade.mp3" id="42_kxtwb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
 friction = 0.1
@@ -272,6 +274,14 @@ texture = ExtResource("40_77s6n")
 [node name="jump_timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="LancePatateLaunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("41_e0nlx")
+bus = &"SFX"
+
+[node name="LancerGrenade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_kxtwb")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
