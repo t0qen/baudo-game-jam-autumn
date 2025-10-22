@@ -210,7 +210,7 @@ script = ExtResource("1_qmkxp")
 
 [node name="Background" type="Polygon2D" parent="."]
 color = Color(0.62512267, 0.56442195, 0.47100878, 1)
-polygon = PackedVector2Array(-1069, -630, 1175, -636, 1163, 604, -1141, 638)
+polygon = PackedVector2Array(-1069, -630, 1175, -636, 1082, 659, -1141, 638)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
