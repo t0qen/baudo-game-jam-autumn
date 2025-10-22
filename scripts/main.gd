@@ -33,6 +33,7 @@ func _ready() -> void:
 	BiduleManager.set_main(self)
 	start()
 	# TODO faire un system de spawn -> besoin de la map avant
+	# plus set_current() 
 
 func _process(delta: float) -> void:
 	pass
