@@ -230,6 +230,7 @@ jump_force = 300
 
 [node name="aim_droite" type="Node2D" parent="."]
 position = Vector2(114, -69)
+rotation = -0.0055571552
 
 [node name="bras_droite" type="AnimatedSprite2D" parent="aim_droite"]
 position = Vector2(-97.71663, 62.613556)
@@ -245,6 +246,7 @@ frame_progress = 0.8000228
 
 [node name="aim_gauche" type="Node2D" parent="."]
 position = Vector2(194, -81)
+rotation = -0.0055571552
 
 [node name="bras_gauche" type="AnimatedSprite2D" parent="aim_gauche"]
 position = Vector2(-189, 79)

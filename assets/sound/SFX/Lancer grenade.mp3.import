@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dm25f75lcg4qx"
+path="res://.godot/imported/Lancer grenade.mp3-cabb601b812f55a520074407597c3073.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/SFX/Lancer grenade.mp3"
+dest_files=["res://.godot/imported/Lancer grenade.mp3-cabb601b812f55a520074407597c3073.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

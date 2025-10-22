@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by6jc0xl6wnlv"
+path="res://.godot/imported/Patate en feu.mp3-bba14eb23e2955290a32e01fd7d743ec.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/SFX/Patate en feu.mp3"
+dest_files=["res://.godot/imported/Patate en feu.mp3-bba14eb23e2955290a32e01fd7d743ec.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
