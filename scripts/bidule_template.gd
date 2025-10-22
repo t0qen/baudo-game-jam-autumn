@@ -78,14 +78,47 @@ func take_damage(amount : int):
 		die()
 
 func aim():
-	pass
-
+	if wanna_aim_left:
+		$aim_droite.rotation_degrees += 5
+		$aim_gauche.rotation_degrees += 5
+	elif wanna_aim_right:
+		$aim_droite.rotation_degrees -= 5
+		$aim_gauche.rotation_degrees -= 5
 func die():
 	queue_free()
 	BiduleManager.ask_to_update_mob_array()
 	
 func play_bras_animation(animation):
-	pass
+	if current == MOB_POSSIBILITY.GARDE:
+		match animation:
+			"grenade":
+				$aim_droite/bras_droite.play("garde_idle")
+				$aim_gauche/bras_gauche.play("garde_grenade")
+			"pompe":
+				$aim_droite/bras_droite.play("garde_idle")
+				$aim_gauche/bras_gauche.play("garde_pompe")
+			"idle":
+				$aim_droite/bras_droite.play("garde_idle")
+				$aim_gauche/bras_gauche.play("garde_grenade")
+			"patator":
+				$aim_droite/bras_droite.play("garde_patator")
+				$aim_gauche/bras_gauche.play("garde_patator")
+	else:
+		match animation:
+			"grenade":
+				$aim_droite/bras_droite.play("errant_idle")
+				$aim_gauche/bras_gauche.play("errant_grenade")
+			"pompe":
+				$aim_droite/bras_droite.play("errant_idle")
+				$aim_gauche/bras_gauche.play("errant_pompe")
+			"idle":
+				$aim_droite/bras_droite.play("errant_idle")
+				$aim_gauche/bras_gauche.play("errant_grenade")
+			"patator":
+				$aim_droite/bras_droite.play("errant_patator")
+				$aim_gauche/bras_gauche.play("errant_patator")
+		
+		
 	#COMPO :
 	#- grenade : idle 1 + grenade 2
 	#- pomep : idle 1 + pompe 2
@@ -126,15 +159,40 @@ func change_state(new_state : STATE):
 func enter_state(new_state : STATE): 
 	match new_state:
 		STATE.IDLE:
+			linear_velocity.x = 0
+			linear_velocity.x = 0
+			$aim_gauche.rotation_degrees = 0
+			$aim_droite.rotation_degrees = 0
 			play_animation("idle")
+			play_bras_animation("idle")
 		STATE.CONTROL:
+			linear_velocity.x = 0
+			linear_velocity.x = 0
+			$aim_gauche.rotation_degrees = 0
+			$aim_droite.rotation_degrees = 0
 			play_animation("control")
+			play_bras_animation("idle")
 		STATE.ROCKET:
-			pass
+			linear_velocity.x = 0
+			linear_velocity.x = 0
+			$aim_gauche.rotation_degrees = 0
+			$aim_droite.rotation_degrees = 0
+			play_animation("idle")
+			play_bras_animation("patator")
 		STATE.GRENADE:
-			pass
+			linear_velocity.x = 0
+			linear_velocity.x = 0
+			$aim_gauche.rotation_degrees = 0
+			$aim_droite.rotation_degrees = 0
+			play_animation("idle")
+			play_bras_animation("grenade")
 		STATE.POMPE:
-			pass
+			linear_velocity.x = 0
+			linear_velocity.x = 0
+			$aim_gauche.rotation_degrees = 0
+			$aim_droite.rotation_degrees = 0
+			play_animation("idle")
+			play_bras_animation("pompe")
 
 #pareil que enter_state sauf que la c quand on quitte un state
 #ex: quand on quitte le state "falling" on joue l'animation d'atterrissage (landing)
@@ -158,17 +216,35 @@ func update_state():
 		STATE.IDLE:
 			if wanna_left || wanna_right || wanna_jump:
 				change_state(STATE.CONTROL)
+			if wanna_bomb:
+				change_state(STATE.GRENADE)
+			if wanna_pompe:
+				change_state(STATE.POMPE)
+			if wanna_rocket:
+				change_state(STATE.ROCKET)
+			
 		STATE.CONTROL:
+			if wanna_bomb:
+				change_state(STATE.GRENADE)
+			if wanna_pompe:
+				change_state(STATE.POMPE)
+			if wanna_rocket:
+				print("rocket")
+				change_state(STATE.ROCKET)
+				
 			direction = 0
 			if wanna_left:
 				direction = -1
-				$sprites.flip_h = true
+				$sprites.flip_h = false
+				$aim_droite/bras_droite.flip_h = false
+				$aim_gauche/bras_gauche.flip_h = false
 			elif wanna_right:
 				direction = 1
-				$sprites.flip_h = false
-
+				$sprites.flip_h = true
+				$aim_droite/bras_droite.flip_h = true
+				$aim_gauche/bras_gauche.flip_h = true
+				
 			if direction != 0:
-				print("ok dir")
 				apply_central_force(Vector2(direction * speed, 0))
 			else:
 				change_state(STATE.IDLE)
@@ -179,12 +255,7 @@ func update_state():
 			elif linear_velocity.x < -max_h_speed:
 				linear_velocity.x = -max_h_speed
 
-			if wanna_bomb:
-				change_state(STATE.GRENADE)
-			if wanna_pompe:
-				change_state(STATE.POMPE)
-			if wanna_rocket:
-				change_state(STATE.ROCKET)
+			
 				
 			if wanna_jump and can_jump:
 				play_animation("jump")
@@ -193,16 +264,30 @@ func update_state():
 				apply_central_impulse(Vector2(0, -jump_force))
 			
 		STATE.ROCKET:
+			print("ROCKET PRIME")
 			if wanna_left || wanna_right || wanna_jump:
 				change_state(STATE.CONTROL)
+			if wanna_bomb:
+				change_state(STATE.GRENADE)
+			if wanna_pompe:
+				change_state(STATE.POMPE)
+
 			aim()
 		STATE.GRENADE:
 			if wanna_left || wanna_right || wanna_jump:
 				change_state(STATE.CONTROL)
+			if wanna_pompe:
+				change_state(STATE.POMPE)
+			if wanna_rocket:
+				change_state(STATE.ROCKET)
 			aim()
 		STATE.POMPE:
 			if wanna_left || wanna_right || wanna_jump:
 				change_state(STATE.CONTROL)
+			if wanna_bomb:
+				change_state(STATE.GRENADE)
+			if wanna_rocket:
+				change_state(STATE.ROCKET)
 			aim()
 #endregion
 
