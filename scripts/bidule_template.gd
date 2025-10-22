@@ -54,8 +54,10 @@ func get_inputs():
 	wanna_bomb = Input.is_action_just_pressed("bomb")
 	wanna_rocket = Input.is_action_just_pressed("rocket")
 	wanna_pompe = Input.is_action_just_pressed("pompe")
+	
 	wanna_aim_left = Input.is_action_pressed("aim_left")
 	wanna_aim_right = Input.is_action_pressed("aim_right")
+	
 	
 func _ready() -> void:
 	change_state(STATE.CONTROL)
@@ -88,14 +90,14 @@ func take_damage(amount : int):
 func aim():
 	print($aim_droite.rotation_degrees)
 	if wanna_aim_left:
-		$aim_droite.rotation_degrees -= 5
-		$aim_gauche.rotation_degrees -= 5
-		$pivot2.rotation_degrees -= 5
+		$aim_droite.rotation_degrees -= 2.5
+		$aim_gauche.rotation_degrees -= 2.5
+		$pivot2.rotation_degrees -= 2.5
 		
 	elif wanna_aim_right:
-		$aim_droite.rotation_degrees += 5
-		$aim_gauche.rotation_degrees += 5
-		$pivot2.rotation_degrees += 5
+		$aim_droite.rotation_degrees += 2.5
+		$aim_gauche.rotation_degrees += 2.5
+		$pivot2.rotation_degrees += 2.5
 	
 	if last_dir_nozero == 1:
 		print("dir 1")
@@ -129,11 +131,11 @@ func play_bras_animation(animation):
 				$aim_droite/bras_droite.play("garde_idle")
 				$aim_gauche/bras_gauche.play("garde_grenade")
 			"pompe":
-				$aim_droite/bras_droite.play("garde_idle")
+				$aim_droite/bras_droite.play("garde_pompe")
 				$aim_gauche/bras_gauche.play("garde_pompe")
 			"idle":
-				$aim_droite/bras_droite.play("garde_idle")
-				$aim_gauche/bras_gauche.play("garde_grenade")
+				$aim_droite/bras_droite.play("garde_simple")
+				$aim_gauche/bras_gauche.play("garde_simple")
 			"patator":
 				$aim_droite/bras_droite.play("garde_patator")
 				$aim_gauche/bras_gauche.play("garde_patator")
@@ -143,11 +145,11 @@ func play_bras_animation(animation):
 				$aim_droite/bras_droite.play("errant_idle")
 				$aim_gauche/bras_gauche.play("errant_grenade")
 			"pompe":
-				$aim_droite/bras_droite.play("errant_idle")
+				$aim_droite/bras_droite.play("errant_pompe")
 				$aim_gauche/bras_gauche.play("errant_pompe")
 			"idle":
-				$aim_droite/bras_droite.play("errant_idle")
-				$aim_gauche/bras_gauche.play("errant_grenade")
+				$aim_droite/bras_droite.play("errant_simple")
+				$aim_gauche/bras_gauche.play("errant_simple")
 			"patator":
 				$aim_droite/bras_droite.play("errant_patator")
 				$aim_gauche/bras_gauche.play("errant_patator")
@@ -199,7 +201,7 @@ func enter_state(new_state : STATE):
 			$aim_droite.rotation_degrees = 0
 			$pivot2.rotation_degrees = 0
 			play_animation("idle")
-			#play_bras_animation("idle")
+			play_bras_animation("idle")
 		STATE.CONTROL:
 			linear_velocity.x = 0
 			linear_velocity.x = 0
@@ -207,7 +209,7 @@ func enter_state(new_state : STATE):
 			$aim_droite.rotation_degrees = 0
 			$pivot2.rotation_degrees = 0
 			play_animation("control")
-			play_bras_animation("patator")
+			play_bras_animation("idle")
 		STATE.ROCKET:
 			linear_velocity.x = 0
 			linear_velocity.x = 0
@@ -338,7 +340,7 @@ func update_state():
 				rocket.linear_velocity = direction * -5000
 						
 				get_tree().current_scene.add_child(rocket)
-				await get_tree().create_timer(10).timeout
+				await get_tree().create_timer(5).timeout
 				can_rocket = true
 		STATE.GRENADE:
 			if wanna_left || wanna_right || wanna_jump:
@@ -359,7 +361,7 @@ func update_state():
 				grenade.apply_central_impulse(direction * -2500)
 						
 				get_tree().current_scene.add_child(grenade)
-				await get_tree().create_timer(10).timeout
+				await get_tree().create_timer(5).timeout
 				can_bombe = true
 				
 		STATE.POMPE:
