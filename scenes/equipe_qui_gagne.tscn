@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://cjogh5j76tshk"]
+[gd_scene load_steps=25 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
+[ext_resource type="Script" uid="uid://bkk4qexdiemxh" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="2_mcgsm"]
 [ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="3_qmkxp"]
 [ext_resource type="Texture2D" uid="uid://b1w0nnvnhpygf" path="res://assets/Sprites/Garde/idle/frame_03_delay-0.04s.png" id="4_t02st"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bkle0j6yqxgyk" path="res://assets/Sprites/Garde/idle/frame_13_delay-0.04s.png" id="14_68c3h"]
 [ext_resource type="Texture2D" uid="uid://b3bjia3qfcp8e" path="res://assets/Sprites/Garde/idle/frame_14_delay-0.04s.png" id="15_mtc1i"]
 [ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="16_mcgsm"]
+[ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="18_t02st"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7tqxj"]
 animations = [{
@@ -160,7 +162,15 @@ _data = {
 &"RESET": SubResource("Animation_t02st")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
+font = ExtResource("18_t02st")
+font_size = 100
+font_color = Color(0.84844077, 0.7701662, 0.62400573, 1)
+
 [node name="Equipe qui gagne" type="Node2D"]
+script = ExtResource("1_qmkxp")
+
+[node name="Background" type="Polygon2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -200,3 +210,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_eqkym")
 }
 autoplay = "IdleGardeMain"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -642.0
+offset_top = -289.0
+offset_right = 642.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Les errants ont gagnés !"
+label_settings = SubResource("LabelSettings_eqkym")
+horizontal_alignment = 1
+vertical_alignment = 1
