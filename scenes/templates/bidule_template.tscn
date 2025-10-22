@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=37 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="2_cow7b"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://2rdb42757p44" path="res://assets/Sprites/Garde/Marche/frame_13_delay-0.04s.png" id="30_rb426"]
 [ext_resource type="Texture2D" uid="uid://bisf52acqu5ya" path="res://assets/Sprites/Garde/Marche/frame_14_delay-0.04s.png" id="31_0gdmd"]
 [ext_resource type="Texture2D" uid="uid://dp1p5ijjatfcm" path="res://assets/Sprites/Garde/Marche/frame_15_delay-0.04s.png" id="32_r3e01"]
+[ext_resource type="Texture2D" uid="uid://c8qhopbbm2csd" path="res://assets/Sprites/Garde/man_saute.png" id="33_uh30e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
 friction = 0.0
@@ -141,6 +142,14 @@ animations = [{
 "loop": true,
 "name": &"garde_run",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_uh30e")
+}],
+"loop": true,
+"name": &"garde_saut",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxvg"]
@@ -156,7 +165,7 @@ jump_force = 300
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8amhk")
-animation = &"garde_idle"
+animation = &"garde_saut"
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3dxvg")
