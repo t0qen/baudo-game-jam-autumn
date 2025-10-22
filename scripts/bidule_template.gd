@@ -85,6 +85,15 @@ func die():
 	queue_free()
 	BiduleManager.ask_to_update_mob_array()
 	
+func play_bras_animation(animation):
+	pass
+	#COMPO :
+	#- grenade : idle 1 + grenade 2
+	#- pomep : idle 1 + pompe 2
+	#- patatator : patatator 1 + patatator 2
+	#- idle : idle 1 + grenade 2
+
+	
 func play_animation(animation):
 	
 	if current == MOB_POSSIBILITY.GARDE:

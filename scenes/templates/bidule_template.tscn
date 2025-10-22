@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=45 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="Texture2D" uid="uid://bd1ejnp7vha11" path="res://assets/Sprites/Garde/Bras/patator_1.png" id="2_81lal"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bd2asu1t7h1r5" path="res://assets/Sprites/Garde/Bras/granade_bras_2.png" id="2_vgj7r"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="3_uh30e"]
 [ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="4_81lal"]
+[ext_resource type="Texture2D" uid="uid://d15ujdqrvktn5" path="res://assets/Sprites/Garde/vide.png" id="4_nlu60"]
 [ext_resource type="Texture2D" uid="uid://b1w0nnvnhpygf" path="res://assets/Sprites/Garde/idle/frame_03_delay-0.04s.png" id="5_fvjia"]
 [ext_resource type="Texture2D" uid="uid://c4e40j2echrud" path="res://assets/Sprites/Garde/idle/frame_04_delay-0.04s.png" id="6_ta3oi"]
 [ext_resource type="Texture2D" uid="uid://d3k1m02u6acgg" path="res://assets/Sprites/Garde/idle/frame_05_delay-0.04s.png" id="7_qhic2"]
@@ -64,7 +65,10 @@ animations = [{
 "name": &"garde_patator",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nlu60")
+}],
 "loop": true,
 "name": &"garde_pompe",
 "speed": 5.0
