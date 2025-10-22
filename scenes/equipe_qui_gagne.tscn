@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=22 format=3 uid="uid://cjogh5j76tshk"]
-=======
-[gd_scene load_steps=23 format=3 uid="uid://bsc56muftkqs2"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
-[ext_resource type="Script" uid="uid://cb73tgts8ux6a" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="2_mcgsm"]
 [ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="3_qmkxp"]
 [ext_resource type="Texture2D" uid="uid://b1w0nnvnhpygf" path="res://assets/Sprites/Garde/idle/frame_03_delay-0.04s.png" id="4_t02st"]
@@ -166,7 +161,6 @@ _data = {
 }
 
 [node name="Equipe qui gagne" type="Node2D"]
-script = ExtResource("1_qmkxp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
