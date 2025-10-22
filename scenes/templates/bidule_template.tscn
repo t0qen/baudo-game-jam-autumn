@@ -183,14 +183,14 @@ shape = SubResource("RectangleShape2D_3dxvg")
 [node name="weapon" type="Node2D" parent="."]
 
 [node name="aim" type="Node2D" parent="."]
-position = Vector2(111, -76.00001)
-rotation = -0.47647488
+position = Vector2(114, -69)
+rotation = 0.08654936
 
 [node name="main" type="Node2D" parent="aim"]
 position = Vector2(326, 10)
 
 [node name="hands" type="AnimatedSprite2D" parent="aim"]
-position = Vector2(-104.61212, 43.259693)
+position = Vector2(-97.71663, 62.613556)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_fvjia")
 animation = &"garde_patator"
