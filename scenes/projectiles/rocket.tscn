@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://beywwft4c0mlq"]
 
 [ext_resource type="Script" uid="uid://dlv6bafe1o4v8" path="res://scripts/rocket.gd" id="1_l0y3s"]
-[ext_resource type="Texture2D" uid="uid://bxtjwc1i5gogk" path="res://assets/Sprites/Pomme de terre.png" id="1_r4mtq"]
+[ext_resource type="Texture2D" uid="uid://beeml8clnve47" path="res://assets/Sprites/patage.png" id="2_l0y3s"]
 [ext_resource type="Texture2D" uid="uid://sdw4lwb4ukgf" path="res://assets/Sprites/Feu.png" id="2_r4bah"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4mtq"]
@@ -25,22 +25,6 @@ rotation = -1.5652608
 scale = Vector2(1.0832561, 1.1706394)
 shape = SubResource("CapsuleShape2D_r4mtq")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(3.999998, 0)
-scale = Vector2(2.6763544, 4.6552978)
-amount = 10
-texture = ExtResource("2_r4bah")
-fixed_fps = 60
-emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector2(100, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 20.0
-tangential_accel_min = 30.0
-tangential_accel_max = 40.0
-scale_amount_min = 0.05
-scale_amount_max = 0.1
-
 [node name="DetectionMaxDegat" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionMaxDegat"]
@@ -48,16 +32,30 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_l0y3s")
 debug_color = Color(0.9875497, 0, 0.31682128, 0.41960785)
 
-[node name="DetectionMinDegat" type="Area2D" parent="."]
+[node name="DetectionMinDegat" type="Area2D" parent="DetectionMaxDegat"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionMinDegat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionMaxDegat/DetectionMinDegat"]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_8rgcg")
 debug_color = Color(0.78905654, 0.43045953, 3.85046e-07, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 0.0906897
-scale = Vector2(0.044921875, 0.044921875)
-texture = ExtResource("1_r4mtq")
+position = Vector2(2, -4)
+rotation = 0.63676685
+scale = Vector2(0.052949224, 0.052949224)
+texture = ExtResource("2_l0y3s")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(11.562056, 8.671329)
+amount = 10
+texture = ExtResource("2_r4bah")
+fixed_fps = 60
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -100)
+tangential_accel_min = 30.0
+tangential_accel_max = 40.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 
 [connection signal="area_entered" from="DetectionMaxDegat" to="." method="_on_detection_max_degat_area_entered"]

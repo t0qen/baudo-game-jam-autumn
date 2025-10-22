@@ -5,7 +5,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
-	var terrain = get_parent().get_node("DestructiblePolygon2D")
+	var terrain = get_parent().get_node("TestMap")
 	
 	var radius = 100.0
 	var segments = 32
