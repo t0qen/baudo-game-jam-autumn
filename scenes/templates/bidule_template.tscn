@@ -229,8 +229,7 @@ jump_force = 300
 [node name="weapon" type="Node2D" parent="."]
 
 [node name="aim_droite" type="Node2D" parent="."]
-position = Vector2(114, -74)
-rotation = -0.24425316
+position = Vector2(-35, -73)
 
 [node name="bras_droite" type="AnimatedSprite2D" parent="aim_droite"]
 position = Vector2(-97.71663, 62.613556)
@@ -238,15 +237,16 @@ scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_fvjia")
 animation = &"garde_patator"
 
-[node name="sprites" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, 0)
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="sprites" type="AnimatedSprite2D" parent="pivot"]
+position = Vector2(-146, 0)
 sprite_frames = SubResource("SpriteFrames_8amhk")
 animation = &"garde_run"
 frame_progress = 0.8000228
 
 [node name="aim_gauche" type="Node2D" parent="."]
-position = Vector2(194, -74)
-rotation = -0.24425316
+position = Vector2(46, -73)
 
 [node name="bras_gauche" type="AnimatedSprite2D" parent="aim_gauche"]
 position = Vector2(-189, 79)
@@ -255,10 +255,11 @@ sprite_frames = SubResource("SpriteFrames_kxtwb")
 animation = &"garde_patator"
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(143, 110)
+position = Vector2(0, 112)
 shape = SubResource("CapsuleShape2D_nlu60")
 
 [node name="jump_timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

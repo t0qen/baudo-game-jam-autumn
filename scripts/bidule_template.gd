@@ -29,6 +29,8 @@ var wanna_aim_left : bool
 var wanna_aim_right : bool
 var direction : int = 0
 
+var prev_dir : int = direction
+
 enum MOB_POSSIBILITY {
 	GARDE,
 	ERRANT
@@ -46,8 +48,8 @@ func get_inputs():
 	wanna_bomb = Input.is_action_just_pressed("bomb")
 	wanna_rocket = Input.is_action_just_pressed("rocket")
 	wanna_pompe = Input.is_action_just_pressed("pompe")
-	wanna_aim_left = Input.is_action_just_pressed("aim_left")
-	wanna_aim_right = Input.is_action_just_pressed("aim_right")
+	wanna_aim_left = Input.is_action_pressed("aim_left")
+	wanna_aim_right = Input.is_action_pressed("aim_right")
 	
 func _ready() -> void:
 	change_state(STATE.CONTROL)
@@ -78,6 +80,7 @@ func take_damage(amount : int):
 		die()
 
 func aim():
+	print("aim")
 	if wanna_aim_left:
 		$aim_droite.rotation_degrees += 5
 		$aim_gauche.rotation_degrees += 5
@@ -129,9 +132,9 @@ func play_bras_animation(animation):
 func play_animation(animation):
 	
 	if current == MOB_POSSIBILITY.GARDE:
-		$sprites.play("garde_" + animation)
+		$pivot/sprites.play("garde_" + animation)
 	else:
-		$sprites.play("errant_" + animation)
+		$pivot/sprites.play("errant_" + animation)
 		
 		
 #region STATE MACHINE
@@ -235,15 +238,25 @@ func update_state():
 			direction = 0
 			if wanna_left:
 				direction = -1
-				$sprites.flip_h = false
-				$aim_droite/bras_droite.flip_h = false
-				$aim_gauche/bras_gauche.flip_h = false
+
 			elif wanna_right:
 				direction = 1
-				$sprites.flip_h = true
-				$aim_droite/bras_droite.flip_h = true
-				$aim_gauche/bras_gauche.flip_h = true
 				
+			if prev_dir != direction && direction != 0:
+				if direction == 1:
+					$pivot.scale.x = -1
+					$aim_droite.scale.x = -1
+					$aim_droite.position.x = 46 
+					$aim_gauche.scale.x = -1
+					$aim_gauche.position.x = -35 
+				elif direction == -1:
+					$pivot.scale.x = 1
+					$aim_droite.scale.x = 1
+					$aim_droite.position.x = -35
+					$aim_gauche.scale.x = 1
+					$aim_gauche.position.x = 46 
+			
+			prev_dir = direction
 			if direction != 0:
 				apply_central_force(Vector2(direction * speed, 0))
 			else:
