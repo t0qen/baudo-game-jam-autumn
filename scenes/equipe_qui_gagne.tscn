@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjogh5j76tshk"]
+[gd_scene load_steps=28 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
 [ext_resource type="Script" uid="uid://bkk4qexdiemxh" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
@@ -162,6 +162,43 @@ _data = {
 &"RESET": SubResource("Animation_t02st")
 }
 
+[sub_resource type="Animation" id="Animation_eqkym"]
+resource_name = "IdleMainErrant"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainerrant:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-561.915, 189), Vector2(-555.84, 195.645), Vector2(-561.915, 189)]
+}
+
+[sub_resource type="Animation" id="Animation_1jcgm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainerrant:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-561.915, 189)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jcgm"]
+_data = {
+&"IdleMainErrant": SubResource("Animation_eqkym"),
+&"RESET": SubResource("Animation_1jcgm")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
 font = ExtResource("18_t02st")
 font_size = 100
@@ -195,21 +232,21 @@ autoplay = "default"
 frame_progress = 0.36884344
 
 [node name="mainerrant" type="Sprite2D" parent="."]
-position = Vector2(-565, 195)
+position = Vector2(-561.915, 189)
 scale = Vector2(-0.847, 0.847)
 texture = ExtResource("16_mcgsm")
-
-[node name="MainErrant" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_eqkym")
-}
-autoplay = "IdleGardeMain"
 
 [node name="MainGarde" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_eqkym")
 }
 autoplay = "IdleGardeMain"
+
+[node name="MainErrant" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1jcgm")
+}
+autoplay = "IdleMainErrant"
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
