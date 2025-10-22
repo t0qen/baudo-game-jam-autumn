@@ -3,7 +3,12 @@ extends RigidBody2D
 func _ready() -> void:
 	pass
 
-func _on_detection_max_degat_area_entered(area: Area2D) -> void:
+
+	
+
+
+func _on_detection_max_degat_body_entered(body: Node2D) -> void:
+	print(body.name)
 	# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
 	var terrain = get_parent().get_node("DestructiblePolygon2D")
 	
@@ -18,3 +23,6 @@ func _on_detection_max_degat_area_entered(area: Area2D) -> void:
 	var destroyed_area = terrain.destruct(polygon, global_position)
 	print("Destroyed area:", destroyed_area)
 	queue_free()
+		
+		
+		

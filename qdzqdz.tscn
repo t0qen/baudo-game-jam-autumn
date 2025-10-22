@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cctebo81rnbn"]
+[gd_scene load_steps=4 format=3 uid="uid://cgqyy88s7arpf"]
 
 [ext_resource type="PackedScene" uid="uid://beywwft4c0mlq" path="res://scenes/projectiles/rocket.tscn" id="2_lqml1"]
 [ext_resource type="Script" uid="uid://ch41sfxp6t1uw" path="res://scripts/destructible_terrain_node.gd" id="2_yff4a"]
@@ -7,19 +7,21 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.82, 0.82)
+zoom = Vector2(1.5, 1.5)
+
+[node name="DestructiblePolygon2D" type="Node2D" parent="." groups=["ground"]]
+script = ExtResource("2_yff4a")
+collidable = true
+metadata/_custom_type_script = "uid://ch41sfxp6t1uw"
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D" groups=["ground"]]
+texture = ExtResource("3_lqml1")
+texture_offset = Vector2(62.115, 0)
+polygon = PackedVector2Array(-185.09604, -9.185017, 221.90399, -6.985016, 206.50397, 160.215, -190.59604, 154.715)
+uv = PackedVector2Array(-185.09604, -9.185017, 221.90399, -6.985016, 206.50397, 160.215, -190.59604, 154.715)
 
 [node name="Rocket" parent="." instance=ExtResource("2_lqml1")]
 position = Vector2(2, -359)
 scale = Vector2(1, 1.0047942)
 
-[node name="DestructiblePolygon2D" type="Node2D" parent="."]
-script = ExtResource("2_yff4a")
-collidable = true
-metadata/_custom_type_script = "uid://ch41sfxp6t1uw"
-
-[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D"]
-texture = ExtResource("3_lqml1")
-texture_offset = Vector2(62.115, 0)
-polygon = PackedVector2Array(-185.09604, -9.185017, 221.90399, -6.985016, 206.50397, 160.215, -190.59604, 154.715)
-uv = PackedVector2Array(-185.09604, -9.185017, 221.90399, -6.985016, 206.50397, 160.215, -190.59604, 154.715)
+[connection signal="body_entered" from="Rocket" to="Rocket" method="_on_body_entered"]
