@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bsc56muftkqs2"]
+[gd_scene load_steps=22 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="2_mcgsm"]

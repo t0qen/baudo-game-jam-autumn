@@ -12,6 +12,9 @@ func _ready() -> void:
 func set_main(main):
 	current_main = main
 	
+func ask_to_update_mob_array():
+	current_main.update_mob_array()
+	
 func set_current(bidule):
 	current_bidule = bidule
 	selected_mob_changed.emit(current_bidule)

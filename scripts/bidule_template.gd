@@ -83,7 +83,7 @@ func aim():
 
 func die():
 	queue_free()
-	Main.update_mob_array()
+	BiduleManager.ask_to_update_mob_array()
 	
 func play_animation(animation):
 	
@@ -91,6 +91,8 @@ func play_animation(animation):
 		$sprites.play("garde_" + animation)
 	else:
 		$sprites.play("errant_" + animation)
+		
+		
 #region STATE MACHINE
 # -- STATE MACHINE --
 enum STATE {
@@ -177,6 +179,7 @@ func update_state():
 				change_state(STATE.ROCKET)
 				
 			if wanna_jump and can_jump:
+				play_animation("jump")
 				can_jump = false
 				jump_timer.start()
 				apply_central_impulse(Vector2(0, -jump_force))
