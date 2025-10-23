@@ -191,7 +191,7 @@ corner_radius_bottom_right = 130
 corner_radius_bottom_left = 130
 shadow_color = Color(0, 0, 0, 0.45882353)
 shadow_size = 1
-shadow_offset = Vector2(15.545, 17.345)
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vcge"]
 bg_color = Color(0.20704144, 0.15365759, 0.109762006, 1)
@@ -201,7 +201,7 @@ corner_radius_bottom_right = 130
 corner_radius_bottom_left = 130
 shadow_color = Color(0, 0, 0, 0.45882353)
 shadow_size = 1
-shadow_offset = Vector2(15.545, 17.345)
+shadow_offset = Vector2(1, 1)
 
 [resource]
 AcceptDialog/colors/title_color = Color(0, 0, 0, 1)

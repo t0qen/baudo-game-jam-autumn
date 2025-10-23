@@ -1,11 +1,13 @@
-[gd_scene load_steps=115 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=117 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_2idbw"]
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="2_cow7b"]
+[ext_resource type="Theme" uid="uid://wwtmfnoaat7r" path="res://scenes/themedefault.tres" id="2_dwx1g"]
 [ext_resource type="Texture2D" uid="uid://bd2asu1t7h1r5" path="res://assets/Sprites/Garde/Bras/granade_bras_2.png" id="2_vgj7r"]
 [ext_resource type="Texture2D" uid="uid://yudeqm02bmts" path="res://assets/Sprites/Errant/Bras/Patator Anim/frame_0_delay-0.04s.png" id="3_1x5ak"]
 [ext_resource type="Texture2D" uid="uid://o14ygiy4dqt4" path="res://assets/Sprites/Garde/idle/frame_01_delay-0.04s.png" id="3_uh30e"]
+[ext_resource type="FontFile" uid="uid://dbsu8y8i7okhm" path="res://assets/Font/Urban Shadow Sans Serif.otf" id="3_w6dny"]
 [ext_resource type="Texture2D" uid="uid://rugba8irivas" path="res://assets/Sprites/Errant/Bras/Patator Anim/frame_1_delay-0.04s.png" id="4_2c05i"]
 [ext_resource type="Texture2D" uid="uid://b1yfuc8nbsmb4" path="res://assets/Sprites/Garde/idle/frame_02_delay-0.04s.png" id="4_81lal"]
 [ext_resource type="Texture2D" uid="uid://d15ujdqrvktn5" path="res://assets/Sprites/Garde/vide.png" id="4_nlu60"]
@@ -112,8 +114,8 @@ friction = 0.1
 bounce = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_4n3gm"]
-font = ExtResource("2_2idbw")
-font_size = 56
+font = ExtResource("3_w6dny")
+font_size = 66
 
 [sub_resource type="LabelSettings" id="LabelSettings_5tp8d"]
 font = ExtResource("2_2idbw")
@@ -584,7 +586,8 @@ jump_force = 300
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_left = -62.0
+offset_right = -22.0
 offset_bottom = 40.0
 
 [node name="ProgressBar" type="ProgressBar" parent="ui"]
@@ -593,6 +596,7 @@ offset_left = -126.0
 offset_top = -455.0
 offset_right = 126.0
 offset_bottom = -394.0
+theme = ExtResource("2_dwx1g")
 step = 1.0
 value = 50.0
 show_percentage = false
@@ -603,6 +607,7 @@ offset_left = -98.0
 offset_top = -522.0
 offset_right = 100.0
 offset_bottom = -459.0
+theme = ExtResource("2_dwx1g")
 text = "ERRANT"
 label_settings = SubResource("LabelSettings_4n3gm")
 horizontal_alignment = 1
@@ -614,6 +619,7 @@ offset_left = -129.0
 offset_top = -576.0
 offset_right = 130.0
 offset_bottom = -513.0
+theme = ExtResource("2_dwx1g")
 text = "selected"
 label_settings = SubResource("LabelSettings_5tp8d")
 horizontal_alignment = 1
