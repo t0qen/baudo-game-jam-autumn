@@ -3,13 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dreipx6w1ycb6" path="res://scenes/templates/bidule_template.tscn" id="1_nbgwk"]
 
 [node name="gardes" instance=ExtResource("1_nbgwk")]
-light_mask = 2
-visibility_layer = 7
-collision_layer = 10
-collision_mask = 4
+collision_layer = 2
+collision_mask = 12
 
 [node name="Label" parent="ui" index="1"]
 text = "GARDE"
+
+[node name="Area" type="Polygon2D" parent="aim_gauche/Pompe" index="0"]
+visible = false
+color = Color(1, 1, 1, 0.36862746)
+polygon = PackedVector2Array(-326, -24, -327, -23, -328, -22, -329, -21, -330, -20, -331, -18, -332, -15, -332, -13, -332, -11, -332, -9, -332, -6, -331, -3, -329, 0, -327, 2, -326, 3, -935, 222, -935, -296)
 
 [node name="pivot2" parent="." index="6"]
 rotation = 0.010338243

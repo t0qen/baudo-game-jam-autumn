@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var deplacement : float = 2
+@export var deplacement : float = 20
 @export var zoomForce : float = 2
 
 var base_zoom : Vector2 = Vector2(0.2, 0.2)
@@ -21,12 +21,13 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	var movementsVect : Vector2 = Input.get_vector("camera_right", "camera_left", "camera_down", "camera_up")
+	var movementsVect : Vector2 = Input.get_vector("camera_left", "camera_right", "camera_down", "camera_up")
 	global_position += (movementsVect * deplacement)
 	var zoomVar = Input.get_axis("camera_zoom_down", "camera_zoom_up")
 	zoom += Vector2(zoomVar, zoomVar) * zoomForce
-	#if !zoomVar && !movementsVect:
-		#global_position = BiduleManager.get_mob_position()
+	if !zoomVar && !movementsVect:
+		await get_tree().create_timer(2).timeout
+		global_position = BiduleManager.get_mob_position()
 	
 	#if Input.is_action_pressed("camera_right"):
 		#isfocus = false

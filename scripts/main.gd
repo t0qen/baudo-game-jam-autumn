@@ -40,7 +40,7 @@ func _ready() -> void:
 	spawn_mobs()
 	initialize_ui()
 	start()
-	get_tree().paused = true
+	
 	# TODO faire un system de spawn -> besoin de la map avant
 	# TODO base life mob
 	# plus set_current() 
@@ -67,7 +67,7 @@ func spawn_mobs():
 		var current_garde = gardes.instantiate()
 		current_garde.global_position = current_sp.global_position
 		current_garde.set_current(1)
-		$team_container/team_errants.add_child(current_garde)
+		$team_container/team_gardes.add_child(current_garde)
 	#for i in range(VarBidules.nbr_errants):
 		#var current_sp = $"spawns-points/errants".get_child(randi_range(0, 9))
 		#if current_sp in errants_taken_sp:
@@ -160,9 +160,11 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 		if mob_a.is_alive:
 			team_a_mobs.append(mob_a)
 	team_b_mobs.clear()
+	print("TEAN A, ", team_a_mobs)
 	for mob_b in $team_container/team_gardes.get_children():
 		if mob_b.is_alive:
 			team_b_mobs.append(mob_b)
+	print("TEAN B, ", team_a_mobs)
 	if team_a_mobs.is_empty():
 		print("TEAM B GAGNE")
 		get_tree().paused = true
