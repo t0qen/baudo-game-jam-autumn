@@ -18,7 +18,7 @@ var current_life : int = VarBidules.base_life
 
 # MOVEMENTS VARS
 @export var speed : int = 1000
-@export var jump_force : int = 800
+@export var jump_force : int = 1000
 @export var max_h_speed : int = 400
 
 # INPUTS VARS
@@ -129,8 +129,10 @@ func aim():
 			$pivot2.rotation_degrees = -40
 			
 func die():
-	queue_free()
+	print("died")
 	BiduleManager.ask_to_update_mob_array()
+	queue_free()
+	
 	
 func play_bras_animation(animation):
 	if current == MOB_POSSIBILITY.GARDE:
@@ -366,6 +368,8 @@ func update_state():
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
 
+			if linear_velocity.y == 0:
+				can_jump = true
 		STATE.ROCKET:
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
@@ -390,6 +394,9 @@ func update_state():
 				get_tree().current_scene.add_child(rocket)
 				await get_tree().create_timer(1).timeout
 				can_rocket = true
+				
+			if linear_velocity.y == 0:
+				can_jump = true
 		STATE.GRENADE:
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
@@ -413,6 +420,9 @@ func update_state():
 				get_tree().current_scene.add_child(grenade)
 				await get_tree().create_timer(5).timeout
 				can_bombe = true
+			
+			if linear_velocity.y == 0:
+				can_jump = true
 				
 		STATE.POMPE:
 			if wanna_jump and can_jump:
@@ -435,6 +445,10 @@ func update_state():
 				$aim_gauche/Pompe/Area.hide()
 				await get_tree().create_timer(5).timeout
 				can_pompe = true
+
+			if linear_velocity.y == 0:
+				can_jump = true
+
 #endregion
 
 	

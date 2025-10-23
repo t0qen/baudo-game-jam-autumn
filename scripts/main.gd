@@ -36,6 +36,7 @@ func _ready() -> void:
 	initialize_ui()
 	start()
 	# TODO faire un system de spawn -> besoin de la map avant
+	# TODO base life mob
 	# plus set_current() 
 
 func update_partie_duree_pb():
@@ -43,16 +44,33 @@ func update_partie_duree_pb():
 	
 func initialize_ui():
 	$UI/ProgressBar.max_value = current_timer_time
-	$UI/ProgressBar.value = current_timer_time
+	$UI/ProgressBar.value = $UI/ProgressBar.max_value 
 	$UI/Label.text = "TEAM EN TRAIN DE JOUER : LES GARDES"
+	
+	$UI/gardes.max_value = VarBidules.base_life * VarBidules.nbr_gardes
+	$UI/gardes.value = $UI/gardes.max_value
+	$UI/errants.max_value = VarBidules.base_life * VarBidules.nbr_errants
+	$UI/errants.value = $UI/errants.max_value
+	
+func update_total_life_pb():
+	var total_life_gardes : int
+	for i in $team_container/team_gardes.get_children():
+		total_life_gardes = total_life_gardes + i.current_life
+	$UI/gardes.value = total_life_gardes
+	var total_life_errants : int
+	for i in $team_container/team_errants.get_children():
+		total_life_errants = total_life_errants + i.current_life
+	$UI/errants.value = total_life_errants
 	
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
+	update_total_life_pb()
 	
 func _physics_process(delta: float) -> void:
 	pass
 
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
+	print("===== UPDATE MOB ARRAY =========")
 	team_a_mobs = []
 	for mob_a in $team_container/team_errants.get_children():
 		team_a_mobs.append(mob_a)
@@ -60,7 +78,11 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 	team_b_mobs = []
 	for mob_b in $team_container/team_gardes.get_children():
 		team_b_mobs.append(mob_b)
-	print("Gardes : ", team_a_mobs)
+		print(mob_b)
+	print("Gardes : ", team_b_mobs)
+	print("==================================")
+	if team_b_mobs == []:
+		print("TEAM B LOST")
 	
 func start():
 	print("GAME STARTS !!")

@@ -13,6 +13,7 @@ func set_main(main):
 	current_main = main
 	
 func ask_to_update_mob_array():
+	print("UPDATED MOB ARRAY")
 	current_main.update_mob_array()
 	
 func set_current(bidule):

@@ -62,7 +62,7 @@ offset_right = 8106.0
 offset_bottom = 351.0
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="UI"]
+[node name="gardes" type="ProgressBar" parent="UI"]
 layout_mode = 0
 offset_left = 852.0
 offset_top = 4666.0
@@ -70,7 +70,7 @@ offset_right = 2718.0
 offset_bottom = 4900.0
 show_percentage = false
 
-[node name="ProgressBar3" type="ProgressBar" parent="UI"]
+[node name="errants" type="ProgressBar" parent="UI"]
 layout_mode = 0
 offset_left = 860.0
 offset_top = 4967.0
@@ -209,37 +209,37 @@ text = "AIDE
 
 [node name="errants" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-1746, -1148)
-jump_force = 800
+jump_force = 1000
 
 [node name="errants2" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-2746, -46)
-jump_force = 800
+jump_force = 1000
 
 [node name="errants3" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-1946, -238)
-jump_force = 800
+jump_force = 1000
 
 [node name="errants4" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
 position = Vector2(-2625, -1344)
-jump_force = 800
+jump_force = 1000
 
 [node name="team_gardes" parent="team_container" instance=ExtResource("3_tbgi4")]
 
 [node name="gardes" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1226, -968)
-jump_force = 800
+jump_force = 1000
 
 [node name="gardes2" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1908, -577)
-jump_force = 800
+jump_force = 1000
 
 [node name="gardes3" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1627, 209)
-jump_force = 800
+jump_force = 1000
 
 [node name="gardes4" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1006, -63)
-jump_force = 800
+jump_force = 1000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
