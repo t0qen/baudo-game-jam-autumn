@@ -580,6 +580,8 @@ radius = 61.0
 height = 628.0
 
 [node name="bidule_template" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 6
 physics_material_override = SubResource("PhysicsMaterial_6lqgl")
 lock_rotation = true
 contact_monitor = true
@@ -657,6 +659,8 @@ animation = &"garde_pompe_1"
 
 [node name="Pompe" type="Area2D" parent="aim_gauche"]
 position = Vector2(-46, 73)
+collision_layer = 8
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aim_gauche/Pompe"]
 position = Vector2(-521, -3)
