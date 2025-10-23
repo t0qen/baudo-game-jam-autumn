@@ -51,10 +51,23 @@ func spawn_mobs():
 	for i in $"spawns-points/errants".get_children():
 		errants_spawn_points.append(i)
 	errants_spawn_points.shuffle()
-	var selected_sp = errants_spawn_points.slice(0, VarBidules.nbr_errants)
-	for current_sp in selected_sp:
-		pass
-	
+	var selected_errant_sp = errants_spawn_points.slice(0, VarBidules.nbr_errants)
+	for current_sp in selected_errant_sp:
+		var current_errant = errants.instantiate()
+		current_errant.global_position = current_sp.global_position
+		current_errant.set_current(1)
+		$team_container/team_errants.add_child(current_errant)
+	#garde
+	var gardes_spawn_points = []
+	for i in $"spawns-points/gardes".get_children():
+		gardes_spawn_points.append(i)
+	gardes_spawn_points.shuffle()
+	var selected_gardes_sp = gardes_spawn_points.slice(0, VarBidules.nbr_gardes)
+	for current_sp in selected_gardes_sp:
+		var current_garde = gardes.instantiate()
+		current_garde.global_position = current_sp.global_position
+		current_garde.set_current(1)
+		$team_container/team_errants.add_child(current_garde)
 	#for i in range(VarBidules.nbr_errants):
 		#var current_sp = $"spawns-points/errants".get_child(randi_range(0, 9))
 		#if current_sp in errants_taken_sp:
@@ -68,23 +81,23 @@ func spawn_mobs():
 		#$team_container/team_errants.add_child(current_errant)
 		
 	#gardes
-	var gardes_spawn_points = []
-	for i in $"spawns-points/gardes".get_children():
-		gardes_spawn_points.append(i)
-	var gardes_taken_sp = []
-
-	for i in range(VarBidules.nbr_gardes):
-		var current_sp = $"spawns-points/gardes".get_child(randi_range(0, 9))
-		if current_sp in gardes_taken_sp:
-			while current_sp in gardes_taken_sp:
-				print("nonon")
-				current_sp = $"spawns-points/gardes".get_child(randi_range(0, 9))
-		gardes_taken_sp.append(current_sp)
-		var current_gardes = gardes.instantiate()
-		current_gardes.global_position = current_sp.global_position
-		current_gardes.set_current(0)
-		$team_container/team_gardes.add_child(current_gardes)
-	print("FINISHED")
+	#var gardes_spawn_points = []
+	#for i in $"spawns-points/gardes".get_children():
+		#gardes_spawn_points.append(i)
+	#var gardes_taken_sp = []
+#
+	#for i in range(VarBidules.nbr_gardes):
+		#var current_sp = $"spawns-points/gardes".get_child(randi_range(0, 9))
+		#if current_sp in gardes_taken_sp:
+			#while current_sp in gardes_taken_sp:
+				#print("nonon")
+				#current_sp = $"spawns-points/gardes".get_child(randi_range(0, 9))
+		#gardes_taken_sp.append(current_sp)
+		#var current_gardes = gardes.instantiate()
+		#current_gardes.global_position = current_sp.global_position
+		#current_gardes.set_current(0)
+		#$team_container/team_gardes.add_child(current_gardes)
+	#print("FINISHED")
 
 func update_mob_action(action):
 	print("update action 2")
