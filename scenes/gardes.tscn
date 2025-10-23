@@ -4,7 +4,7 @@
 
 [node name="gardes" instance=ExtResource("1_nbgwk")]
 collision_layer = 2
-collision_mask = 12
+collision_mask = 15
 
 [node name="Label" parent="ui" index="1"]
 text = "GARDE"

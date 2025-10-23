@@ -21,12 +21,11 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	var movementsVect : Vector2 = Input.get_vector("camera_left", "camera_right", "camera_down", "camera_up")
+	var movementsVect : Vector2 = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
 	global_position += (movementsVect * deplacement)
 	var zoomVar = Input.get_axis("camera_zoom_down", "camera_zoom_up")
 	zoom += Vector2(zoomVar, zoomVar) * zoomForce
 	if !zoomVar && !movementsVect:
-		await get_tree().create_timer(2).timeout
 		global_position = BiduleManager.get_mob_position()
 	
 	#if Input.is_action_pressed("camera_right"):
