@@ -134,6 +134,9 @@ func update_game():
 	print("GAME UPDATED")
 	change_playing_team()
 	select_mob()
+	$Camera2D/UI/ColorRect.show()
+	
+	
 	
 func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
