@@ -135,6 +135,7 @@ func update_game():
 	change_playing_team()
 	select_mob()
 	$Camera2D/UI/ColorRect.show()
+	get_tree().paused = true
 	
 	
 	
@@ -207,3 +208,8 @@ func _on_duree_totale_timeout() -> void:
 	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/temps_ecoule.tscn")
+
+
+func _on_button_pressed() -> void:
+	$Camera2D/UI/ColorRect.hide()
+	get_tree().paused = false

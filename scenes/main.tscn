@@ -226,6 +226,8 @@ text = "AIDE
 "
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/UI"]
+process_mode = 3
+visible = false
 layout_mode = 0
 offset_left = 2274.0
 offset_top = 2002.0
@@ -244,11 +246,12 @@ label_settings = SubResource("LabelSettings_tipki")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Camera2D/UI/ColorRect"]
+process_mode = 3
 layout_mode = 0
 offset_left = 1416.0
-offset_top = 904.0
+offset_top = 809.0
 offset_right = 3646.0
-offset_bottom = 1596.0
+offset_bottom = 1501.0
 theme_override_font_sizes/font_size = 400
 text = "C'EST BON"
 
@@ -265,5 +268,6 @@ bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="Camera2D/UI/focus" to="." method="_on_focus_pressed"]
+[connection signal="pressed" from="Camera2D/UI/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]
 [connection signal="timeout" from="duree_totale" to="." method="_on_duree_totale_timeout"]
