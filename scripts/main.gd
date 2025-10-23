@@ -28,15 +28,27 @@ var current_paying_mob_a
 var current_paying_mob_b 
 
 var winner_team : TEAM = TEAM.A
+var current_timer_time = VarBidules.duree_tour_sec
 
 func _ready() -> void:
 	BiduleManager.set_main(self)
+	$partie.wait_time = current_timer_time
+	initialize_ui()
 	start()
 	# TODO faire un system de spawn -> besoin de la map avant
 	# plus set_current() 
 
+func update_partie_duree_pb():
+	$UI/ProgressBar.value = $partie.time_left
+	
+func initialize_ui():
+	$UI/ProgressBar.max_value = current_timer_time
+	$UI/ProgressBar.value = current_timer_time
+	$UI/Label.text = "TEAM QUI JOUE : LES GARDES"
+	
 func _process(delta: float) -> void:
-	pass
+	update_partie_duree_pb()
+	print($partie.time_left)
 	
 func _physics_process(delta: float) -> void:
 	pass
@@ -56,7 +68,7 @@ func start():
 	print("GAME STARTS !!")
 	update_mob_array()
 	select_mob()
-	partie_timer.start(VarBidules.duree_tour_sec)
+	partie_timer.start()
 	
 # TODO connecter un signal pour chaque mob comme ca quand il y en a un qui meurt main.gd le sait et update_mob_array()
 func update_game():
@@ -68,9 +80,11 @@ func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
 		print("----------------- team b's turn !")
 		current_playing_team = TEAM.B
+		$UI/Label.text = "TEAM QUI JOUE : LES ERRANTS"
 	else:
 		print("----------------- team a's turn !")
 		current_playing_team = TEAM.A 
+		$UI/Label.text = "TEAM QUI JOUE : LES GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
 	if current_playing_team == TEAM.A:

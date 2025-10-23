@@ -1,13 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=10 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
+[ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dwi1lisxq6bq" path="res://scenes/team_gardes.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://b2et76gt1x6je" path="res://scenes/errants.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://0i16f2ggsc6b" path="res://scenes/gardes.tscn" id="5_o6xl0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tipki"]
 distance = -984.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
+font = ExtResource("2_tefeu")
+font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
+font = ExtResource("2_tefeu")
+font_size = 180
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
@@ -20,8 +29,36 @@ shape = SubResource("WorldBoundaryShape2D_tipki")
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -4798.0
+offset_top = -2701.0
+offset_right = 4786.0
+offset_bottom = 2688.0
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 5929.0
+offset_top = 164.0
+offset_right = 8106.0
+offset_bottom = 351.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 154.0
+offset_right = 2768.0
+offset_bottom = 354.0
+text = "CURRENT PLAYING TEAM :"
+label_settings = SubResource("LabelSettings_o6xl0")
+
+[node name="Label2" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 4438.0
+offset_top = 154.0
+offset_right = 6523.0
+offset_bottom = 354.0
+text = "TEMPS RESTANT :"
+label_settings = SubResource("LabelSettings_tefeu")
 
 [node name="team_container" type="Node2D" parent="."]
 
@@ -47,19 +84,35 @@ jump_force = 800
 
 [node name="gardes" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1226, -968)
+is_selected = false
+grenarde_velocity = 6000
+speed = 1000
 jump_force = 800
+max_h_speed = 400
 
 [node name="gardes2" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1908, -577)
+is_selected = false
+grenarde_velocity = 6000
+speed = 1000
 jump_force = 800
+max_h_speed = 400
 
 [node name="gardes3" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1627, 209)
+is_selected = false
+grenarde_velocity = 6000
+speed = 1000
 jump_force = 800
+max_h_speed = 400
 
 [node name="gardes4" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1006, -63)
+is_selected = false
+grenarde_velocity = 6000
+speed = 1000
 jump_force = 800
+max_h_speed = 400
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
