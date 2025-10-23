@@ -87,56 +87,6 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cow7b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_uh30e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_81lal")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_fvjia")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ta3oi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_qhic2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_vgj7r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_nlu60")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_77s6n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_e0nlx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_kxtwb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_vnw35")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_2idbw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_4n3gm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_5tp8d")
-}],
-"loop": true,
-"name": &"garde_idle",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("17_3411h")
 }, {
 "duration": 1.0,
@@ -185,8 +135,58 @@ animations = [{
 "texture": ExtResource("32_r3e01")
 }],
 "loop": true,
-"name": &"garde_run",
+"name": &"garde_control",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cow7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uh30e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_81lal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fvjia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ta3oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qhic2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vgj7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nlu60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_77s6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e0nlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kxtwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vnw35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2idbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4n3gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5tp8d")
+}],
+"loop": true,
+"name": &"garde_idle",
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -262,8 +262,7 @@ animation = &"garde_pompe"
 [node name="sprites" type="AnimatedSprite2D" parent="pivot"]
 position = Vector2(-146, 0)
 sprite_frames = SubResource("SpriteFrames_8amhk")
-animation = &"garde_run"
-frame_progress = 0.8000228
+animation = &"garde_control"
 
 [node name="aim_gauche" type="Node2D" parent="."]
 position = Vector2(46, -73)

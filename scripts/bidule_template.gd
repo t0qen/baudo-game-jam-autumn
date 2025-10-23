@@ -100,7 +100,6 @@ func aim():
 		$pivot2.rotation_degrees += 2.5
 	
 	if last_dir_nozero == 1:
-		print("dir 1")
 		if $aim_droite.rotation_degrees < -100:
 			$aim_droite.rotation_degrees = -100
 			$aim_gauche.rotation_degrees = -100
@@ -165,6 +164,8 @@ func play_bras_animation(animation):
 func play_animation(animation):
 	
 	if current == MOB_POSSIBILITY.GARDE:
+		print("playing anim")
+		print("garde_" + animation)
 		$pivot/sprites.play("garde_" + animation)
 	else:
 		$pivot/sprites.play("errant_" + animation)
@@ -173,6 +174,7 @@ func play_animation(animation):
 #region STATE MACHINE
 # -- STATE MACHINE --
 enum STATE {
+	JUMP,
 	IDLE, # ne bouge pas 
 	JUSTBEINGSELECTED, # viens juste d'etre selectionne, on sait pas encore ce quil veut faire
 	CONTROL,
@@ -194,6 +196,15 @@ func change_state(new_state : STATE):
 #et faire un truc genre jouer une animation par exemple... -> FAIT QUE UNE FOIS QUAND ON CHANGE DE STATE
 func enter_state(new_state : STATE): 
 	match new_state:
+		STATE.JUMP:
+			can_jump = false
+			play_animation("saut")
+			play_bras_animation("idle")
+			$aim_gauche.rotation_degrees = 0
+			$aim_droite.rotation_degrees = 0
+			$pivot2.rotation_degrees = 0
+			apply_central_impulse(Vector2(0, -jump_force))
+			jump_timer.start()
 		STATE.IDLE:
 			linear_velocity.x = 0
 			linear_velocity.x = 0
@@ -264,13 +275,47 @@ func update_state():
 			if wanna_rocket:
 				change_state(STATE.ROCKET)
 			
+		STATE.JUMP:
+			direction = 0
+			if wanna_left:
+				direction = -1
+
+			elif wanna_right:
+				direction = 1
+			
+			if prev_dir != direction && direction != 0:
+				if direction == 1:
+					$pivot.scale.x = -1
+					$aim_droite.scale.x = -1
+					$aim_droite.position.x = 46 
+					$aim_gauche.scale.x = -1
+					$pivot2.scale.x = -1
+					$aim_gauche.position.x = -35 
+				elif direction == -1:
+					$pivot.scale.x = 1
+					$aim_droite.scale.x = 1
+					$aim_droite.position.x = -35
+					$aim_gauche.scale.x = 1
+					$pivot2.scale.x = 1
+					$aim_gauche.position.x = 46 
+			
+			prev_dir = direction
+			if direction != 0:
+				last_dir_nozero = direction
+				
+			if direction != 0:
+				apply_central_force(Vector2(direction * (speed - 500), 0))
+				
+			if linear_velocity.y == 0:
+				print("change")
+				change_state(STATE.CONTROL)
+				
 		STATE.CONTROL:
 			if wanna_bomb:
 				change_state(STATE.GRENADE)
 			if wanna_pompe:
 				change_state(STATE.POMPE)
 			if wanna_rocket:
-				print("rocket")
 				change_state(STATE.ROCKET)
 				
 			direction = 0
@@ -311,17 +356,14 @@ func update_state():
 			elif linear_velocity.x < -max_h_speed:
 				linear_velocity.x = -max_h_speed
 
-			
-				
 			if wanna_jump and can_jump:
-				play_animation("jump")
-				can_jump = false
-				jump_timer.start()
-				apply_central_impulse(Vector2(0, -jump_force))
-			
+				change_state(STATE.JUMP)
+
 		STATE.ROCKET:
 			print("ROCKET PRIME")
-			if wanna_left || wanna_right || wanna_jump:
+			if wanna_jump and can_jump:
+				change_state(STATE.JUMP)
+			if wanna_left || wanna_right:
 				change_state(STATE.CONTROL)
 			if wanna_bomb:
 				change_state(STATE.GRENADE)
@@ -337,13 +379,15 @@ func update_state():
 				rocket.global_position = $pivot2/depart_proj.global_position
 				var direction = $pivot2/depart_proj.global_transform.x.normalized()
 				$LancePatateLaunch.play()
-				rocket.linear_velocity = direction * -5000
+				rocket.linear_velocity = direction * -3000
 						
 				get_tree().current_scene.add_child(rocket)
-				await get_tree().create_timer(5).timeout
+				await get_tree().create_timer(1).timeout
 				can_rocket = true
 		STATE.GRENADE:
-			if wanna_left || wanna_right || wanna_jump:
+			if wanna_jump and can_jump:
+				change_state(STATE.JUMP)
+			if wanna_left || wanna_right:
 				change_state(STATE.CONTROL)
 			if wanna_pompe:
 				change_state(STATE.POMPE)
@@ -365,7 +409,9 @@ func update_state():
 				can_bombe = true
 				
 		STATE.POMPE:
-			if wanna_left || wanna_right || wanna_jump:
+			if wanna_jump and can_jump:
+				change_state(STATE.JUMP)
+			if wanna_left || wanna_right:
 				change_state(STATE.CONTROL)
 			if wanna_bomb:
 				change_state(STATE.GRENADE)
