@@ -39,6 +39,25 @@ func _ready() -> void:
 	# TODO base life mob
 	# plus set_current() 
 
+func update_mob_action(action):
+	print("update action 2")
+	$UI/armes/pompe.add_theme_color_override("font_color", Color("white"))
+	$UI/armes/control.add_theme_color_override("font_color", Color("white"))
+	$UI/armes/patator.add_theme_color_override("font_color", Color("white"))
+	$UI/armes/grenade.add_theme_color_override("font_color", Color("white"))
+	
+	match action:
+		"pompe":
+			$UI/armes/pompe.add_theme_color_override("font_color", Color("green"))
+		"control":
+			$UI/armes/control.add_theme_color_override("font_color", Color("green"))
+		"patator":
+			$UI/armes/patator.add_theme_color_override("font_color", Color("green"))
+		"grenade":
+			$UI/armes/grenade.add_theme_color_override("font_color", Color("green"))
+	
+	
+	
 func update_partie_duree_pb():
 	$UI/ProgressBar.value = $partie.time_left
 	
@@ -71,24 +90,30 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
-	print("===== UPDATE MOB ARRAY =========")
 	team_a_mobs.clear()
 	for mob_a in $team_container/team_errants.get_children():
 		if mob_a.is_alive:
 			team_a_mobs.append(mob_a)
-	print("Errants : ", team_a_mobs)
 	team_b_mobs.clear()
 	for mob_b in $team_container/team_gardes.get_children():
 		if mob_b.is_alive:
 			team_b_mobs.append(mob_b)
-	print("Gardes : ", team_b_mobs)
-	print("==================================")
 	if team_a_mobs.is_empty():
 		print("TEAM B GAGNE")
+		get_tree().paused = true
+		VarBidules.is_errant_winner = true
+		await get_tree().create_timer(3).timeout
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/equipe_qui_gagne.tscn")
+		
 	elif team_b_mobs.is_empty():
 		print("TEAM A GAGNE")
-
-	
+		get_tree().paused = true
+		VarBidules.is_errant_winner = false
+		await get_tree().create_timer(3).timeout
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/equipe_qui_gagne.tscn")
+		
 func start():
 	print("GAME STARTS !!")
 	update_mob_array()
@@ -103,18 +128,15 @@ func update_game():
 	
 func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
-		print("----------------- team b's turn !")
 		current_playing_team = TEAM.B
 		$UI/Label.text = "TEAM EN TRAIN DE JOUER : LES ERRANTS"
 	else:
-		print("----------------- team a's turn !")
 		current_playing_team = TEAM.A 
 		$UI/Label.text = "TEAM EN TRAIN : LES GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
-	print("select")
 	update_mob_array()
-	
+	update_mob_action("no")
 	
 	var current_team = team_a_mobs if current_playing_team == TEAM.A else team_b_mobs
 	var index_prev = prev_playing_mob_a if current_playing_team == TEAM.B else prev_playing_mob_b

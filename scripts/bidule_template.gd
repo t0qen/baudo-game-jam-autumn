@@ -132,6 +132,7 @@ func aim():
 func die():
 	print("died")
 	BiduleManager.ask_to_update_mob_array()
+	BiduleManager.set_current_action("no")
 	queue_free()
 	
 	
@@ -207,6 +208,7 @@ func change_state(new_state : STATE):
 func enter_state(new_state : STATE): 
 	match new_state:
 		STATE.JUMP:
+			BiduleManager.set_current_action("control")
 			can_jump = false
 			play_animation("saut")
 			play_bras_animation("idle")
@@ -216,6 +218,7 @@ func enter_state(new_state : STATE):
 			apply_central_impulse(Vector2(0, -jump_force))
 			jump_timer.start()
 		STATE.IDLE:
+			BiduleManager.set_current_action("no")
 			linear_velocity.x = 0
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
@@ -224,6 +227,7 @@ func enter_state(new_state : STATE):
 			play_animation("idle")
 			play_bras_animation("idle")
 		STATE.CONTROL:
+			BiduleManager.set_current_action("control")
 			linear_velocity.x = 0
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
@@ -232,6 +236,7 @@ func enter_state(new_state : STATE):
 			play_animation("control")
 			play_bras_animation("idle")
 		STATE.ROCKET:
+			BiduleManager.set_current_action("patator")
 			linear_velocity.x = 0
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
@@ -240,6 +245,7 @@ func enter_state(new_state : STATE):
 			play_animation("idle")
 			play_bras_animation("patator")
 		STATE.GRENADE:
+			BiduleManager.set_current_action("grenade")
 			linear_velocity.x = 0
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0
@@ -248,6 +254,7 @@ func enter_state(new_state : STATE):
 			play_animation("idle")
 			play_bras_animation("grenade")
 		STATE.POMPE:
+			BiduleManager.set_current_action("pompe")
 			linear_velocity.x = 0
 			linear_velocity.x = 0
 			$aim_gauche.rotation_degrees = 0

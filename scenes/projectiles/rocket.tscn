@@ -11,8 +11,8 @@ radius = 70.13733
 height = 201.23178
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8rgcg"]
-radius = 1397.0
-height = 2802.0
+radius = 1084.0
+height = 2168.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0y3s"]
 radius = 95.0
@@ -21,7 +21,7 @@ height = 266.0
 [node name="Rocket" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 7
-mass = 0.5
+mass = 0.1
 gravity_scale = 0.2
 script = ExtResource("1_l0y3s")
 maxdamage = 75
