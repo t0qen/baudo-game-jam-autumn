@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_tefeu"]
+[ext_resource type="Script" uid="uid://ch41sfxp6t1uw" path="res://scripts/destructible_terrain_node.gd" id="2_tipki"]
+[ext_resource type="Texture2D" uid="uid://b7dr8rk4jyebd" path="res://assets/Sprites/beautiful-island-isolated-png.png" id="3_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dwi1lisxq6bq" path="res://scenes/team_gardes.tscn" id="3_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://b2et76gt1x6je" path="res://scenes/errants.tscn" id="3_tefeu"]
-[ext_resource type="PackedScene" uid="uid://0i16f2ggsc6b" path="res://scenes/gardes.tscn" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://22ku8sqquovf" path="res://scripts/camera_2d.gd" id="7_o6xl0"]
 [ext_resource type="AudioStream" uid="uid://xrxadkj2loap" path="res://assets/sound/in game/in game.mp3" id="8_tipki"]
 
@@ -38,6 +38,18 @@ font_size = 300
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
 
+[node name="DestructiblePolygon2D" type="Node2D" parent="."]
+script = ExtResource("2_tipki")
+collidable = true
+metadata/_custom_type_script = "uid://ch41sfxp6t1uw"
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D"]
+texture = ExtResource("3_85g3d")
+texture_offset = Vector2(5000, 2000)
+texture_scale = Vector2(0.1, 0.1)
+polygon = PackedVector2Array(6658.668, 1103.4807, -4502.267, 1170.7559, -4589.728, 1096.7484, -4751.1885, 1076.5659, -4690.6406, 942.01575, -4603.183, 773.82806, -4562.8184, 625.8229, -4428.2676, 545.09283, -4320.628, 437.4527, -4233.167, 390.3592, -4132.2544, 302.9016, -4105.3447, 242.35403, -4091.8894, 181.80649, -4145.7095, 40.52884, -4211.3145, -255.92139, -4192.9346, -297.27612, -4137.795, -389.17578, -4114.8203, -490.26514, -4082.6553, -646.49426, -4087.2502, -788.9385, -4105.63, -917.5979, -4068.8704, -968.1426, -3944.806, -1027.8773, -3820.7417, -1151.9417, -3618.5627, -1243.8411, -3572.613, -1243.8411, -3466.9285, -1239.2461, -3287.7244, -1367.9054, -3163.6602, -1491.9697, -2938.5063, -1524.1346, -2653.618, -1560.8944, -2538.7434, -1602.2493, -2446.844, -1593.0593, -2207.9053, -1533.3246, -2184.9304, -1533.3246, -2129.7908, -1473.5898, -2033.2961, -1395.4753, -1909.2319, -1289.7909, -1798.9526, -1335.7406, -1794.3574, -1326.5507, -1766.7876, -1170.3215, -1509.4688, -1046.2572, -1509.4688, -894.6229, -1537.0391, -761.36865, -1541.6338, -669.4691, -1468.1143, -618.92444, -1247.5552, -706.229, -1187.8208, -756.7737, -1137.2759, -798.12854, -1086.7314, -862.4581, -1013.2114, -1037.0673, -976.45166, -1211.6763, -879.9575, -1285.1959, -797.24756, -1303.5758, -723.728, -1308.1708, -425.0547, -1280.601, -346.93994, -1276.006, -273.4204, -1156.5366, -117.19141, -1092.2069, 121.74866, -903.8126, 232.02808, -876.2427, 319.33264, -848.67285, 383.66223, -825.698, 765.0453, -793.5332, 939.6543, -720.01355, 971.8191, -651.089, 1137.2383, -600.5442, 1275.0875, -563.7844, 1371.582, -504.04968, 1546.1912, -490.26477, 1702.4202, -513.2396, 1858.6494, -499.4547, 1955.1438, -527.02466, 2047.0435, -618.9241, 1987.3088, -715.4186, 2005.6887, -862.45776, 2171.1077, -931.38245, 2446.8062, -958.9523, 2626.0103, -958.9523, 2933.8738, -931.38245, 3067.128, -844.0779, 3182.0024, -775.1533, 3430.131, -775.1533, 3522.0305, -738.39343, 3724.2092, -618.9241, 3843.679, -545.40454, 3967.743, -421.3402, 4119.377, -357.0105, 4215.872, -288.08594, 4404.2656, -182.40137, 4441.0254, -168.61646, 4588.0645, -127.26172, 4624.824, -104.286865, 4652.3945, -209.97119, 4638.6094, -334.03564, 4698.3447, -398.36523, 4730.509, -522.42957, 4730.509, -687.84875, 4781.0537, -798.1282, 4928.093, -756.7733, 5612.744, -761.3684, 5631.124, -733.79846, 5548.415, -554.5945, 5548.416, -536.21436, 5746, -453.50476, 5879.254, -347.8203, 5883.8496, -288.0857, 5920.6094, -173.21118, 5916.0137, -104.28662, 6058.458, 130.05713, 6067.6484, 235.74146, 6127.383, 332.23608, 6196.3076, 410.3506, 6251.4473, 493.06006, 6403.081, 424.1355, 6412.2715, 442.51538, 6600.665, 580.36475, 6619.045, 727.4038, 6596.0703, 828.4934, 6733.92, 975.5327, 6733.92, 1062.8372)
+uv = PackedVector2Array(6658.668, 1103.4807, -4502.267, 1170.7559, -4589.728, 1096.7484, -4751.1885, 1076.5659, -4690.6406, 942.01575, -4603.183, 773.82806, -4562.8184, 625.8229, -4428.2676, 545.09283, -4320.628, 437.4527, -4233.167, 390.3592, -4132.2544, 302.9016, -4105.3447, 242.35403, -4091.8894, 181.80649, -4145.7095, 40.52884, -4211.3145, -255.92139, -4192.9346, -297.27612, -4137.795, -389.17578, -4114.8203, -490.26514, -4082.6553, -646.49426, -4087.2502, -788.9385, -4105.63, -917.5979, -4068.8704, -968.1426, -3944.806, -1027.8773, -3820.7417, -1151.9417, -3618.5627, -1243.8411, -3572.613, -1243.8411, -3466.9285, -1239.2461, -3287.7244, -1367.9054, -3163.6602, -1491.9697, -2938.5063, -1524.1346, -2653.618, -1560.8944, -2538.7434, -1602.2493, -2446.844, -1593.0593, -2207.9053, -1533.3246, -2184.9304, -1533.3246, -2129.7908, -1473.5898, -2033.2961, -1395.4753, -1909.2319, -1289.7909, -1798.9526, -1335.7406, -1794.3574, -1326.5507, -1766.7876, -1170.3215, -1509.4688, -1046.2572, -1509.4688, -894.6229, -1537.0391, -761.36865, -1541.6338, -669.4691, -1468.1143, -618.92444, -1247.5552, -706.229, -1187.8208, -756.7737, -1137.2759, -798.12854, -1086.7314, -862.4581, -1013.2114, -1037.0673, -976.45166, -1211.6763, -879.9575, -1285.1959, -797.24756, -1303.5758, -723.728, -1308.1708, -425.0547, -1280.601, -346.93994, -1276.006, -273.4204, -1156.5366, -117.19141, -1092.2069, 121.74866, -903.8126, 232.02808, -876.2427, 319.33264, -848.67285, 383.66223, -825.698, 765.0453, -793.5332, 939.6543, -720.01355, 971.8191, -651.089, 1137.2383, -600.5442, 1275.0875, -563.7844, 1371.582, -504.04968, 1546.1912, -490.26477, 1702.4202, -513.2396, 1858.6494, -499.4547, 1955.1438, -527.02466, 2047.0435, -618.9241, 1987.3088, -715.4186, 2005.6887, -862.45776, 2171.1077, -931.38245, 2446.8062, -958.9523, 2626.0103, -958.9523, 2933.8738, -931.38245, 3067.128, -844.0779, 3182.0024, -775.1533, 3430.131, -775.1533, 3522.0305, -738.39343, 3724.2092, -618.9241, 3843.679, -545.40454, 3967.743, -421.3402, 4119.377, -357.0105, 4215.872, -288.08594, 4404.2656, -182.40137, 4441.0254, -168.61646, 4588.0645, -127.26172, 4624.824, -104.286865, 4652.3945, -209.97119, 4638.6094, -334.03564, 4698.3447, -398.36523, 4730.509, -522.42957, 4730.509, -687.84875, 4781.0537, -798.1282, 4928.093, -756.7733, 5612.744, -761.3684, 5631.124, -733.79846, 5548.415, -554.5945, 5548.416, -536.21436, 5746, -453.50476, 5879.254, -347.8203, 5883.8496, -288.0857, 5920.6094, -173.21118, 5916.0137, -104.28662, 6058.458, 130.05713, 6067.6484, 235.74146, 6127.383, 332.23608, 6196.3076, 410.3506, 6251.4473, 493.06006, 6403.081, 424.1355, 6412.2715, 442.51538, 6600.665, 580.36475, 6619.045, 727.4038, 6596.0703, 828.4934, 6733.92, 975.5327, 6733.92, 1062.8372)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 3
@@ -49,43 +61,7 @@ shape = SubResource("WorldBoundaryShape2D_tipki")
 
 [node name="team_errants" parent="team_container" instance=ExtResource("2_jyhfs")]
 
-[node name="errants" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
-position = Vector2(-1746, -1148)
-jump_force = 1400
-
-[node name="errants2" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
-position = Vector2(-2746, -46)
-jump_force = 1400
-
-[node name="errants3" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
-position = Vector2(-1946, -238)
-jump_force = 1400
-
-[node name="errants4" parent="team_container/team_errants" instance=ExtResource("3_tefeu")]
-position = Vector2(-2625, -1344)
-jump_force = 1400
-
 [node name="team_gardes" parent="team_container" instance=ExtResource("3_tbgi4")]
-
-[node name="gardes" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
-position = Vector2(1226, -968)
-collision_layer = 9
-jump_force = 1400
-
-[node name="gardes2" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
-position = Vector2(1908, -577)
-collision_layer = 9
-jump_force = 1400
-
-[node name="gardes3" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
-position = Vector2(1627, 209)
-collision_layer = 9
-jump_force = 1400
-
-[node name="gardes4" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
-position = Vector2(1006, -63)
-collision_layer = 9
-jump_force = 1400
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
@@ -254,6 +230,66 @@ offset_right = 3646.0
 offset_bottom = 1501.0
 theme_override_font_sizes/font_size = 400
 text = "C'EST BON"
+
+[node name="spawns-points" type="Node2D" parent="."]
+
+[node name="errants" type="Node2D" parent="spawns-points"]
+
+[node name="Marker2D" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-3632, -1213)
+
+[node name="Marker2D2" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-3343, -1402)
+
+[node name="Marker2D3" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-2820, -1581)
+
+[node name="Marker2D4" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-2368, -1668)
+
+[node name="Marker2D5" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-1906, -1411)
+
+[node name="Marker2D6" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-1432, -699)
+
+[node name="Marker2D7" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-1218, -881)
+
+[node name="Marker2D8" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-827, -1398)
+
+[node name="Marker2D9" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-490, -1373)
+
+[node name="gardes" type="Node2D" parent="spawns-points"]
+
+[node name="Marker2D" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(709, -760)
+
+[node name="Marker2D2" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(1170, -629)
+
+[node name="Marker2D3" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(1713, -568)
+
+[node name="Marker2D4" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(2127, -1016)
+
+[node name="Marker2D5" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(2790, -1040)
+
+[node name="Marker2D6" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(3457, -886)
+
+[node name="Marker2D7" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(4033, -555)
+
+[node name="Marker2D8" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(4375, -399)
+
+[node name="Marker2D9" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(4989, -775)
 
 [node name="partie" type="Timer" parent="."]
 wait_time = 15.0

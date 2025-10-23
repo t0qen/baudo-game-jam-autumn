@@ -43,6 +43,16 @@ func _ready() -> void:
 	# TODO base life mob
 	# plus set_current() 
 
+func spawn_mobs():
+	#errants
+	var errants_spawn_points = []
+	for i in $"spawns-points/errants".get_children():
+		errants_spawn_points.append(i)
+	
+	for i in range(VarBidules.nbr_errants):
+		
+	
+	
 func update_mob_action(action):
 	print("update action 2")
 	$Camera2D/UI/armes/pompe.modulate = Color("white")
