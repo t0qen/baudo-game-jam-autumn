@@ -252,6 +252,7 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
+damage_pompe = 25
 jump_force = 300
 
 [node name="ui" type="Control" parent="."]
@@ -316,7 +317,18 @@ position = Vector2(46, -73)
 position = Vector2(-189, 79)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_kxtwb")
-animation = &"garde_simple"
+animation = &"garde_pompe"
+
+[node name="Pompe" type="Area2D" parent="aim_gauche"]
+position = Vector2(-46, 73)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="aim_gauche/Pompe"]
+polygon = PackedVector2Array(-325, -23, -325, 2, -935, 222, -935, -296)
+
+[node name="Area" type="Polygon2D" parent="aim_gauche/Pompe"]
+visible = false
+color = Color(1, 1, 1, 0.36862746)
+polygon = PackedVector2Array(-326, -24, -327, -23, -328, -22, -329, -21, -330, -20, -331, -18, -332, -15, -332, -13, -332, -11, -332, -9, -332, -6, -331, -3, -329, 0, -327, 2, -326, 3, -935, 222, -935, -296)
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 112)

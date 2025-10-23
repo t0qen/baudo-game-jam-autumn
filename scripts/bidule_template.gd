@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @export var is_selected : bool = false
+@export var damage_pompe : int
 
 # NODES
 @onready var jump_timer: Timer = $jump_timer
@@ -33,6 +34,7 @@ var direction : int = 0
 
 var can_bombe : bool = true
 var can_rocket : bool = true
+var can_pompe : bool = true
 
 var prev_dir : int = direction
 var last_dir_nozero : int = direction 
@@ -66,6 +68,7 @@ func get_inputs():
 	
 	
 func _ready() -> void:
+	$aim_gauche/Pompe/Area.hide()
 	$ui/ProgressBar.max_value = VarBidules.base_life
 	update_life_bar()
 	change_state(STATE.CONTROL)
@@ -422,7 +425,16 @@ func update_state():
 				change_state(STATE.ROCKET)
 			aim()
 			
-			
+			if wanna_pompe && can_pompe:
+				can_pompe = false
+				var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
+				$aim_gauche/Pompe/Area.show()
+				for body in bodies:
+					if body.has_method("take_damage"):
+						body.take_damage(damage_pompe)
+				$aim_gauche/Pompe/Area.hide()
+				await get_tree().create_timer(5).timeout
+				can_pompe = true
 #endregion
 
 	
