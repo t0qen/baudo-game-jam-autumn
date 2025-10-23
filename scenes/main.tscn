@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=15 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
@@ -17,6 +17,14 @@ font_size = 180
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 font = ExtResource("2_tefeu")
 font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
+font = ExtResource("2_tefeu")
+font_size = 162
+
+[sub_resource type="LabelSettings" id="LabelSettings_eb6dy"]
+font = ExtResource("2_tefeu")
+font_size = 162
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
 font = ExtResource("2_tefeu")
@@ -56,10 +64,18 @@ show_percentage = false
 
 [node name="ProgressBar2" type="ProgressBar" parent="UI"]
 layout_mode = 0
-offset_left = 168.0
-offset_top = 4699.0
-offset_right = 2034.0
-offset_bottom = 5153.0
+offset_left = 852.0
+offset_top = 4666.0
+offset_right = 2718.0
+offset_bottom = 4900.0
+show_percentage = false
+
+[node name="ProgressBar3" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 4967.0
+offset_right = 2726.0
+offset_bottom = 5242.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="UI"]
@@ -80,6 +96,24 @@ offset_bottom = 4639.0
 text = "POINT DE VIE TOTAL"
 label_settings = SubResource("LabelSettings_tipki")
 
+[node name="Label4" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 4708.0
+offset_right = 860.0
+offset_bottom = 4908.0
+text = "GARDES"
+label_settings = SubResource("LabelSettings_ya4ey")
+
+[node name="Label5" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 5001.0
+offset_right = 844.0
+offset_bottom = 5201.0
+text = "ERRANTS"
+label_settings = SubResource("LabelSettings_eb6dy")
+
 [node name="Label2" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 4438.0
@@ -89,14 +123,14 @@ offset_bottom = 354.0
 text = "TEMPS RESTANT :"
 label_settings = SubResource("LabelSettings_tefeu")
 
-[node name="Panel" type="Panel" parent="UI"]
+[node name="armes" type="Panel" parent="UI"]
 layout_mode = 0
 offset_left = 6914.0
 offset_top = 4062.0
 offset_right = 9533.0
 offset_bottom = 5329.0
 
-[node name="Label4" type="Label" parent="UI/Panel"]
+[node name="Label4" type="Label" parent="UI/armes"]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 33.0
@@ -105,7 +139,7 @@ offset_bottom = 233.0
 text = "ACTION EN COURS"
 label_settings = SubResource("LabelSettings_85g3d")
 
-[node name="pompe" type="Label" parent="UI/Panel"]
+[node name="pompe" type="Label" parent="UI/armes"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 800.0
@@ -114,7 +148,7 @@ offset_bottom = 1000.0
 text = "POMPE (TOUCHE 3)"
 label_settings = SubResource("LabelSettings_choun")
 
-[node name="control" type="Label" parent="UI/Panel"]
+[node name="control" type="Label" parent="UI/armes"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 250.0
@@ -123,7 +157,7 @@ offset_bottom = 450.0
 text = "CONTROL (ZQSD)"
 label_settings = SubResource("LabelSettings_choun")
 
-[node name="patator" type="Label" parent="UI/Panel"]
+[node name="patator" type="Label" parent="UI/armes"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 611.0
@@ -132,7 +166,7 @@ offset_bottom = 811.0
 text = "PAtATOR (TOUCHE 2)"
 label_settings = SubResource("LabelSettings_choun")
 
-[node name="grenade" type="Label" parent="UI/Panel"]
+[node name="grenade" type="Label" parent="UI/armes"]
 layout_mode = 0
 offset_left = 134.0
 offset_top = 427.0
@@ -140,6 +174,34 @@ offset_right = 2354.0
 offset_bottom = 627.0
 text = "GRENADE (TOUCHE !)"
 label_settings = SubResource("LabelSettings_choun")
+
+[node name="menu" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 3428.0
+offset_top = 4795.0
+offset_right = 5766.0
+offset_bottom = 5268.0
+
+[node name="focus" type="Button" parent="UI/menu"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 138.0
+offset_right = 1454.0
+offset_bottom = 374.0
+theme_override_fonts/font = ExtResource("2_tefeu")
+theme_override_font_sizes/font_size = 100
+text = "FOCUS MOB SELECTIONNE"
+
+[node name="focus2" type="Button" parent="UI/menu"]
+layout_mode = 0
+offset_left = 1645.0
+offset_top = 129.0
+offset_right = 2122.0
+offset_bottom = 365.0
+theme_override_fonts/font = ExtResource("2_tefeu")
+theme_override_font_sizes/font_size = 100
+text = "AIDE
+"
 
 [node name="team_container" type="Node2D" parent="."]
 
