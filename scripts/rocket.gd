@@ -37,6 +37,15 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 			if body not in maxbodies:
 				if body.has_method("take_damage"):
 					body.take_damage(mindamage)
+		
+		for body in minbodies:
+			if body is RigidBody2D:
+				var dir = (body.global_position - global_position).normalized()
+				var distance = global_position.distance_to(body.global_position)
+				var force = clamp(3000.0 / max(distance, 50.0), 400, 2000) # Force selon distance
+				body.apply_impulse(dir * force)
+		
+		
 		# "Destruct" prend un polygone (forme du trou) et une position globale
 		#var destroyed_area = terrain.destruct(polygon, global_position)
 		#print("Destroyed area:", destroyed_area)
