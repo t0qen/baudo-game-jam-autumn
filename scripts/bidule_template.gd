@@ -66,6 +66,7 @@ func get_inputs():
 	
 	
 func _ready() -> void:
+	$ui/ProgressBar.max_value = VarBidules.base_life
 	update_life_bar()
 	change_state(STATE.CONTROL)
 	BiduleManager.selected_mob_changed.connect(_on_selected_bidule_changed)

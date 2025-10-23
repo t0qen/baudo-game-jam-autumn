@@ -48,7 +48,7 @@ offset_left = 683.0
 offset_top = 154.0
 offset_right = 2768.0
 offset_bottom = 354.0
-text = "CURRENT PLAYING TEAM :"
+text = "équipe en train de jouer :"
 label_settings = SubResource("LabelSettings_o6xl0")
 
 [node name="Label2" type="Label" parent="UI"]
@@ -84,35 +84,19 @@ jump_force = 800
 
 [node name="gardes" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1226, -968)
-is_selected = false
-grenarde_velocity = 6000
-speed = 1000
 jump_force = 800
-max_h_speed = 400
 
 [node name="gardes2" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1908, -577)
-is_selected = false
-grenarde_velocity = 6000
-speed = 1000
 jump_force = 800
-max_h_speed = 400
 
 [node name="gardes3" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1627, 209)
-is_selected = false
-grenarde_velocity = 6000
-speed = 1000
 jump_force = 800
-max_h_speed = 400
 
 [node name="gardes4" parent="team_container/team_gardes" instance=ExtResource("5_o6xl0")]
 position = Vector2(1006, -63)
-is_selected = false
-grenarde_velocity = 6000
-speed = 1000
 jump_force = 800
-max_h_speed = 400
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)

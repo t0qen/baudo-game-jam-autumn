@@ -16,6 +16,7 @@ size = Vector2(27, 30)
 [node name="Grenade" type="RigidBody2D"]
 mass = 0.1
 script = ExtResource("1_1mnvm")
+damage = 25
 
 [node name="ground_detection" type="Area2D" parent="."]
 collision_layer = 8
@@ -51,5 +52,6 @@ stream = ExtResource("3_3382y")
 bus = &"SFX"
 
 [connection signal="body_entered" from="ground_detection" to="." method="_on_ground_detection_body_entered"]
+[connection signal="body_entered" from="mob_detection" to="." method="_on_mob_detection_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="ExplosionPatateEtGrenade" to="." method="_on_explosion_patate_et_grenade_finished"]

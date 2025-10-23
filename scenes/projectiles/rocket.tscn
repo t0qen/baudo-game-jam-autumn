@@ -7,16 +7,16 @@
 [ext_resource type="AudioStream" uid="uid://by6jc0xl6wnlv" path="res://assets/sound/SFX/Patate en feu.mp3" id="5_dtva2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4mtq"]
-radius = 9.0
-height = 34.516273
+radius = 70.13733
+height = 201.23178
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8rgcg"]
-radius = 87.0
-height = 278.0
+radius = 1397.0
+height = 2802.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0y3s"]
-radius = 23.0
-height = 76.0
+radius = 95.0
+height = 266.0
 
 [node name="Rocket" type="RigidBody2D"]
 collision_layer = 8
@@ -24,9 +24,11 @@ collision_mask = 7
 mass = 0.5
 gravity_scale = 0.2
 script = ExtResource("1_l0y3s")
+maxdamage = 75
+mindamage = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.0000001, 0)
+position = Vector2(-3.7289283e-09, 4.7683716e-07)
 rotation = -1.5652608
 scale = Vector2(1.0832561, 1.1706394)
 shape = SubResource("CapsuleShape2D_r4mtq")
@@ -63,7 +65,7 @@ scale_amount_min = 0.1
 scale_amount_max = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -4)
+position = Vector2(6.0000005, -23)
 rotation = 0.63676685
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_l0y3s")

@@ -1,8 +1,13 @@
 extends RigidBody2D
 
+@export var damage : int
+
 func _ready() -> void:
 	self.show()
 	$Timer.start()
+
+func _physics_process(delta):
+	pass
 
 func _on_timer_timeout() -> void:
 	
@@ -20,9 +25,17 @@ func _on_timer_timeout() -> void:
 	#var destroyed_area = terrain.destruct(polygon, global_position)
 	#print("Destroyed area:", destroyed_area)
 	$ExplosionPatateEtGrenade.play()
+	var bodies = $mob_detection.get_overlapping_bodies()
+	for body in bodies:
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
 	self.hide()
 	
 
 
 func _on_explosion_patate_et_grenade_finished() -> void:
 	queue_free()
+
+
+func _on_mob_detection_body_entered(body: RigidBody2D) -> void:
+	pass
