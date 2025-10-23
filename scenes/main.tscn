@@ -123,6 +123,10 @@ position = Vector2(5009, -896)
 zoom = Vector2(0.2, 0.2)
 script = ExtResource("7_o6xl0")
 
+[node name="Timer" type="Timer" parent="Camera2D"]
+wait_time = 2.0
+one_shot = true
+
 [node name="UI" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -315,6 +319,7 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="pressed" from="Camera2D/UI/focus" to="." method="_on_focus_pressed"]
 [connection signal="pressed" from="Camera2D/UI/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]

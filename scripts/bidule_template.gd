@@ -476,14 +476,16 @@ func update_state():
 
 func _on_ground_detection_body_entered(body: Node2D) -> void:
 	print(body.name)
-	if body.get_parent().name == "Polygon2D":
+	if body.get_parent().get_parent().name == "DestructiblePolygon2D":
+		print("TRUE")
 		is_on_ground = true 
 
 
 func _on_ground_detection_body_exited(body: Node2D) -> void:
 	print(body.name)
-	if body.get_parent().name == "Polygon2D":
-		is_on_ground = false 
+	if body.get_parent().get_parent().name == "DestructiblePolygon2D":
+		print("TRUE")
+		#is_on_ground = false 
 func _process(delta: float) -> void:
-	print(is_on_ground)
+	#print(is_on_ground)
 	pass
