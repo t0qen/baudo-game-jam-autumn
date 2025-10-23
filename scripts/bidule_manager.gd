@@ -2,6 +2,8 @@ extends Node
 
 var current_bidule = null
 var current_main = null 
+var current_bidule_offsetx : int
+var current_bidule_offsety : int
 
 signal selected_mob_changed(new_mob) # signal evoye a tous les bidules 
 
@@ -22,6 +24,10 @@ func set_current(bidule):
 	
 func get_mob_position():
 	return current_bidule.global_position
+	
+func get_mob_offset():
+	current_bidule_offsetx = current_bidule.offset.x
+	current_bidule_offsety = current_bidule.offset.y
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
