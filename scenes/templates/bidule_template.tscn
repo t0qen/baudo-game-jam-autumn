@@ -112,6 +112,7 @@
 [ext_resource type="AudioStream" uid="uid://dke6hg55iboqt" path="res://assets/sound/SFX/tir pompe.mp3" id="108_hqaeu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
+friction = 0.5
 bounce = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_4n3gm"]
@@ -585,7 +586,6 @@ contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
 damage_pompe = 25
-jump_force = 300
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3

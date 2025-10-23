@@ -17,7 +17,6 @@ func set_main(main):
 	current_main = main
 	
 func ask_to_update_mob_array():
-	print("UPDATED MOB ARRAY")
 	current_main.update_mob_array()
 	
 func set_current(bidule):
@@ -26,7 +25,6 @@ func set_current(bidule):
 	
 func set_current_action(action):
 	if current_main:
-		print("update action")
 		current_main.update_mob_action(action)
 	
 func get_mob_position():

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var is_selected : bool = false
-@export var damage_pompe : int
+@export var damage_pompe : int = 10
 
 # NODES
 @onready var jump_timer: Timer = $jump_timer
@@ -18,7 +18,7 @@ var current_life : int = VarBidules.base_life
 var is_alive : bool = true
 # MOVEMENTS VARS
 @export var speed : int = 2000
-@export var jump_force : int = 1400
+var jump_force : int = 1000
 @export var max_h_speed : int = 400
 
 # INPUTS VARS
@@ -51,11 +51,13 @@ func update_life_bar():
 	$ui/ProgressBar.value = current_life
 	
 	
-func set_current(current : MOB_POSSIBILITY):
-	current = current
-	if current == MOB_POSSIBILITY.GARDE:
+func set_current(current_choosed):
+	if current_choosed == "garde":
+		print("GARDE")
+		current = MOB_POSSIBILITY.GARDE
 		$ui/Label.text = "GARDE"
 	else:
+		current = MOB_POSSIBILITY.ERRANT
 		$ui/Label.text = "ERRANT"
 	
 func get_inputs():
@@ -292,7 +294,7 @@ func exit_state(last_state):
 func update_state():
 	match current_state:
 		STATE.IDLE:
-			if wanna_left || wanna_right || wanna_jump:
+			if wanna_left || wanna_right:
 				change_state(STATE.CONTROL)
 			if wanna_bomb:
 				change_state(STATE.GRENADE)
@@ -300,6 +302,8 @@ func update_state():
 				change_state(STATE.POMPE)
 			if wanna_rocket:
 				change_state(STATE.ROCKET)
+			if wanna_jump && can_jump:
+				change_state(STATE.JUMP)
 			
 		STATE.JUMP:
 
@@ -329,12 +333,17 @@ func update_state():
 			prev_dir = direction
 			if direction != 0:
 				last_dir_nozero = direction
+			
+			if linear_velocity.x > max_h_speed:
+				linear_velocity.x = max_h_speed
+			elif linear_velocity.x < -max_h_speed:
+				linear_velocity.x = -max_h_speed
 				
 			if direction != 0:
 				apply_central_force(Vector2(direction * (speed - 750), 0))
 				
 			if linear_velocity.y == 0:
-				can_jump = true
+				print("FINISHED JUMP")
 				change_state(STATE.CONTROL)
 				
 		STATE.CONTROL:
@@ -351,6 +360,13 @@ func update_state():
 
 			elif wanna_right:
 				direction = 1
+				
+			if direction != 0:
+				apply_central_force(Vector2(direction * speed, 0))
+			else:
+				change_state(STATE.IDLE)
+				
+			
 				
 			if prev_dir != direction && direction != 0:
 				if direction == 1:
@@ -372,10 +388,7 @@ func update_state():
 			if direction != 0:
 				last_dir_nozero = direction
 				
-			if direction != 0:
-				apply_central_force(Vector2(direction * speed, 0))
-			else:
-				change_state(STATE.IDLE)
+			
 				
 			#limite la vitesse, sinon c exponentiel
 			if linear_velocity.x > max_h_speed:
@@ -386,8 +399,6 @@ func update_state():
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
 
-			if linear_velocity.y == 0:
-				can_jump = true
 		STATE.ROCKET:
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
@@ -413,9 +424,7 @@ func update_state():
 				get_tree().current_scene.add_child(rocket)
 				await get_tree().create_timer(1).timeout
 				can_rocket = true
-				
-			if linear_velocity.y == 0:
-				can_jump = true
+
 		STATE.GRENADE:
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
@@ -441,8 +450,6 @@ func update_state():
 				await get_tree().create_timer(5).timeout
 				can_bombe = true
 			
-			if linear_velocity.y == 0:
-				can_jump = true
 				
 		STATE.POMPE:
 			if wanna_jump and can_jump:
@@ -460,14 +467,13 @@ func update_state():
 				$TirPompe.play()
 				can_pompe = false
 				var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
+				print(bodies)
 				for body in bodies:
 					if body.has_method("take_damage"):
 						body.take_damage(damage_pompe)
 				await get_tree().create_timer(5).timeout
 				can_pompe = true
 
-			if linear_velocity.y == 0:
-				can_jump = true
 
 #endregion
 
@@ -475,10 +481,8 @@ func update_state():
 
 
 func _on_ground_detection_body_entered(body: Node2D) -> void:
-	print(body.name)
-	if body.get_parent().get_parent().name == "DestructiblePolygon2D":
-		print("TRUE")
-		is_on_ground = true 
+	if current_state == STATE.JUMP:
+		change_state(STATE.CONTROL)
 
 
 func _on_ground_detection_body_exited(body: Node2D) -> void:
@@ -486,6 +490,8 @@ func _on_ground_detection_body_exited(body: Node2D) -> void:
 	if body.get_parent().get_parent().name == "DestructiblePolygon2D":
 		print("TRUE")
 		#is_on_ground = false 
-func _process(delta: float) -> void:
-	#print(is_on_ground)
-	pass
+
+
+
+func _on_jump_timer_timeout() -> void:
+	can_jump = true

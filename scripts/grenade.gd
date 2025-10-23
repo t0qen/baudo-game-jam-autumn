@@ -28,6 +28,7 @@ func _on_timer_timeout() -> void:
 	var bodies = $mob_detection.get_overlapping_bodies()
 	for body in bodies:
 		if body.has_method("take_damage"):
+			print("damage")
 			body.take_damage(damage)
 			
 		if body is RigidBody2D:

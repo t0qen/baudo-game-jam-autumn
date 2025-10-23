@@ -55,7 +55,7 @@ func spawn_mobs():
 	for current_sp in selected_errant_sp:
 		var current_errant = errants.instantiate()
 		current_errant.global_position = current_sp.global_position
-		current_errant.set_current(1)
+		current_errant.set_current("errant")
 		$team_container/team_errants.add_child(current_errant)
 	#garde
 	var gardes_spawn_points = []
@@ -66,7 +66,7 @@ func spawn_mobs():
 	for current_sp in selected_gardes_sp:
 		var current_garde = gardes.instantiate()
 		current_garde.global_position = current_sp.global_position
-		current_garde.set_current(1)
+		current_garde.set_current("garde")
 		$team_container/team_gardes.add_child(current_garde)
 	#for i in range(VarBidules.nbr_errants):
 		#var current_sp = $"spawns-points/errants".get_child(randi_range(0, 9))
@@ -100,7 +100,6 @@ func spawn_mobs():
 	#print("FINISHED")
 
 func update_mob_action(action):
-	print("update action 2")
 	$Camera2D/UI/armes/pompe.modulate = Color("white")
 	$Camera2D/UI/armes/control.modulate = Color("white")
 	$Camera2D/UI/armes/patator.modulate = Color("white")
@@ -160,11 +159,9 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 		if mob_a.is_alive:
 			team_a_mobs.append(mob_a)
 	team_b_mobs.clear()
-	print("TEAN A, ", team_a_mobs)
 	for mob_b in $team_container/team_gardes.get_children():
 		if mob_b.is_alive:
 			team_b_mobs.append(mob_b)
-	print("TEAN B, ", team_a_mobs)
 	if team_a_mobs.is_empty():
 		print("TEAM B GAGNE")
 		get_tree().paused = true
