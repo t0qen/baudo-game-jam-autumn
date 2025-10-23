@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cjogh5j76tshk"]
+[gd_scene load_steps=44 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
 [ext_resource type="Script" uid="uid://bkk4qexdiemxh" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
@@ -19,6 +19,21 @@
 [ext_resource type="Texture2D" uid="uid://bchqpelsoqyjq" path="res://assets/Sprites/Garde/Bras/pompe.png" id="16_mcgsm"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="18_t02st"]
 [ext_resource type="AudioStream" uid="uid://djj03ob2y43dy" path="res://assets/sound/SFX/Victoire.mp3" id="19_eqkym"]
+[ext_resource type="Texture2D" uid="uid://bq5xrqiete06e" path="res://assets/Sprites/Errant/Idle/frame_00_delay-0.04s.png" id="19_wrp1p"]
+[ext_resource type="Texture2D" uid="uid://t6tjaijda7ir" path="res://assets/Sprites/Errant/Idle/frame_01_delay-0.04s.png" id="20_6qmfn"]
+[ext_resource type="Texture2D" uid="uid://xsm1xutv2011" path="res://assets/Sprites/Errant/Idle/frame_02_delay-0.04s.png" id="21_jr8ub"]
+[ext_resource type="Texture2D" uid="uid://bju8mcssh4n03" path="res://assets/Sprites/Errant/Idle/frame_03_delay-0.04s.png" id="22_v5g7j"]
+[ext_resource type="Texture2D" uid="uid://gowm6ga167l7" path="res://assets/Sprites/Errant/Idle/frame_04_delay-0.04s.png" id="23_vlb2y"]
+[ext_resource type="Texture2D" uid="uid://ugo78qvod3lh" path="res://assets/Sprites/Errant/Idle/frame_05_delay-0.04s.png" id="24_ed2qm"]
+[ext_resource type="Texture2D" uid="uid://nllvimbpvebp" path="res://assets/Sprites/Errant/Idle/frame_06_delay-0.04s.png" id="25_m2d78"]
+[ext_resource type="Texture2D" uid="uid://b0kfhx4es6ns4" path="res://assets/Sprites/Errant/Idle/frame_07_delay-0.04s.png" id="26_ikxvw"]
+[ext_resource type="Texture2D" uid="uid://cegj73ycfpm2k" path="res://assets/Sprites/Errant/Idle/frame_08_delay-0.04s.png" id="27_cmh4o"]
+[ext_resource type="Texture2D" uid="uid://cqysppp6ejbwq" path="res://assets/Sprites/Errant/Idle/frame_09_delay-0.04s.png" id="28_wpoxm"]
+[ext_resource type="Texture2D" uid="uid://cl1r4enkkc2pn" path="res://assets/Sprites/Errant/Idle/frame_10_delay-0.04s.png" id="29_pmr0v"]
+[ext_resource type="Texture2D" uid="uid://dwi2f28ao55d3" path="res://assets/Sprites/Errant/Idle/frame_11_delay-0.04s.png" id="30_1ftry"]
+[ext_resource type="Texture2D" uid="uid://clg8clpdfyqk6" path="res://assets/Sprites/Errant/Idle/frame_12_delay-0.04s.png" id="31_7wpdm"]
+[ext_resource type="Texture2D" uid="uid://ml20d2gnakt3" path="res://assets/Sprites/Errant/Idle/frame_13_delay-0.04s.png" id="32_7lxfq"]
+[ext_resource type="Texture2D" uid="uid://cpavgnq3kaewi" path="res://assets/Sprites/Errant/Idle/frame_14_delay-0.04s.png" id="33_x3q53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
 font = ExtResource("18_t02st")
@@ -81,6 +96,56 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e5hwm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_wrp1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_6qmfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jr8ub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_v5g7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vlb2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ed2qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_m2d78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ikxvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_cmh4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_wpoxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_pmr0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_1ftry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_7wpdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7lxfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_x3q53")
+}],
+"loop": true,
+"name": &"defaukt errant",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_lt04c")
@@ -250,8 +315,8 @@ texture = ExtResource("16_mcgsm")
 position = Vector2(-558, 185.00003)
 scale = Vector2(-0.847, 0.847)
 sprite_frames = SubResource("SpriteFrames_e5hwm")
+animation = &"defaukt errant"
 autoplay = "default"
-frame_progress = 0.36884344
 
 [node name="mainerrant" type="Sprite2D" parent="."]
 position = Vector2(-561.915, 189)
