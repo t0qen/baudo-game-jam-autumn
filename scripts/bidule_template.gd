@@ -379,7 +379,7 @@ func update_state():
 				rocket.global_position = $pivot2/depart_proj.global_position
 				var direction = $pivot2/depart_proj.global_transform.x.normalized()
 				$LancePatateLaunch.play()
-				rocket.linear_velocity = direction * -3000
+				rocket.linear_velocity = direction * -3500
 						
 				get_tree().current_scene.add_child(rocket)
 				await get_tree().create_timer(1).timeout
