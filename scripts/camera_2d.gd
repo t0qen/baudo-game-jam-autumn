@@ -12,38 +12,32 @@ var cameraglobal : Vector2 = Vector2(0, 0)
 func _ready() -> void:
 	pass
 	#focus()
+	
 func reset_zoom():
-	
-	
-	
+	current_zoom = base_zoom
 	
 func focus():
 	global_position = BiduleManager.get_mob_position()
-	reset_
+	reset_zoom()
 	
 func _process(delta: float) -> void:
+	pass
 	
-#func _physics_process(delta: float) -> void:
-	#if Input.is_action_pressed("camera_right"):
-		#self.offset.x += deplacementenpx
-		#update()
-	#if Input.is_action_pressed("camera_left"):
-		#self.offset.x -= deplacementenpx
-		#update()
-	#if Input.is_action_pressed("camera_down"):
-		#self.offset.y += deplacementenpx
-		#update()
-	#if Input.is_action_pressed("camera_up"):
-		#self.offset.y -= deplacementenpx
-		#update()
-	#if Input.is_action_pressed("camera_zoom_up"):
-		#self.zoom.x += zoomenpx
-		#self.zoom.y += zoomenpx
-		#update()
-	#if Input.is_action_pressed("camera_zoom_down"):
-		#self.zoom.x -= zoomenpx
-		#self.zoom.y -= zoomenpx
-		#update()
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("camera_right"):
+		global_position.x += deplacementenpx
+	if Input.is_action_pressed("camera_left"):
+		global_position.x -= deplacementenpx
+	if Input.is_action_pressed("camera_down"):
+		global_position.y += deplacementenpx
+	if Input.is_action_pressed("camera_up"):
+		global_position.y -= deplacementenpx
+	if Input.is_action_pressed("camera_zoom_up"):
+		zoom.x += zoomenpx
+		zoom.y += zoomenpx
+	if Input.is_action_pressed("camera_zoom_down"):
+		zoom.x -= zoomenpx
+		zoom.y -= zoomenpx
 #
 #func update():
 	#cameraoffsetx = self.offset.x
