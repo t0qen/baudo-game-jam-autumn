@@ -13,6 +13,8 @@ var gardes = preload("res://scenes/gardes.tscn")
 
 @onready var partie_timer: Timer = $partie
 
+@onready var duree_totale_timer: Timer = $duree_totale
+
 enum TEAM {
 	A,
 	B
@@ -31,6 +33,8 @@ var winner_team : TEAM = TEAM.A
 var current_timer_time = VarBidules.duree_tour_sec
 
 func _ready() -> void:
+	duree_totale_timer.wait_time = VarBidules.duree_partie_sec
+	duree_totale_timer.start()
 	BiduleManager.set_main(self)
 	$partie.wait_time = current_timer_time
 	initialize_ui()
@@ -64,7 +68,7 @@ func update_partie_duree_pb():
 func initialize_ui():
 	$Camera2D/UI/ProgressBar.max_value = current_timer_time
 	$Camera2D/UI/ProgressBar.value = $Camera2D/UI/ProgressBar.max_value 
-	$Camera2D/UI/Label.text = "TEAM EN TRAIN DE JOUER : LES GARDES"
+	$Camera2D/UI/Label.text = "LES GARDES"
 	
 	$Camera2D/UI/gardes.max_value = VarBidules.base_life * VarBidules.nbr_gardes
 	$Camera2D/UI/gardes.value = $Camera2D/UI/gardes.max_value
@@ -84,12 +88,16 @@ func update_total_life_pb():
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
 	update_total_life_pb()
-	
+	update_temps_restant()
 	#update_mob_array()
 	
 func _physics_process(delta: float) -> void:
 	pass
 
+func update_temps_restant():
+	$Camera2D/UI/Label6.text = str(int($duree_totale.time_left / 60)) + "mn " + str(int($duree_totale.time_left) % 60) + "s"
+	
+	
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
 	team_a_mobs.clear()
 	for mob_a in $team_container/team_errants.get_children():
@@ -130,10 +138,10 @@ func update_game():
 func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
 		current_playing_team = TEAM.B
-		$Camera2D/UI/Label.text = "TEAM EN TRAIN DE JOUER : LES ERRANTS"
+		$Camera2D/UI/Label.text = "LES ERRANTS"
 	else:
 		current_playing_team = TEAM.A 
-		$Camera2D/UI/Label.text = "TEAM EN TRAIN : LES GARDES"
+		$Camera2D/UI/Label.text = "GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
 	update_mob_array()
@@ -182,3 +190,17 @@ func _on_partie_timeout() -> void:
 
 func _on_focus_pressed() -> void:
 	$Camera2D.focus()
+
+
+func _on_duree_totale_timeout() -> void:
+	get_tree().paused = true
+	update_mob_array()
+	if len(team_a_mobs) > len(team_b_mobs):
+		VarBidules.is_errant_winner = false
+	else:
+		VarBidules.is_errant_winner = true
+	
+	
+	await get_tree().create_timer(3).timeout
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/temps_ecoule.tscn")

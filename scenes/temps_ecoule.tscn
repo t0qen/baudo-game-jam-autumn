@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://d23f7te0o5wyt"]
+
+[ext_resource type="Script" uid="uid://dxascted117u6" path="res://scripts/temps_ecoule.gd" id="1_x3yjy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_akbt6"]
+font_size = 140
+
+[node name="temps_ecoule" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x3yjy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEMPS ECOULE !"
+label_settings = SubResource("LabelSettings_akbt6")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
