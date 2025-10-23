@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=13 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
@@ -14,9 +14,21 @@ distance = -984.0
 font = ExtResource("2_tefeu")
 font_size = 180
 
+[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
+font = ExtResource("2_tefeu")
+font_size = 180
+
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
 font = ExtResource("2_tefeu")
 font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
+font = ExtResource("2_tefeu")
+font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_choun"]
+font = ExtResource("2_tefeu")
+font_size = 145
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
@@ -42,14 +54,31 @@ offset_right = 8106.0
 offset_bottom = 351.0
 show_percentage = false
 
+[node name="ProgressBar2" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 4699.0
+offset_right = 2034.0
+offset_bottom = 5153.0
+show_percentage = false
+
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 683.0
-offset_top = 154.0
-offset_right = 2768.0
-offset_bottom = 354.0
+offset_left = 644.0
+offset_top = 180.0
+offset_right = 2864.0
+offset_bottom = 380.0
 text = "équipe en train de jouer :"
 label_settings = SubResource("LabelSettings_o6xl0")
+
+[node name="Label3" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 4439.0
+offset_right = 2398.0
+offset_bottom = 4639.0
+text = "POINT DE VIE TOTAL"
+label_settings = SubResource("LabelSettings_tipki")
 
 [node name="Label2" type="Label" parent="UI"]
 layout_mode = 0
@@ -59,6 +88,58 @@ offset_right = 6523.0
 offset_bottom = 354.0
 text = "TEMPS RESTANT :"
 label_settings = SubResource("LabelSettings_tefeu")
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 6914.0
+offset_top = 4062.0
+offset_right = 9533.0
+offset_bottom = 5329.0
+
+[node name="Label4" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 33.0
+offset_right = 2247.0
+offset_bottom = 233.0
+text = "ACTION EN COURS"
+label_settings = SubResource("LabelSettings_85g3d")
+
+[node name="pompe" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 800.0
+offset_right = 2348.0
+offset_bottom = 1000.0
+text = "POMPE (TOUCHE 3)"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="control" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 250.0
+offset_right = 2348.0
+offset_bottom = 450.0
+text = "CONTROL (ZQSD)"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="patator" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 611.0
+offset_right = 2348.0
+offset_bottom = 811.0
+text = "PAtATOR (TOUCHE 2)"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="grenade" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 427.0
+offset_right = 2354.0
+offset_bottom = 627.0
+text = "GRENADE (TOUCHE !)"
+label_settings = SubResource("LabelSettings_choun")
 
 [node name="team_container" type="Node2D" parent="."]
 
