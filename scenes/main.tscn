@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=15 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b2et76gt1x6je" path="res://scenes/errants.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://0i16f2ggsc6b" path="res://scenes/gardes.tscn" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://22ku8sqquovf" path="res://scripts/camera_2d.gd" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://xrxadkj2loap" path="res://assets/sound/in game/in game.mp3" id="8_tipki"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tipki"]
 distance = -984.0
@@ -232,6 +233,12 @@ wait_time = 15.0
 
 [node name="duree_totale" type="Timer" parent="."]
 one_shot = true
+
+[node name="InGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tipki")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="Camera2D/UI/focus" to="." method="_on_focus_pressed"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]
