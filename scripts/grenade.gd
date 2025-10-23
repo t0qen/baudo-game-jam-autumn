@@ -29,8 +29,16 @@ func _on_timer_timeout() -> void:
 	for body in bodies:
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+			
+		if body is RigidBody2D:
+			var dir = (body.global_position - global_position).normalized()
+			var distance = global_position.distance_to(body.global_position)
+			var force = clamp(3000.0 / max(distance, 10.0), 200, 1500) # Force selon distance
+			body.apply_impulse(dir * force)
+	
 	self.hide()
 	
+
 
 
 func _on_explosion_patate_et_grenade_finished() -> void:
