@@ -15,10 +15,10 @@ var can_jump : bool = true
 # VIE
 #@export var base_life : int = 100
 var current_life : int = VarBidules.base_life
-
+var is_alive : bool = true
 # MOVEMENTS VARS
 @export var speed : int = 1000
-@export var jump_force : int = 1000
+@export var jump_force : int = 1400
 @export var max_h_speed : int = 400
 
 # INPUTS VARS
@@ -78,7 +78,7 @@ func _on_selected_bidule_changed(new_bidule):
 	if new_bidule == self:
 		is_selected = true
 		$ui/Label2.show()
-		change_state(STATE.CONTROL)
+		change_state(STATE.IDLE)
 	else:
 		is_selected = false
 		$ui/Label2.hide()
@@ -96,6 +96,7 @@ func take_damage(amount : int):
 	current_life = current_life - amount
 	update_life_bar()
 	if current_life < 1:
+		is_alive = false
 		die()
 
 func aim():
@@ -313,7 +314,7 @@ func update_state():
 				last_dir_nozero = direction
 				
 			if direction != 0:
-				apply_central_force(Vector2(direction * (speed - 500), 0))
+				apply_central_force(Vector2(direction * (speed - 750), 0))
 				
 			if linear_velocity.y == 0:
 				can_jump = true

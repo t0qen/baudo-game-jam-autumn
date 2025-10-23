@@ -20,7 +20,9 @@ func set_current(bidule):
 	current_bidule = bidule
 	selected_mob_changed.emit(current_bidule)
 	
-
+func get_mob_position():
+	return current_bidule.global_position
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
