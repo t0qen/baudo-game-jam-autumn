@@ -7,6 +7,7 @@ var camerazoomx : float = 0.2
 var camerazoomy : float = 0.2
 var cameraoffsetx : float = 0
 var cameraoffsety : float = 0
+var cameraglobal : Vector2 = Vector2(0, 0)
 
 func _ready() -> void:
 	focus()
@@ -40,7 +41,7 @@ func update():
 	camerazoomy = self.zoom.y
 
 func focus():
-	self.cameraoffsetx = BiduleManager.current_bidule_offsetx
-	self.cameraoffsety = BiduleManager.current_bidule_offsety
+	self.global_position = BiduleManager.get_mob_position()
 	self.zoom.x = 0.2
 	self.zoom.y = 0.2
+	update()

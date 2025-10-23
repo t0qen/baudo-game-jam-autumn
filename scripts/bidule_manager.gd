@@ -30,12 +30,10 @@ func set_current_action(action):
 		current_main.update_mob_action(action)
 	
 func get_mob_position():
-	return current_bidule.global_position
+	if current_bidule:
+		return current_bidule.global_position
 	
-func get_mob_offset():
-	current_bidule_offsetx = current_bidule.offset.x
-	current_bidule_offsety = current_bidule.offset.y
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
