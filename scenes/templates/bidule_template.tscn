@@ -248,7 +248,7 @@ height = 1042.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlu60"]
 radius = 61.0
-height = 688.0
+height = 628.0
 
 [node name="bidule_template" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_6lqgl")
@@ -336,7 +336,8 @@ position = Vector2(-521, -3)
 shape = SubResource("CapsuleShape2D_2idbw")
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 112)
+position = Vector2(0, 161)
+rotation = 3.1415927
 shape = SubResource("CapsuleShape2D_nlu60")
 
 [node name="pivot2" type="Node2D" parent="."]

@@ -21,11 +21,11 @@ var current_playing_team : TEAM = TEAM.A
 var team_a_mobs = []
 var team_b_mobs = []
 # index de quel mob a jouer la derniere fois pour chaque equipe 
-var prev_playing_mob_a : int = -1
-var prev_playing_mob_b : int = -1
+var prev_playing_mob_a : int = 0
+var prev_playing_mob_b : int = 0
 # index de quel mob doit jouer pour envoyer au BiduleManager
-var current_paying_mob_a 
-var current_paying_mob_b 
+var current_playing_mob_a 
+var current_playing_mob_b 
 
 var winner_team : TEAM = TEAM.A
 var current_timer_time = VarBidules.duree_tour_sec
@@ -65,24 +65,29 @@ func update_total_life_pb():
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
 	update_total_life_pb()
+	#update_mob_array()
 	
 func _physics_process(delta: float) -> void:
 	pass
 
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
 	print("===== UPDATE MOB ARRAY =========")
-	team_a_mobs = []
+	team_a_mobs.clear()
 	for mob_a in $team_container/team_errants.get_children():
-		team_a_mobs.append(mob_a)
+		if mob_a.is_alive:
+			team_a_mobs.append(mob_a)
 	print("Errants : ", team_a_mobs)
-	team_b_mobs = []
+	team_b_mobs.clear()
 	for mob_b in $team_container/team_gardes.get_children():
-		team_b_mobs.append(mob_b)
-		print(mob_b)
+		if mob_b.is_alive:
+			team_b_mobs.append(mob_b)
 	print("Gardes : ", team_b_mobs)
 	print("==================================")
-	if team_b_mobs == []:
-		print("TEAM B LOST")
+	if team_a_mobs.is_empty():
+		print("TEAM B GAGNE")
+	elif team_b_mobs.is_empty():
+		print("TEAM A GAGNE")
+
 	
 func start():
 	print("GAME STARTS !!")
@@ -107,28 +112,44 @@ func change_playing_team(): # quelle team joue
 		$UI/Label.text = "TEAM EN TRAIN : LES GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
-	if current_playing_team == TEAM.A:
-		print("selecting mob to playfor team A")
-		if (prev_playing_mob_a + 1) > len(team_a_mobs): # si la derniere fois qu'on a joue ct le dernier bidule : on recommence du debut
-			current_paying_mob_a = team_a_mobs[0]
-			print("restarted loop")
+	print("select")
+	update_mob_array()
+	
+	
+	var current_team = team_a_mobs if current_playing_team == TEAM.A else team_b_mobs
+	var index_prev = prev_playing_mob_a if current_playing_team == TEAM.B else prev_playing_mob_b
+	if current_team.size() > 0:
+		var current_playing_mob = current_team[index_prev % current_team.size()]
+		if current_playing_team == TEAM.A:
+			prev_playing_mob_a += 1
 		else:
-			current_paying_mob_a = team_a_mobs[prev_playing_mob_a + 1]
-		prev_playing_mob_a = team_a_mobs.bsearch(current_paying_mob_a) # renvoie l'index de current playing mob
-		print("Prev playing mob a : ", prev_playing_mob_a)
-		print("current : ", current_paying_mob_a)
-		BiduleManager.set_current(current_paying_mob_a)
-	else:
-		print("selecting mob to playfor team B")
-		if (prev_playing_mob_b + 1) > len(team_b_mobs): # si la derniere fois qu'on a joue ct le dernier bidule : on recommence du debut
-			current_paying_mob_b = team_b_mobs[0]
-			print("restarted loop")
-		else:
-			current_paying_mob_b = team_b_mobs[prev_playing_mob_b + 1]
-		prev_playing_mob_a = team_b_mobs.bsearch(current_paying_mob_b) # renvoie l'index de current playing mob
-		print("Prev playing mob b : ", prev_playing_mob_b)
-		print("current : ", current_paying_mob_b)
-		BiduleManager.set_current(current_paying_mob_b)
+			prev_playing_mob_b += 1
+		BiduleManager.set_current(current_playing_mob)
+		
+		
+	
+	#if current_playing_team == TEAM.A:
+		#print("selecting mob to playfor team A")
+		#if (prev_playing_mob_a + 1) > len(team_a_mobs): # si la derniere fois qu'on a joue ct le dernier bidule : on recommence du debut
+			#current_playing_mob_a = team_a_mobs[0]
+			#print("restarted loop")
+		#else:
+			#current_playing_mob_a = team_a_mobs[prev_playing_mob_a + 1]
+		#prev_playing_mob_a = team_a_mobs.bsearch(current_playing_mob_a) # renvoie l'index de current playing mob
+		#print("Prev playing mob a : ", prev_playing_mob_a)
+		#print("current : ", current_playing_mob_a)
+		#BiduleManager.set_current(current_playing_mob_a)
+	#else:
+		#print("selecting mob to playfor team B")
+		#if (prev_playing_mob_b + 1) > len(team_b_mobs): # si la derniere fois qu'on a joue ct le dernier bidule : on recommence du debut
+			#current_playing_mob_b = team_b_mobs[0]
+			#print("restarted loop")
+		#else:
+			#current_playing_mob_b = team_b_mobs[prev_playing_mob_b + 1]
+		#prev_playing_mob_a = team_b_mobs.bsearch(current_playing_mob_b) # renvoie l'index de current playing mob
+		#print("Prev playing mob b : ", prev_playing_mob_b)
+		#print("current : ", current_playing_mob_b)
+		#BiduleManager.set_current(current_playing_mob_b)
 	
 	
 func _on_partie_timeout() -> void:
