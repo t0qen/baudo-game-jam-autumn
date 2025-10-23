@@ -1,6 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=52 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
+[ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_2idbw"]
 [ext_resource type="Texture2D" uid="uid://bd1ejnp7vha11" path="res://assets/Sprites/Garde/Bras/patator_1.png" id="2_81lal"]
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="2_cow7b"]
 [ext_resource type="Texture2D" uid="uid://bd2asu1t7h1r5" path="res://assets/Sprites/Garde/Bras/granade_bras_2.png" id="2_vgj7r"]
@@ -47,6 +48,15 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
 friction = 0.1
 bounce = 0.1
+
+[sub_resource type="LabelSettings" id="LabelSettings_4n3gm"]
+font = ExtResource("2_2idbw")
+font_size = 56
+
+[sub_resource type="LabelSettings" id="LabelSettings_5tp8d"]
+font = ExtResource("2_2idbw")
+font_size = 56
+font_color = Color(0.27017283, 0.72173244, 0.39678612, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvjia"]
 animations = [{
@@ -242,9 +252,41 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_6lqgl")
+is_selected = null
+grenarde_velocity = null
+speed = null
 jump_force = 300
+max_h_speed = null
 
 [node name="ui" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="ui"]
+offset_left = -126.0
+offset_top = -455.0
+offset_right = 126.0
+offset_bottom = -394.0
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ui"]
+offset_left = -98.0
+offset_top = -522.0
+offset_right = 100.0
+offset_bottom = -459.0
+text = "ERRANT"
+label_settings = SubResource("LabelSettings_4n3gm")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ui"]
+visible = false
+offset_left = -129.0
+offset_top = -576.0
+offset_right = 130.0
+offset_bottom = -513.0
+text = "selected"
+label_settings = SubResource("LabelSettings_5tp8d")
+horizontal_alignment = 1
 
 [node name="weapon" type="Node2D" parent="."]
 
@@ -260,7 +302,7 @@ animation = &"garde_pompe"
 [node name="pivot" type="Node2D" parent="."]
 
 [node name="sprites" type="AnimatedSprite2D" parent="pivot"]
-position = Vector2(-146, 0)
+position = Vector2(-146, 1)
 sprite_frames = SubResource("SpriteFrames_8amhk")
 animation = &"garde_control"
 

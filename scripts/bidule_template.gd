@@ -43,8 +43,14 @@ enum MOB_POSSIBILITY {
 }
 var current : MOB_POSSIBILITY = MOB_POSSIBILITY.GARDE
 
+func update_life_bar():
+	$ui/ProgressBar.value = current_life
+	
+	
 func set_current(current : MOB_POSSIBILITY):
 	current = current
+	if current == MOB_POSSIBILITY.GARDE:
+		$ui/Label.text = "GARDE"
 	
 	
 func get_inputs():
@@ -60,6 +66,7 @@ func get_inputs():
 	
 	
 func _ready() -> void:
+	update_life_bar()
 	change_state(STATE.CONTROL)
 	BiduleManager.selected_mob_changed.connect(_on_selected_bidule_changed)
 
@@ -67,10 +74,12 @@ func _on_selected_bidule_changed(new_bidule):
 	if new_bidule == self:
 		print("SELECTED !!!!!!!!!!!")
 		is_selected = true
+		$ui/Label2.show()
 		change_state(STATE.CONTROL)
 	else:
 		print("UNSELECTED !!!!!!!!!!!")
 		is_selected = false
+		$ui/Label2.hide()
 		change_state(STATE.IDLE)
 		
 func _process(delta: float) -> void:
@@ -83,6 +92,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount : int):
 	current_life = current_life - amount
+	update_life_bar()
 	if current_life < 1:
 		print("Died")
 		die()
@@ -308,6 +318,7 @@ func update_state():
 				
 			if linear_velocity.y == 0:
 				print("change")
+				can_jump = true
 				change_state(STATE.CONTROL)
 				
 		STATE.CONTROL:
@@ -422,6 +433,4 @@ func update_state():
 			
 #endregion
 
-
-func _on_jump_timer_timeout() -> void:
-	can_jump = true
+	
