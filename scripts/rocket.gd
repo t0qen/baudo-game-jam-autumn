@@ -3,8 +3,7 @@ extends RigidBody2D
 var can_explode : bool = true
 
 func _ready() -> void:
-	pass
-
+	$PatateEnFeu.play()
 
 	
 
@@ -37,6 +36,7 @@ func _on_detection_max_degat_body_entered(body: Node2D) -> void:
 				return
 			$CPUParticles2D.amount -= 1
 			await get_tree().create_timer(0.1).timeout
+		
 		
 
 
