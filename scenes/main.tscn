@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=14 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
@@ -15,10 +15,6 @@ distance = -984.0
 font = ExtResource("2_tefeu")
 font_size = 180
 
-[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
-font = ExtResource("2_tefeu")
-font_size = 180
-
 [sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
 font = ExtResource("2_tefeu")
 font_size = 162
@@ -28,10 +24,6 @@ font = ExtResource("2_tefeu")
 font_size = 162
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
-font = ExtResource("2_tefeu")
-font_size = 180
-
-[sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
 font = ExtResource("2_tefeu")
 font_size = 180
 
@@ -111,149 +103,124 @@ offset_bottom = 2688.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 5929.0
-offset_top = 164.0
-offset_right = 8106.0
-offset_bottom = 351.0
+offset_left = 2725.0
+offset_top = 177.0
+offset_right = 6885.0
+offset_bottom = 364.0
 show_percentage = false
 
 [node name="gardes" type="ProgressBar" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 852.0
+offset_left = 850.0
 offset_top = 4666.0
-offset_right = 2718.0
-offset_bottom = 4900.0
+offset_right = 2210.0
+offset_bottom = 4966.0
 show_percentage = false
 
 [node name="errants" type="ProgressBar" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 860.0
-offset_top = 4967.0
-offset_right = 2726.0
-offset_bottom = 5242.0
+offset_left = 850.0
+offset_top = 4980.0
+offset_right = 2210.0
+offset_bottom = 5280.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 644.0
-offset_top = 180.0
-offset_right = 2864.0
-offset_bottom = 380.0
-text = "équipe en train de jouer :"
+offset_left = 87.0
+offset_top = 76.0
+offset_right = 2307.0
+offset_bottom = 276.0
+text = "LES GARDES"
 label_settings = SubResource("LabelSettings_o6xl0")
-
-[node name="Label3" type="Label" parent="Camera2D/UI"]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 4439.0
-offset_right = 2398.0
-offset_bottom = 4639.0
-text = "POINT DE VIE TOTAL"
-label_settings = SubResource("LabelSettings_tipki")
 
 [node name="Label4" type="Label" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 154.0
-offset_top = 4708.0
-offset_right = 860.0
-offset_bottom = 4908.0
+offset_left = 146.0
+offset_top = 4714.0
+offset_right = 852.0
+offset_bottom = 4914.0
 text = "GARDES"
 label_settings = SubResource("LabelSettings_ya4ey")
 
 [node name="Label5" type="Label" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 5001.0
-offset_right = 844.0
-offset_bottom = 5201.0
+offset_left = 144.0
+offset_top = 5033.0
+offset_right = 850.0
+offset_bottom = 5233.0
 text = "ERRANTS"
 label_settings = SubResource("LabelSettings_eb6dy")
 
-[node name="Label2" type="Label" parent="Camera2D/UI"]
+[node name="Label6" type="Label" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 4438.0
-offset_top = 154.0
-offset_right = 6523.0
-offset_bottom = 354.0
-text = "TEMPS RESTANT :"
+offset_left = 8732.0
+offset_top = 86.0
+offset_right = 9549.0
+offset_bottom = 286.0
+text = "29 MN 49"
 label_settings = SubResource("LabelSettings_tefeu")
 
 [node name="armes" type="Panel" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 6914.0
-offset_top = 4062.0
-offset_right = 9533.0
-offset_bottom = 5329.0
-
-[node name="Label4" type="Label" parent="Camera2D/UI/armes"]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 33.0
-offset_right = 2247.0
-offset_bottom = 233.0
-text = "ACTION EN COURS"
-label_settings = SubResource("LabelSettings_85g3d")
+offset_left = 7770.0
+offset_top = 4421.0
+offset_right = 9490.0
+offset_bottom = 5323.0
 
 [node name="pompe" type="Label" parent="Camera2D/UI/armes"]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 800.0
+offset_top = 641.0
 offset_right = 2348.0
-offset_bottom = 1000.0
+offset_bottom = 841.0
 text = "POMPE (TOUCHE 3)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="control" type="Label" parent="Camera2D/UI/armes"]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 250.0
+offset_top = 91.0
 offset_right = 2348.0
-offset_bottom = 450.0
+offset_bottom = 291.0
 text = "CONTROL (ZQSD)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="patator" type="Label" parent="Camera2D/UI/armes"]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 611.0
+offset_top = 452.0
 offset_right = 2348.0
-offset_bottom = 811.0
+offset_bottom = 652.0
 text = "PAtATOR (TOUCHE 2)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="grenade" type="Label" parent="Camera2D/UI/armes"]
 layout_mode = 0
 offset_left = 134.0
-offset_top = 427.0
+offset_top = 268.0
 offset_right = 2354.0
-offset_bottom = 627.0
+offset_bottom = 468.0
 text = "GRENADE (TOUCHE !)"
 label_settings = SubResource("LabelSettings_choun")
 
-[node name="menu" type="Panel" parent="Camera2D/UI"]
+[node name="focus" type="Button" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 3428.0
-offset_top = 4795.0
-offset_right = 5766.0
-offset_bottom = 5268.0
-
-[node name="focus" type="Button" parent="Camera2D/UI/menu"]
-layout_mode = 0
-offset_left = 163.0
-offset_top = 138.0
-offset_right = 1454.0
-offset_bottom = 374.0
+offset_left = 6427.0
+offset_top = 5066.0
+offset_right = 7718.0
+offset_bottom = 5302.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_tefeu")
 theme_override_font_sizes/font_size = 100
 text = "FOCUS MOB SELECTIONNE"
 
-[node name="aide" type="Button" parent="Camera2D/UI/menu"]
+[node name="aide" type="Button" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 1645.0
-offset_top = 129.0
-offset_right = 2122.0
-offset_bottom = 365.0
+offset_left = 7230.0
+offset_top = 4791.0
+offset_right = 7707.0
+offset_bottom = 5027.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_tefeu")
 theme_override_font_sizes/font_size = 100
@@ -263,5 +230,9 @@ text = "AIDE
 [node name="partie" type="Timer" parent="."]
 wait_time = 15.0
 
-[connection signal="pressed" from="Camera2D/UI/menu/focus" to="." method="_on_focus_pressed"]
+[node name="duree_totale" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="Camera2D/UI/focus" to="." method="_on_focus_pressed"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]
+[connection signal="timeout" from="duree_totale" to="." method="_on_duree_totale_timeout"]
