@@ -8,36 +8,51 @@ var current_zoom : Vector2
 var cameraoffsetx : float = 0
 var cameraoffsety : float = 0
 var cameraglobal : Vector2 = Vector2(0, 0)
+var isfocus : bool = true
 
 func _ready() -> void:
 	pass
-	#focus()
+	await get_tree().create_timer(0.1).timeout
+	focus()
 	
 func reset_zoom():
-	current_zoom = base_zoom
+	zoom.x = 0.2
+	zoom.y = 0.2
 	
 func focus():
-	global_position = BiduleManager.get_mob_position()
-	reset_zoom()
+	while isfocus == true:
+		global_position = BiduleManager.get_mob_position()
+		reset_zoom()
+		await get_tree().create_timer(0.0001).timeout
 	
 func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("camera_right"):
+		isfocus = false
 		global_position.x += deplacementenpx
 	if Input.is_action_pressed("camera_left"):
+		isfocus = false
 		global_position.x -= deplacementenpx
 	if Input.is_action_pressed("camera_down"):
+		isfocus = false
 		global_position.y += deplacementenpx
 	if Input.is_action_pressed("camera_up"):
+		isfocus = false
 		global_position.y -= deplacementenpx
 	if Input.is_action_pressed("camera_zoom_up"):
+		isfocus = false
 		zoom.x += zoomenpx
 		zoom.y += zoomenpx
 	if Input.is_action_pressed("camera_zoom_down"):
+		isfocus = false
 		zoom.x -= zoomenpx
 		zoom.y -= zoomenpx
+	if Input.is_action_just_pressed("camera_focus"):
+		isfocus = true
+		focus()
+	
 #
 #func update():
 	#cameraoffsetx = self.offset.x

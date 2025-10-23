@@ -100,8 +100,6 @@ jump_force = 1400
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
 script = ExtResource("7_o6xl0")
-deplacementenpx = null
-zoomenpx = null
 
 [node name="UI" type="Control" parent="Camera2D"]
 layout_mode = 3
