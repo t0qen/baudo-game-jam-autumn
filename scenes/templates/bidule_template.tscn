@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=119 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_2idbw"]
@@ -108,6 +108,8 @@
 [ext_resource type="Texture2D" uid="uid://dan2xv2lfkjm7" path="res://assets/Sprites/Garde/Bras/Pompe Anim/frame_4_delay-0.04s.png" id="98_p66wj"]
 [ext_resource type="Texture2D" uid="uid://y1ox4ouub7xi" path="res://assets/Sprites/Garde/Bras/Pompe Anim/frame_5_delay-0.04s.png" id="99_sndy5"]
 [ext_resource type="Texture2D" uid="uid://4stpjskr84hp" path="res://assets/Sprites/Garde/Bras/Pompe Anim/frame_6_delay-0.04s.png" id="100_4agyn"]
+[ext_resource type="AudioStream" uid="uid://dumwv16jd3fp8" path="res://assets/sound/SFX/rechargement pompe.mp3" id="107_m1i3r"]
+[ext_resource type="AudioStream" uid="uid://dke6hg55iboqt" path="res://assets/sound/SFX/tir pompe.mp3" id="108_hqaeu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
 friction = 0.1
@@ -654,11 +656,6 @@ animation = &"garde_pompe_1"
 [node name="Pompe" type="Area2D" parent="aim_gauche"]
 position = Vector2(-46, 73)
 
-[node name="Area" type="Polygon2D" parent="aim_gauche/Pompe"]
-visible = false
-color = Color(1, 1, 1, 0.36862746)
-polygon = PackedVector2Array(-326, -24, -327, -23, -328, -22, -329, -21, -330, -20, -331, -18, -332, -15, -332, -13, -332, -11, -332, -9, -332, -6, -331, -3, -329, 0, -327, 2, -326, 3, -935, 222, -935, -296)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aim_gauche/Pompe"]
 position = Vector2(-521, -3)
 shape = SubResource("CapsuleShape2D_2idbw")
@@ -681,6 +678,14 @@ texture = ExtResource("40_77s6n")
 [node name="jump_timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="RechargementPompe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("107_m1i3r")
+bus = &"SFX"
+
+[node name="TirPompe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("108_hqaeu")
+bus = &"SFX"
 
 [node name="LancePatateLaunch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("41_e0nlx")

@@ -71,7 +71,6 @@ func get_inputs():
 	
 	
 func _ready() -> void:
-	$aim_gauche/Pompe/Area.hide()
 	$ui/ProgressBar.max_value = VarBidules.base_life
 	update_life_bar()
 	change_state(STATE.CONTROL)
@@ -272,6 +271,7 @@ func enter_state(new_state : STATE):
 			$pivot2.rotation_degrees = 0
 			play_animation("idle")
 			play_bras_animation("pompe1")
+			$RechargementPompe.play()
 
 #pareil que enter_state sauf que la c quand on quitte un state
 #ex: quand on quitte le state "falling" on joue l'animation d'atterrissage (landing)
@@ -455,13 +455,12 @@ func update_state():
 			
 			if wanna_pompe && can_pompe:
 				play_bras_animation("pompe")
+				$TirPompe.play()
 				can_pompe = false
 				var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
-				$aim_gauche/Pompe/Area.show()
 				for body in bodies:
 					if body.has_method("take_damage"):
 						body.take_damage(damage_pompe)
-				$aim_gauche/Pompe/Area.hide()
 				await get_tree().create_timer(5).timeout
 				can_pompe = true
 

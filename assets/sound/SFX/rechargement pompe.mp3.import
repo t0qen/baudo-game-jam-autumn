@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dumwv16jd3fp8"
+path="res://.godot/imported/rechargement pompe.mp3-48a70f33cf6cd98ddce85924c8d7639b.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/SFX/rechargement pompe.mp3"
+dest_files=["res://.godot/imported/rechargement pompe.mp3-48a70f33cf6cd98ddce85924c8d7639b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
