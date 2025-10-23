@@ -5,7 +5,7 @@
 [node name="gardes" instance=ExtResource("1_nbgwk")]
 light_mask = 2
 visibility_layer = 7
-collision_layer = 2
+collision_layer = 10
 collision_mask = 4
 
 [node name="pivot2" parent="." index="6"]

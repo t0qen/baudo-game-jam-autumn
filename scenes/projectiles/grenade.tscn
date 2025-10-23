@@ -14,13 +14,15 @@ radius = 52.773098
 size = Vector2(27, 30)
 
 [node name="Grenade" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 7
 mass = 0.1
 script = ExtResource("1_1mnvm")
 damage = 25
 
 [node name="ground_detection" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_detection"]
 shape = SubResource("CircleShape2D_b7x1w")
@@ -39,6 +41,8 @@ position = Vector2(0.5, -59)
 shape = SubResource("RectangleShape2D_oqjs3")
 
 [node name="mob_detection" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="mob_detection"]
 shape = SubResource("CircleShape2D_b7x1w")

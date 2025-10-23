@@ -34,6 +34,8 @@ scale = Vector2(1.0832561, 1.1706394)
 shape = SubResource("CapsuleShape2D_r4mtq")
 
 [node name="DetectionMinDegat" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionMinDegat"]
 rotation = -1.5707964
@@ -41,6 +43,8 @@ shape = SubResource("CapsuleShape2D_8rgcg")
 debug_color = Color(0.78905654, 0.43045953, 3.85046e-07, 0.41960785)
 
 [node name="DetectionMaxDegat" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionMaxDegat"]
 rotation = -1.5707964
