@@ -41,20 +41,20 @@ func _ready() -> void:
 
 func update_mob_action(action):
 	print("update action 2")
-	$UI/armes/pompe.add_theme_color_override("font_color", Color("white"))
-	$UI/armes/control.add_theme_color_override("font_color", Color("white"))
-	$UI/armes/patator.add_theme_color_override("font_color", Color("white"))
-	$UI/armes/grenade.add_theme_color_override("font_color", Color("white"))
+	$UI/armes/pompe.modulate = Color("white")
+	$UI/armes/control.modulate = Color("white")
+	$UI/armes/patator.modulate = Color("white")
+	$UI/armes/grenade.modulate = Color("white")
 	
 	match action:
 		"pompe":
-			$UI/armes/pompe.add_theme_color_override("font_color", Color("green"))
+			$UI/armes/pompe.modulate = Color("green")
 		"control":
-			$UI/armes/control.add_theme_color_override("font_color", Color("green"))
+			$UI/armes/control.modulate = Color("green")
 		"patator":
-			$UI/armes/patator.add_theme_color_override("font_color", Color("green"))
+			$UI/armes/patator.modulate = Color("green")
 		"grenade":
-			$UI/armes/grenade.add_theme_color_override("font_color", Color("green"))
+			$UI/armes/grenade.modulate = Color("green")
 	
 	
 	
@@ -84,6 +84,7 @@ func update_total_life_pb():
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
 	update_total_life_pb()
+	
 	#update_mob_array()
 	
 func _physics_process(delta: float) -> void:
