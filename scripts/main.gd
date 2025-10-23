@@ -37,8 +37,10 @@ func _ready() -> void:
 	duree_totale_timer.start()
 	BiduleManager.set_main(self)
 	$partie.wait_time = current_timer_time
+	spawn_mobs()
 	initialize_ui()
 	start()
+	get_tree().paused = true
 	# TODO faire un system de spawn -> besoin de la map avant
 	# TODO base life mob
 	# plus set_current() 
@@ -48,11 +50,39 @@ func spawn_mobs():
 	var errants_spawn_points = []
 	for i in $"spawns-points/errants".get_children():
 		errants_spawn_points.append(i)
-	
+	var errants_taken_sp = []
+
 	for i in range(VarBidules.nbr_errants):
+		var current_sp = $"spawns-points/errants".get_child(randi_range(0, 9))
+		if current_sp in errants_taken_sp:
+			while current_sp in errants_taken_sp:
+				print("nonon")
+				current_sp = $"spawns-points/errants".get_child(randi_range(0, 9))
+		errants_taken_sp.append(current_sp)
+		var current_errant = errants.instantiate()
+		current_errant.global_position = current_sp.global_position
+		current_errant.set_current(1)
+		$team_container/team_errants.add_child(current_errant)
 		
-	
-	
+	#gardes
+	var gardes_spawn_points = []
+	for i in $"spawns-points/gardes".get_children():
+		gardes_spawn_points.append(i)
+	var gardes_taken_sp = []
+
+	for i in range(VarBidules.nbr_gardes):
+		var current_sp = $"spawns-points/gardes".get_child(randi_range(0, 9))
+		if current_sp in gardes_taken_sp:
+			while current_sp in gardes_taken_sp:
+				print("nonon")
+				current_sp = $"spawns-points/gardes".get_child(randi_range(0, 9))
+		gardes_taken_sp.append(current_sp)
+		var current_gardes = gardes.instantiate()
+		current_gardes.global_position = current_sp.global_position
+		current_gardes.set_current(0)
+		$team_container/team_gardes.add_child(current_gardes)
+	print("FINISHED")
+
 func update_mob_action(action):
 	print("update action 2")
 	$Camera2D/UI/armes/pompe.modulate = Color("white")

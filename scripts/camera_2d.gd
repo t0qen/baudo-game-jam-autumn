@@ -12,18 +12,10 @@ var isfocus : bool = true
 
 func _ready() -> void:
 	pass
-	await get_tree().create_timer(0.1).timeout
-	focus()
 	
 func reset_zoom():
 	zoom.x = 0.2
 	zoom.y = 0.2
-	
-func focus():
-	while isfocus == true:
-		global_position = BiduleManager.get_mob_position()
-		reset_zoom()
-		await get_tree().create_timer(0.0001).timeout
 	
 func _process(delta: float) -> void:
 	pass
@@ -33,8 +25,8 @@ func _physics_process(delta: float) -> void:
 	global_position += (movementsVect * deplacement)
 	var zoomVar = Input.get_axis("camera_zoom_down", "camera_zoom_up")
 	zoom += Vector2(zoomVar, zoomVar) * zoomForce
-	if !zoomVar && !movementsVect:
-		global_position = BiduleManager.get_mob_position()
+	#if !zoomVar && !movementsVect:
+		#global_position = BiduleManager.get_mob_position()
 	
 	#if Input.is_action_pressed("camera_right"):
 		#isfocus = false

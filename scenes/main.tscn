@@ -236,60 +236,60 @@ text = "C'EST BON"
 [node name="errants" type="Node2D" parent="spawns-points"]
 
 [node name="Marker2D" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-3632, -1213)
+position = Vector2(-3711, -1326)
 
 [node name="Marker2D2" type="Marker2D" parent="spawns-points/errants"]
 position = Vector2(-3343, -1402)
 
 [node name="Marker2D3" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-2820, -1581)
+position = Vector2(-2846, -1680)
 
 [node name="Marker2D4" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-2368, -1668)
+position = Vector2(-2311, -1728)
 
 [node name="Marker2D5" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-1906, -1411)
+position = Vector2(-1867, -1517)
 
 [node name="Marker2D6" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-1432, -699)
+position = Vector2(-1429, -860)
 
 [node name="Marker2D7" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-1218, -881)
+position = Vector2(-1226, -1086)
 
 [node name="Marker2D8" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-827, -1398)
+position = Vector2(-832, -1530)
 
 [node name="Marker2D9" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-490, -1373)
+position = Vector2(-456, -1485)
 
 [node name="gardes" type="Node2D" parent="spawns-points"]
 
 [node name="Marker2D" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(709, -760)
+position = Vector2(761, -908)
 
 [node name="Marker2D2" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(1170, -629)
+position = Vector2(1271, -842)
 
 [node name="Marker2D3" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(1713, -568)
+position = Vector2(1682, -739)
 
 [node name="Marker2D4" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(2127, -1016)
+position = Vector2(2104, -1153)
 
 [node name="Marker2D5" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(2790, -1040)
+position = Vector2(2825, -1141)
 
 [node name="Marker2D6" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(3457, -886)
+position = Vector2(3447, -1093)
 
 [node name="Marker2D7" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(4033, -555)
+position = Vector2(4018, -848)
 
 [node name="Marker2D8" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(4375, -399)
+position = Vector2(4395, -571)
 
 [node name="Marker2D9" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(4989, -775)
+position = Vector2(5009, -896)
 
 [node name="partie" type="Timer" parent="."]
 wait_time = 15.0

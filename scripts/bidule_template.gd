@@ -45,6 +45,8 @@ enum MOB_POSSIBILITY {
 }
 var current : MOB_POSSIBILITY = MOB_POSSIBILITY.ERRANT
 
+
+	
 func update_life_bar():
 	$ui/ProgressBar.value = current_life
 	
@@ -53,7 +55,8 @@ func set_current(current : MOB_POSSIBILITY):
 	current = current
 	if current == MOB_POSSIBILITY.GARDE:
 		$ui/Label.text = "GARDE"
-	
+	else:
+		$ui/Label.text = "ERRANT"
 	
 func get_inputs():
 	wanna_jump = Input.is_action_just_pressed("jump")
