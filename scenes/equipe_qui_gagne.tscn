@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cjogh5j76tshk"]
+[gd_scene load_steps=45 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
 [ext_resource type="Script" uid="uid://bkk4qexdiemxh" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://clg8clpdfyqk6" path="res://assets/Sprites/Errant/Idle/frame_12_delay-0.04s.png" id="31_7wpdm"]
 [ext_resource type="Texture2D" uid="uid://ml20d2gnakt3" path="res://assets/Sprites/Errant/Idle/frame_13_delay-0.04s.png" id="32_7lxfq"]
 [ext_resource type="Texture2D" uid="uid://cpavgnq3kaewi" path="res://assets/Sprites/Errant/Idle/frame_14_delay-0.04s.png" id="33_x3q53"]
+[ext_resource type="Texture2D" uid="uid://xvf2xsq60jaw" path="res://assets/Sprites/Errant/Bras/pompe_2.png" id="34_6qmfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
 font = ExtResource("18_t02st")
@@ -144,7 +145,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"defaukt errant",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -316,12 +317,12 @@ position = Vector2(-558, 185.00003)
 scale = Vector2(-0.847, 0.847)
 sprite_frames = SubResource("SpriteFrames_e5hwm")
 animation = &"defaukt errant"
-autoplay = "default"
+autoplay = "defaukt errant"
 
 [node name="mainerrant" type="Sprite2D" parent="."]
 position = Vector2(-561.915, 189)
 scale = Vector2(-0.847, 0.847)
-texture = ExtResource("16_mcgsm")
+texture = ExtResource("34_6qmfn")
 
 [node name="MainGarde" type="AnimationPlayer" parent="."]
 libraries = {
