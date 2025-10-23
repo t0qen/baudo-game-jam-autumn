@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=120 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_2idbw"]
@@ -112,7 +112,6 @@
 [ext_resource type="AudioStream" uid="uid://dke6hg55iboqt" path="res://assets/sound/SFX/tir pompe.mp3" id="108_hqaeu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6lqgl"]
-friction = 0.1
 bounce = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_4n3gm"]
@@ -572,6 +571,9 @@ animations = [{
 radius = 414.0
 height = 1042.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1i3r"]
+size = Vector2(83, 17.5)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlu60"]
 radius = 61.0
 height = 628.0
@@ -660,6 +662,12 @@ position = Vector2(-46, 73)
 position = Vector2(-521, -3)
 shape = SubResource("CapsuleShape2D_2idbw")
 
+[node name="ground_detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_detection"]
+position = Vector2(0, 486.25)
+shape = SubResource("RectangleShape2D_m1i3r")
+
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 161)
 rotation = 3.1415927
@@ -697,4 +705,6 @@ bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="ground_detection" to="." method="_on_ground_detection_body_entered"]
+[connection signal="body_exited" from="ground_detection" to="." method="_on_ground_detection_body_exited"]
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]

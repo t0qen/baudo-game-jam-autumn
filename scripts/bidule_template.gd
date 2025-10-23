@@ -11,13 +11,13 @@ var rocket_scene = preload("res://scenes/projectiles/rocket.tscn")
 @export var grenarde_velocity : int = 6000
 # BOOLEAN
 var can_jump : bool = true
-
+var is_on_ground : bool = true
 # VIE
 #@export var base_life : int = 100
 var current_life : int = VarBidules.base_life
 var is_alive : bool = true
 # MOVEMENTS VARS
-@export var speed : int = 1000
+@export var speed : int = 2000
 @export var jump_force : int = 1400
 @export var max_h_speed : int = 400
 
@@ -86,8 +86,7 @@ func _on_selected_bidule_changed(new_bidule):
 		$ui/Label2.hide()
 		change_state(STATE.IDLE)
 		
-func _process(delta: float) -> void:
-	pass
+
 
 func _physics_process(delta: float) -> void:
 	if is_selected:
@@ -303,6 +302,7 @@ func update_state():
 				change_state(STATE.ROCKET)
 			
 		STATE.JUMP:
+
 			direction = 0
 			if wanna_left:
 				direction = -1
@@ -406,6 +406,7 @@ func update_state():
 				var rocket = rocket_scene.instantiate()
 				rocket.global_position = $pivot2/depart_proj.global_position
 				var direction = $pivot2/depart_proj.global_transform.x.normalized()
+				get_parent().get_parent().get_parent().get_node("projectiles").add_child(rocket)
 				$LancePatateLaunch.play()
 				rocket.linear_velocity = direction * -3500
 						
@@ -432,6 +433,7 @@ func update_state():
 				var grenade = grenade_scene.instantiate()
 				grenade.global_position = $pivot2/depart_proj.global_position
 				var direction = $pivot2/depart_proj.global_transform.x.normalized()
+				get_parent().get_parent().get_parent().get_node("projectiles").add_child(grenade)
 				$LancerGrenade.play()
 				grenade.apply_central_impulse(direction * -2500)
 						
@@ -470,3 +472,18 @@ func update_state():
 #endregion
 
 	
+
+
+func _on_ground_detection_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if body.get_parent().name == "Polygon2D":
+		is_on_ground = true 
+
+
+func _on_ground_detection_body_exited(body: Node2D) -> void:
+	print(body.name)
+	if body.get_parent().name == "Polygon2D":
+		is_on_ground = false 
+func _process(delta: float) -> void:
+	print(is_on_ground)
+	pass

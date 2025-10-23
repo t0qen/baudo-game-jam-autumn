@@ -17,9 +17,9 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		can_explode = false
 		print(body1.name)
 		# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
-		var terrain = get_parent().get_node("DestructiblePolygon2D")
+		var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 		
-		var radius = 200
+		var radius = 800
 		var segments = 32
 		var polygon = PackedVector2Array()
 		for i in range(segments):
@@ -47,8 +47,8 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		
 		
 		# "Destruct" prend un polygone (forme du trou) et une position globale
-		#var destroyed_area = terrain.destruct(polygon, global_position)
-		#print("Destroyed area:", destroyed_area)
+		var destroyed_area = terrain.destruct(polygon, global_position)
+		print("Destroyed area:", destroyed_area)
 		
 		await get_tree().create_timer(0.5).timeout
 		$CollisionShape2D.disabled = true

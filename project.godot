@@ -142,9 +142,9 @@ camera_focus={
 
 [layer_names]
 
-2d_physics/layer_1="errant"
+2d_physics/layer_1="ground"
 2d_physics/layer_2="garde"
-2d_physics/layer_3="ground"
+2d_physics/layer_3="errant"
 2d_physics/layer_4="projectiles"
 
 [rendering]

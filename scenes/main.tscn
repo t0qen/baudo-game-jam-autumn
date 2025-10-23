@@ -31,12 +31,13 @@ font_size = 300
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
 
-[node name="DestructiblePolygon2D" type="Node2D" parent="."]
+[node name="DestructiblePolygon2D" type="Node2D" parent="." groups=["ground"]]
 script = ExtResource("2_tipki")
 collidable = true
+simplification = 16.0
 metadata/_custom_type_script = "uid://ch41sfxp6t1uw"
 
-[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D"]
+[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D" groups=["ground"]]
 texture = ExtResource("3_85g3d")
 texture_offset = Vector2(5000, 2000)
 texture_scale = Vector2(0.1, 0.1)
@@ -55,6 +56,68 @@ shape = SubResource("WorldBoundaryShape2D_tipki")
 [node name="team_errants" parent="team_container" instance=ExtResource("2_jyhfs")]
 
 [node name="team_gardes" parent="team_container" instance=ExtResource("3_tbgi4")]
+
+[node name="projectiles" type="Node2D" parent="."]
+
+[node name="spawns-points" type="Node2D" parent="."]
+
+[node name="errants" type="Node2D" parent="spawns-points"]
+
+[node name="Marker2D" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-3711, -1326)
+
+[node name="Marker2D2" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-3343, -1402)
+
+[node name="Marker2D3" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-2846, -1680)
+
+[node name="Marker2D4" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-2311, -1728)
+
+[node name="Marker2D5" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-1867, -1517)
+
+[node name="Marker2D6" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-1429, -860)
+
+[node name="Marker2D7" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-1226, -1086)
+
+[node name="Marker2D8" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-832, -1530)
+
+[node name="Marker2D9" type="Marker2D" parent="spawns-points/errants"]
+position = Vector2(-456, -1485)
+
+[node name="gardes" type="Node2D" parent="spawns-points"]
+
+[node name="Marker2D" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(761, -908)
+
+[node name="Marker2D2" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(1271, -842)
+
+[node name="Marker2D3" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(1682, -739)
+
+[node name="Marker2D4" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(2104, -1153)
+
+[node name="Marker2D5" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(2825, -1141)
+
+[node name="Marker2D6" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(3447, -1093)
+
+[node name="Marker2D7" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(4018, -848)
+
+[node name="Marker2D8" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(4395, -571)
+
+[node name="Marker2D9" type="Marker2D" parent="spawns-points/gardes"]
+position = Vector2(5009, -896)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
@@ -239,66 +302,6 @@ offset_bottom = 1501.0
 theme = ExtResource("7_85g3d")
 theme_override_font_sizes/font_size = 400
 text = "C'EST BON"
-
-[node name="spawns-points" type="Node2D" parent="."]
-
-[node name="errants" type="Node2D" parent="spawns-points"]
-
-[node name="Marker2D" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-3711, -1326)
-
-[node name="Marker2D2" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-3343, -1402)
-
-[node name="Marker2D3" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-2846, -1680)
-
-[node name="Marker2D4" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-2311, -1728)
-
-[node name="Marker2D5" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-1867, -1517)
-
-[node name="Marker2D6" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-1429, -860)
-
-[node name="Marker2D7" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-1226, -1086)
-
-[node name="Marker2D8" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-832, -1530)
-
-[node name="Marker2D9" type="Marker2D" parent="spawns-points/errants"]
-position = Vector2(-456, -1485)
-
-[node name="gardes" type="Node2D" parent="spawns-points"]
-
-[node name="Marker2D" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(761, -908)
-
-[node name="Marker2D2" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(1271, -842)
-
-[node name="Marker2D3" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(1682, -739)
-
-[node name="Marker2D4" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(2104, -1153)
-
-[node name="Marker2D5" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(2825, -1141)
-
-[node name="Marker2D6" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(3447, -1093)
-
-[node name="Marker2D7" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(4018, -848)
-
-[node name="Marker2D8" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(4395, -571)
-
-[node name="Marker2D9" type="Marker2D" parent="spawns-points/gardes"]
-position = Vector2(5009, -896)
 
 [node name="partie" type="Timer" parent="."]
 wait_time = 15.0

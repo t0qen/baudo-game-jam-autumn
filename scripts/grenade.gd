@@ -12,9 +12,9 @@ func _physics_process(delta):
 func _on_timer_timeout() -> void:
 	
 	# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
-	var terrain = get_parent().get_node("DestructiblePolygon2D")
+	var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 	
-	var radius = 100.0
+	var radius = 400.0
 	var segments = 32
 	var polygon = PackedVector2Array()
 	for i in range(segments):
@@ -22,8 +22,8 @@ func _on_timer_timeout() -> void:
 		polygon.append(Vector2(cos(angle), sin(angle)) * radius)
 	
 	# "Destruct" prend un polygone (forme du trou) et une position globale
-	#var destroyed_area = terrain.destruct(polygon, global_position)
-	#print("Destroyed area:", destroyed_area)
+	var destroyed_area = terrain.destruct(polygon, global_position)
+	print("Destroyed area:", destroyed_area)
 	$ExplosionPatateEtGrenade.play()
 	var bodies = $mob_detection.get_overlapping_bodies()
 	for body in bodies:
