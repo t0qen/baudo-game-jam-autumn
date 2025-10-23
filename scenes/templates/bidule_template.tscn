@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://dreipx6w1ycb6"]
+[gd_scene load_steps=115 format=3 uid="uid://dreipx6w1ycb6"]
 
 [ext_resource type="Script" uid="uid://crellanggal1o" path="res://scripts/bidule_template.gd" id="1_6lqgl"]
 [ext_resource type="FontFile" uid="uid://fdf13fyqswn5" path="res://assets/Font/Capture it.ttf" id="2_2idbw"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://or6p3etdxvp3" path="res://assets/Sprites/Garde/idle/frame_07_delay-0.04s.png" id="9_nlu60"]
 [ext_resource type="Texture2D" uid="uid://dgn4sve6v4jjv" path="res://assets/Sprites/Garde/idle/frame_08_delay-0.04s.png" id="10_77s6n"]
 [ext_resource type="Texture2D" uid="uid://2xpj0drgaio3" path="res://assets/Sprites/Garde/idle/frame_09_delay-0.04s.png" id="11_e0nlx"]
+[ext_resource type="Texture2D" uid="uid://d2wm2cvr05h4h" path="res://assets/Sprites/Errant/Bras/main_grana_2.png" id="11_o8gui"]
 [ext_resource type="Texture2D" uid="uid://dkupfkx7m5xot" path="res://assets/Sprites/Garde/Bras/Patator Anim/frame_0_delay-0.04s.png" id="12_hqaeu"]
 [ext_resource type="Texture2D" uid="uid://nuxkto26jyur" path="res://assets/Sprites/Garde/idle/frame_10_delay-0.04s.png" id="12_kxtwb"]
 [ext_resource type="Texture2D" uid="uid://mbmw5ra1qtjn" path="res://assets/Sprites/Garde/idle/frame_11_delay-0.04s.png" id="13_vnw35"]
@@ -97,6 +98,7 @@
 [ext_resource type="Texture2D" uid="uid://cyd81uly28ug0" path="res://assets/Sprites/Errant/Bras/Pompe Anim/frame_4_delay-0.04s.png" id="89_aypsx"]
 [ext_resource type="Texture2D" uid="uid://3kvgh4o3qdxk" path="res://assets/Sprites/Errant/Bras/Pompe Anim/frame_5_delay-0.04s.png" id="90_1dgla"]
 [ext_resource type="Texture2D" uid="uid://niuo7dd5kuc5" path="res://assets/Sprites/Errant/Bras/Pompe Anim/frame_6_delay-0.04s.png" id="91_pilwg"]
+[ext_resource type="Texture2D" uid="uid://0dfgfh7bhu6l" path="res://assets/Sprites/Errant/Bras/main_errant_simple.png" id="93_ulcfd"]
 [ext_resource type="Texture2D" uid="uid://we4ikd6ycixh" path="res://assets/Sprites/Garde/Bras/Pompe Anim/frame_0_delay-0.04s.png" id="94_w820g"]
 [ext_resource type="Texture2D" uid="uid://dut3sih5gjxdt" path="res://assets/Sprites/Garde/Bras/Pompe Anim/frame_1_delay-0.04s.png" id="95_3r2df"]
 [ext_resource type="Texture2D" uid="uid://bbp8jgrvmawpy" path="res://assets/Sprites/Garde/Bras/Pompe Anim/frame_2_delay-0.04s.png" id="96_73fie"]
@@ -159,7 +161,10 @@ animations = [{
 "name": &"errant_pompe",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_o8gui")
+}],
 "loop": true,
 "name": &"errant_simple",
 "speed": 5.0
@@ -484,7 +489,18 @@ animations = [{
 "name": &"errant_pompe",
 "speed": 15.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("91_pilwg")
+}],
+"loop": true,
+"name": &"errant_pompe_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("93_ulcfd")
+}],
 "loop": true,
 "name": &"errant_simple",
 "speed": 5.0
@@ -530,6 +546,14 @@ animations = [{
 "loop": false,
 "name": &"garde_pompe",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("100_4agyn")
+}],
+"loop": true,
+"name": &"garde_pompe_1",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -619,9 +643,7 @@ position = Vector2(46, -73)
 position = Vector2(-189, 79)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_kxtwb")
-animation = &"garde_pompe"
-frame = 6
-frame_progress = 1.0
+animation = &"garde_pompe_1"
 
 [node name="Pompe" type="Area2D" parent="aim_gauche"]
 position = Vector2(-46, 73)

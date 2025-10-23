@@ -43,7 +43,7 @@ enum MOB_POSSIBILITY {
 	GARDE,
 	ERRANT
 }
-var current : MOB_POSSIBILITY = MOB_POSSIBILITY.GARDE
+var current : MOB_POSSIBILITY = MOB_POSSIBILITY.ERRANT
 
 func update_life_bar():
 	$ui/ProgressBar.value = current_life
@@ -140,25 +140,32 @@ func play_bras_animation(animation):
 	if current == MOB_POSSIBILITY.GARDE:
 		match animation:
 			"grenade":
-				$aim_droite/bras_droite.play("garde_idle")
+				$aim_droite/bras_droite.play("garde_simple")
 				$aim_gauche/bras_gauche.play("garde_grenade")
 			"pompe":
 				$aim_droite/bras_droite.play("garde_pompe")
 				$aim_gauche/bras_gauche.play("garde_pompe")
+			"pompe1":
+				$aim_droite/bras_droite.play("garde_pompe")
+				$aim_gauche/bras_gauche.play("garde_pompe_1")
 			"idle":
 				$aim_droite/bras_droite.play("garde_simple")
 				$aim_gauche/bras_gauche.play("garde_simple")
 			"patator":
 				$aim_droite/bras_droite.play("garde_patator")
 				$aim_gauche/bras_gauche.play("garde_patator")
+			
 	else:
 		match animation:
 			"grenade":
-				$aim_droite/bras_droite.play("errant_idle")
+				$aim_droite/bras_droite.play("errant_simple")
 				$aim_gauche/bras_gauche.play("errant_grenade")
 			"pompe":
 				$aim_droite/bras_droite.play("errant_pompe")
 				$aim_gauche/bras_gauche.play("errant_pompe")
+			"pompe1":
+				$aim_droite/bras_droite.play("errant_pompe")
+				$aim_gauche/bras_gauche.play("errant_pompe_1")
 			"idle":
 				$aim_droite/bras_droite.play("errant_simple")
 				$aim_gauche/bras_gauche.play("errant_simple")
@@ -261,7 +268,7 @@ func enter_state(new_state : STATE):
 			$aim_droite.rotation_degrees = 0
 			$pivot2.rotation_degrees = 0
 			play_animation("idle")
-			play_bras_animation("pompe")
+			play_bras_animation("pompe1")
 
 #pareil que enter_state sauf que la c quand on quitte un state
 #ex: quand on quitte le state "falling" on joue l'animation d'atterrissage (landing)
@@ -444,6 +451,7 @@ func update_state():
 			aim()
 			
 			if wanna_pompe && can_pompe:
+				play_bras_animation("pompe")
 				can_pompe = false
 				var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
 				$aim_gauche/Pompe/Area.show()
