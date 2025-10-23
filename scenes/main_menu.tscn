@@ -50,10 +50,17 @@ text = "Start
 
 [node name="Quit" type="Button" parent="."]
 offset_left = -747.0
-offset_top = 88.0
+offset_top = 57.0
 offset_right = -427.0
-offset_bottom = 243.0
+offset_bottom = 212.0
 text = "Quit"
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 534.0
+offset_top = 313.0
+offset_right = 854.0
+offset_bottom = 468.0
+text = "Crédits"
 
 [node name="PopUp" type="Panel" parent="."]
 visible = false
@@ -245,4 +252,5 @@ text = "Commencer"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="PopUp/Commencer" to="." method="_on_commencer_pressed"]

@@ -25,3 +25,7 @@ func _on_commencer_pressed() -> void:
 	VarBidules.duree_partie_sec = $"PopUp/Durée de la partie Button".get_item_id($"PopUp/Durée de la partie Button".selected)
 	VarBidules.duree_tour_sec = $"PopUp/Durée du tour Button".get_item_id($"PopUp/Durée du tour Button".selected)
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+
+func _on_credits_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/crédits.tscn")
