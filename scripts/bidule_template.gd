@@ -73,12 +73,10 @@ func _ready() -> void:
 
 func _on_selected_bidule_changed(new_bidule):
 	if new_bidule == self:
-		print("SELECTED !!!!!!!!!!!")
 		is_selected = true
 		$ui/Label2.show()
 		change_state(STATE.CONTROL)
 	else:
-		print("UNSELECTED !!!!!!!!!!!")
 		is_selected = false
 		$ui/Label2.hide()
 		change_state(STATE.IDLE)
@@ -95,11 +93,9 @@ func take_damage(amount : int):
 	current_life = current_life - amount
 	update_life_bar()
 	if current_life < 1:
-		print("Died")
 		die()
 
 func aim():
-	print($aim_droite.rotation_degrees)
 	if wanna_aim_left:
 		$aim_droite.rotation_degrees -= 2.5
 		$aim_gauche.rotation_degrees -= 2.5
@@ -120,7 +116,6 @@ func aim():
 			$aim_gauche.rotation_degrees = 40
 			$pivot2.rotation_degrees = 40
 	elif last_dir_nozero == -1:
-		print("dir -1")
 		if $aim_droite.rotation_degrees > 100:
 			$aim_droite.rotation_degrees = 100
 			$aim_gauche.rotation_degrees = 100
@@ -175,8 +170,6 @@ func play_bras_animation(animation):
 func play_animation(animation):
 	
 	if current == MOB_POSSIBILITY.GARDE:
-		print("playing anim")
-		print("garde_" + animation)
 		$pivot/sprites.play("garde_" + animation)
 	else:
 		$pivot/sprites.play("errant_" + animation)
@@ -318,7 +311,6 @@ func update_state():
 				apply_central_force(Vector2(direction * (speed - 500), 0))
 				
 			if linear_velocity.y == 0:
-				print("change")
 				can_jump = true
 				change_state(STATE.CONTROL)
 				
@@ -372,7 +364,6 @@ func update_state():
 				change_state(STATE.JUMP)
 
 		STATE.ROCKET:
-			print("ROCKET PRIME")
 			if wanna_jump and can_jump:
 				change_state(STATE.JUMP)
 			if wanna_left || wanna_right:

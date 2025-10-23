@@ -44,15 +44,13 @@ func update_partie_duree_pb():
 func initialize_ui():
 	$UI/ProgressBar.max_value = current_timer_time
 	$UI/ProgressBar.value = current_timer_time
-	$UI/Label.text = "TEAM QUI JOUE : LES GARDES"
+	$UI/Label.text = "TEAM EN TRAIN DE JOUER : LES GARDES"
 	
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
-	print($partie.time_left)
 	
 func _physics_process(delta: float) -> void:
 	pass
-	#update_mob_array() # TODO optimiser, update quand il y a un mob qui meurt
 
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
 	team_a_mobs = []
@@ -80,11 +78,11 @@ func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
 		print("----------------- team b's turn !")
 		current_playing_team = TEAM.B
-		$UI/Label.text = "TEAM QUI JOUE : LES ERRANTS"
+		$UI/Label.text = "TEAM EN TRAIN DE JOUER : LES ERRANTS"
 	else:
 		print("----------------- team a's turn !")
 		current_playing_team = TEAM.A 
-		$UI/Label.text = "TEAM QUI JOUE : LES GARDES"
+		$UI/Label.text = "TEAM EN TRAIN : LES GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
 	if current_playing_team == TEAM.A:
