@@ -153,6 +153,7 @@ wait_time = 15.0
 one_shot = true
 
 [node name="InGame" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_tipki")
 autoplay = true
 bus = &"Music"
