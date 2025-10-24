@@ -315,21 +315,88 @@ offset_right = 9490.0
 offset_bottom = 5323.0
 theme = ExtResource("7_85g3d")
 
+[node name="pompe" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 50.000126
+offset_top = 59.999634
+offset_right = 2270.0002
+offset_bottom = 1568.9996
+theme = ExtResource("7_85g3d")
+text = "POMPE (0)"
+label_settings = SubResource("LabelSettings_choun")
+
 [node name="control" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
-offset_left = 90.00012
-offset_top = 88.99988
-offset_right = 2310.0
-offset_bottom = 288.99988
+offset_left = 65.00012
+offset_top = 1444.9998
+offset_right = 2285.0
+offset_bottom = 1644.9998
 theme = ExtResource("7_85g3d")
-text = "CONTROL (QD / AD)
-SAUT (espace)
-GRENADE (8)
-PATATOR (9)
-POMPE (0)
-VISER (zs / WS)
-CAMERA (fleches)
-ZOOM CAMERA (EA / QE)"
+text = "CONTROL (QD / AD)"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="jump" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 75.00012
+offset_top = 1254.9999
+offset_right = 2295.0
+offset_bottom = 1454.9999
+theme = ExtResource("7_85g3d")
+text = "SAUT (espace)"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="grenade" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 65.00012
+offset_top = 1044.9999
+offset_right = 2285.0
+offset_bottom = 1419.9999
+theme = ExtResource("7_85g3d")
+text = "GRENADE (8)
+"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="patator" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 75.00012
+offset_top = 819.9999
+offset_right = 2295.0
+offset_bottom = 1194.9999
+theme = ExtResource("7_85g3d")
+text = "PATATOR (9)
+"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="aim" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 60.000126
+offset_top = 619.9999
+offset_right = 2280.0002
+offset_bottom = 994.9999
+theme = ExtResource("7_85g3d")
+text = "VISER (zs / WS)
+"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="camera" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 50.000126
+offset_top = 429.9999
+offset_right = 2270.0002
+offset_bottom = 804.9999
+theme = ExtResource("7_85g3d")
+text = "CAMERA (fleches)
+"
+label_settings = SubResource("LabelSettings_choun")
+
+[node name="zoom" type="Label" parent="CanvasLayer/UI/armes"]
+layout_mode = 0
+offset_left = 55.000126
+offset_top = 239.99992
+offset_right = 2275.0002
+offset_bottom = 439.99994
+theme = ExtResource("7_85g3d")
+text = "ZOOM CAMERA (EA / QE)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="focus" type="Button" parent="CanvasLayer/UI"]

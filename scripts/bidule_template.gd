@@ -219,7 +219,7 @@ func change_state(new_state : STATE):
 func enter_state(new_state : STATE): 
 	match new_state:
 		STATE.JUMP:
-			BiduleManager.set_current_action("control")
+			BiduleManager.set_current_action("jump")
 			can_jump = false
 			play_animation("saut")
 			play_bras_animation("idle")

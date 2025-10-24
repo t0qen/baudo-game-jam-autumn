@@ -100,20 +100,25 @@ func spawn_mobs():
 	#print("FINISHED")
 
 func update_mob_action(action):
-	#$CanvasLayer/UI/armes/pompe.modulate = Color("white")
-	#$CanvasLayer/UI/armes/control.modulate = Color("white")
-	#$CanvasLayer/UI/armes/patator.modulate = Color("white")
-	#$CanvasLayer/UI/armes/grenade.modulate = Color("white")
-	
-	#match action:
-		#"pompe":
-			#$CanvasLayer/UI/armes/pompe.modulate = Color("green")
-		#"control":
-			#$CanvasLayer/UI/armes/control.modulate = Color("green")
-		#"patator":
-			#$CanvasLayer/UI/armes/patator.modulate = Color("green")
-		#"grenade":
-			#$CanvasLayer/UI/armes/grenade.modulate = Color("green")
+	$CanvasLayer/UI/armes/pompe.modulate = Color("white")
+	$CanvasLayer/UI/armes/control.modulate = Color("white")
+	$CanvasLayer/UI/armes/patator.modulate = Color("white")
+	$CanvasLayer/UI/armes/grenade.modulate = Color("white")
+	$CanvasLayer/UI/armes/jump.modulate = Color("white")
+	$CanvasLayer/UI/armes/aim.modulate = Color("white")
+	match action:
+		"aim":
+			$CanvasLayer/UI/armes/aim.modulate = Color("green")
+		"jump":
+			$CanvasLayer/UI/armes/jump.modulate = Color("green")
+		"pompe":
+			$CanvasLayer/UI/armes/pompe.modulate = Color("green")
+		"control":
+			$CanvasLayer/UI/armes/control.modulate = Color("green")
+		"patator":
+			$CanvasLayer/UI/armes/patator.modulate = Color("green")
+		"grenade":
+			$CanvasLayer/UI/armes/grenade.modulate = Color("green")
 	
 	pass
 	
