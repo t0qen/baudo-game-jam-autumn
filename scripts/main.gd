@@ -143,15 +143,23 @@ func update_total_life_pb():
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
 	update_total_life_pb()
+	
+	if VarEnd.body_can_move == false:
+		$duree_totale.paused = true
+	else:
+		$duree_totale.paused = false
 	update_temps_restant()
 	#update_mob_array()
 	
 func _physics_process(delta: float) -> void:
-	pass
+	if VarEnd.a_tire == true:
+		$partie.stop()
+	if VarEnd.can_end == true && $partie.time_left <= 0:
+		update_game()
 
 func update_temps_restant():
-	$CanvasLayer/UI/Label6.text = str(int($duree_totale.time_left / 60)) + "mn " + str(int($duree_totale.time_left) % 60) + "s"
 	
+	$CanvasLayer/UI/Label6.text = str(int($duree_totale.time_left / 60)) + "mn " + str(int($duree_totale.time_left) % 60) + "s"
 	
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
 	team_a_mobs.clear()
@@ -191,8 +199,8 @@ func update_game():
 	select_mob()
 	$CanvasLayer/UI/ColorRect.show()
 	get_tree().paused = true
-	
-	
+	VarEnd.can_end = false
+	start()
 	
 func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
@@ -243,6 +251,7 @@ func select_mob(): # on regarde quel bidule doit jouer
 	
 	
 func _on_partie_timeout() -> void:
+	
 	update_game() # quand le timer de la partie est finie on update -> changement de team
 	
 

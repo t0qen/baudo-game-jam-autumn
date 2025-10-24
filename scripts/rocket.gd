@@ -5,8 +5,10 @@ extends RigidBody2D
 var can_explode : bool = true
 
 func _ready() -> void:
+	VarEnd.can_end = false
+	VarEnd.a_tire = true
 	$PatateEnFeu.play()
-
+	VarEnd.body_can_move = false
 	
 
 
@@ -50,16 +52,20 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		var destroyed_area = terrain.destruct(polygon, global_position)
 		print("Destroyed area:", destroyed_area)
 		
+		
 		await get_tree().create_timer(0.5).timeout
 		$CollisionShape2D.disabled = true
 		$Sprite2D.hide()
+		await get_tree().create_timer(0.1).timeout
+		VarEnd.body_can_move = true
+		VarEnd.can_end = true
+		VarEnd.a_tire = false
 		for i in range($CPUParticles2D.amount):
 			if $CPUParticles2D.amount == 0:
 				return
 			$CPUParticles2D.amount -= 1
 			await get_tree().create_timer(0.1).timeout
-
-
+		
 
 func _on_explosion_patate_et_grenade_finished() -> void:
 	queue_free()

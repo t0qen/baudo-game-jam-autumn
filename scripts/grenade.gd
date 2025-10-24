@@ -3,6 +3,9 @@ extends RigidBody2D
 @export var damage : int = 50
 
 func _ready() -> void:
+	VarEnd.can_end = false
+	VarEnd.a_tire = true
+	VarEnd.body_can_move = false
 	self.show()
 	$Timer.start()
 
@@ -11,7 +14,6 @@ func _physics_process(delta):
 
 func _on_timer_timeout() -> void:
 	
-			
 	# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
 	var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 	
@@ -38,12 +40,16 @@ func _on_timer_timeout() -> void:
 			var force = clamp(2000.0 / max(distance, 20.0), 200, 1200) # Force selon distance
 			body.apply_impulse(dir * force)
 	
+	
 	self.hide()
 	
 
 
-
 func _on_explosion_patate_et_grenade_finished() -> void:
+	VarEnd.can_end = true
+	VarEnd.a_tire = false
+	await get_tree().create_timer(0.1).timeout
+	VarEnd.body_can_move = true
 	queue_free()
 
 

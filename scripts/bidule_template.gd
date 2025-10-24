@@ -37,7 +37,7 @@ var can_rocket : bool = true
 var can_pompe : bool = true
 
 var prev_dir : int = direction
-var last_dir_nozero : int = direction 
+var last_dir_nozero : int = direction
 
 enum MOB_POSSIBILITY {
 	GARDE,
@@ -73,6 +73,7 @@ func get_inputs():
 	
 	
 func _ready() -> void:
+	VarEnd.body_can_move = true
 	$ui/ProgressBar.max_value = VarBidules.base_life
 	update_life_bar()
 	change_state(STATE.CONTROL)
@@ -294,185 +295,193 @@ func exit_state(last_state):
 func update_state():
 	match current_state:
 		STATE.IDLE:
-			if wanna_left || wanna_right:
-				change_state(STATE.CONTROL)
-			if wanna_bomb:
-				change_state(STATE.GRENADE)
-			if wanna_pompe:
-				change_state(STATE.POMPE)
-			if wanna_rocket:
-				change_state(STATE.ROCKET)
-			if wanna_jump && can_jump:
-				change_state(STATE.JUMP)
+			if VarEnd.body_can_move == true:
+				if wanna_left || wanna_right:
+					change_state(STATE.CONTROL)
+				if wanna_bomb:
+					change_state(STATE.GRENADE)
+				if wanna_pompe:
+					change_state(STATE.POMPE)
+				if wanna_rocket:
+					change_state(STATE.ROCKET)
+				if wanna_jump && can_jump:
+					change_state(STATE.JUMP)
 			
 		STATE.JUMP:
+			if VarEnd.body_can_move == true:
+				direction = 0
+				if wanna_left:
+					direction = -1
 
-			direction = 0
-			if wanna_left:
-				direction = -1
-
-			elif wanna_right:
-				direction = 1
-			
-			if prev_dir != direction && direction != 0:
-				if direction == 1:
-					$pivot.scale.x = -1
-					$aim_droite.scale.x = -1
-					$aim_droite.position.x = 46 
-					$aim_gauche.scale.x = -1
-					$pivot2.scale.x = -1
-					$aim_gauche.position.x = -35 
-				elif direction == -1:
-					$pivot.scale.x = 1
-					$aim_droite.scale.x = 1
-					$aim_droite.position.x = -35
-					$aim_gauche.scale.x = 1
-					$pivot2.scale.x = 1
-					$aim_gauche.position.x = 46 
-			
-			prev_dir = direction
-			if direction != 0:
-				last_dir_nozero = direction
-			
-			if linear_velocity.x > max_h_speed:
-				linear_velocity.x = max_h_speed
-			elif linear_velocity.x < -max_h_speed:
-				linear_velocity.x = -max_h_speed
+				elif wanna_right:
+					direction = 1
 				
-			if direction != 0:
-				apply_central_force(Vector2(direction * (speed - 750), 0))
+				if prev_dir != direction && direction != 0:
+					if direction == 1:
+						$pivot.scale.x = -1
+						$aim_droite.scale.x = -1
+						$aim_droite.position.x = 46 
+						$aim_gauche.scale.x = -1
+						$pivot2.scale.x = -1
+						$aim_gauche.position.x = -35 
+					elif direction == -1:
+						$pivot.scale.x = 1
+						$aim_droite.scale.x = 1
+						$aim_droite.position.x = -35
+						$aim_gauche.scale.x = 1
+						$pivot2.scale.x = 1
+						$aim_gauche.position.x = 46 
 				
-			if linear_velocity.y == 0:
-				print("FINISHED JUMP")
-				change_state(STATE.CONTROL)
+				prev_dir = direction
+				if direction != 0:
+					last_dir_nozero = direction
+				
+				if linear_velocity.x > max_h_speed:
+					linear_velocity.x = max_h_speed
+				elif linear_velocity.x < -max_h_speed:
+					linear_velocity.x = -max_h_speed
+					
+				if direction != 0:
+					apply_central_force(Vector2(direction * (speed - 750), 0))
+					
+				if linear_velocity.y == 0:
+					print("FINISHED JUMP")
+					change_state(STATE.CONTROL)
 				
 		STATE.CONTROL:
-			if wanna_bomb:
-				change_state(STATE.GRENADE)
-			if wanna_pompe:
-				change_state(STATE.POMPE)
-			if wanna_rocket:
-				change_state(STATE.ROCKET)
-				
-			direction = 0
-			if wanna_left:
-				direction = -1
+			if VarEnd.body_can_move == true:
+				if wanna_bomb:
+					change_state(STATE.GRENADE)
+				if wanna_pompe:
+					change_state(STATE.POMPE)
+				if wanna_rocket:
+					change_state(STATE.ROCKET)
+					
+				direction = 0
+				if wanna_left:
+					direction = -1
 
-			elif wanna_right:
-				direction = 1
+				elif wanna_right:
+					direction = 1
+					
+				if direction != 0:
+					apply_central_force(Vector2(direction * speed, 0))
+				else:
+					change_state(STATE.IDLE)
+					
 				
-			if direction != 0:
-				apply_central_force(Vector2(direction * speed, 0))
-			else:
-				change_state(STATE.IDLE)
+					
+				if prev_dir != direction && direction != 0:
+					if direction == 1:
+						$pivot.scale.x = -1
+						$aim_droite.scale.x = -1
+						$aim_droite.position.x = 46 
+						$aim_gauche.scale.x = -1
+						$pivot2.scale.x = -1
+						$aim_gauche.position.x = -35 
+					elif direction == -1:
+						$pivot.scale.x = 1
+						$aim_droite.scale.x = 1
+						$aim_droite.position.x = -35
+						$aim_gauche.scale.x = 1
+						$pivot2.scale.x = 1
+						$aim_gauche.position.x = 46 
 				
-			
+				prev_dir = direction
+				if direction != 0:
+					last_dir_nozero = direction
+					
 				
-			if prev_dir != direction && direction != 0:
-				if direction == 1:
-					$pivot.scale.x = -1
-					$aim_droite.scale.x = -1
-					$aim_droite.position.x = 46 
-					$aim_gauche.scale.x = -1
-					$pivot2.scale.x = -1
-					$aim_gauche.position.x = -35 
-				elif direction == -1:
-					$pivot.scale.x = 1
-					$aim_droite.scale.x = 1
-					$aim_droite.position.x = -35
-					$aim_gauche.scale.x = 1
-					$pivot2.scale.x = 1
-					$aim_gauche.position.x = 46 
-			
-			prev_dir = direction
-			if direction != 0:
-				last_dir_nozero = direction
-				
-			
-				
-			#limite la vitesse, sinon c exponentiel
-			if linear_velocity.x > max_h_speed:
-				linear_velocity.x = max_h_speed
-			elif linear_velocity.x < -max_h_speed:
-				linear_velocity.x = -max_h_speed
+					
+				#limite la vitesse, sinon c exponentiel
+				if linear_velocity.x > max_h_speed:
+					linear_velocity.x = max_h_speed
+				elif linear_velocity.x < -max_h_speed:
+					linear_velocity.x = -max_h_speed
 
-			if wanna_jump and can_jump:
-				change_state(STATE.JUMP)
+				if wanna_jump and can_jump:
+					change_state(STATE.JUMP)
 
 		STATE.ROCKET:
-			if wanna_jump and can_jump:
-				change_state(STATE.JUMP)
-			if wanna_left || wanna_right:
-				change_state(STATE.CONTROL)
-			if wanna_bomb:
-				change_state(STATE.GRENADE)
-			if wanna_pompe:
-				change_state(STATE.POMPE)
+			if VarEnd.body_can_move == true:
+				if wanna_jump and can_jump:
+					change_state(STATE.JUMP)
+				if wanna_left || wanna_right:
+					change_state(STATE.CONTROL)
+				if wanna_bomb:
+					change_state(STATE.GRENADE)
+				if wanna_pompe:
+					change_state(STATE.POMPE)
 
-			aim()
-			
-			if wanna_rocket && can_rocket:
-				can_rocket = false
-				#launch grenade
-				var rocket = rocket_scene.instantiate()
-				rocket.global_position = $pivot2/depart_proj.global_position
-				var direction = $pivot2/depart_proj.global_transform.x.normalized()
-				get_parent().get_parent().get_parent().get_node("projectiles").add_child(rocket)
-				$LancePatateLaunch.play()
-				rocket.linear_velocity = direction * -3500
-						
-				get_tree().current_scene.add_child(rocket)
-				await get_tree().create_timer(1).timeout
-				can_rocket = true
+				aim()
+				
+				if wanna_rocket && can_rocket:
+					if VarEnd.a_tire == false:
+						#launch grenade
+						var rocket = rocket_scene.instantiate()
+						rocket.global_position = $pivot2/depart_proj.global_position
+						var direction = $pivot2/depart_proj.global_transform.x.normalized()
+						get_parent().get_parent().get_parent().get_node("projectiles").add_child(rocket)
+						$LancePatateLaunch.play()
+						rocket.linear_velocity = direction * -3500
+								
+						get_tree().current_scene.add_child(rocket)
+					
 
 		STATE.GRENADE:
-			if wanna_jump and can_jump:
-				change_state(STATE.JUMP)
-			if wanna_left || wanna_right:
-				change_state(STATE.CONTROL)
-			if wanna_pompe:
-				change_state(STATE.POMPE)
-			if wanna_rocket:
-				change_state(STATE.ROCKET)
-			aim()
+			if VarEnd.body_can_move == true:
+				if wanna_jump and can_jump:
+					change_state(STATE.JUMP)
+				if wanna_left || wanna_right:
+					change_state(STATE.CONTROL)
+				if wanna_pompe:
+					change_state(STATE.POMPE)
+				if wanna_rocket:
+					change_state(STATE.ROCKET)
+				aim()
 			
-			if wanna_bomb && can_bombe:
-				can_bombe = false
-				#launch grenade
-				var grenade = grenade_scene.instantiate()
-				grenade.global_position = $pivot2/depart_proj.global_position
-				var direction = $pivot2/depart_proj.global_transform.x.normalized()
-				get_parent().get_parent().get_parent().get_node("projectiles").add_child(grenade)
-				$LancerGrenade.play()
-				grenade.apply_central_impulse(direction * -2500)
+				if wanna_bomb && can_bombe:
+					if VarEnd.a_tire == false:
+						#launch grenade
+						var grenade = grenade_scene.instantiate()
+						grenade.global_position = $pivot2/depart_proj.global_position
+						var direction = $pivot2/depart_proj.global_transform.x.normalized()
+						get_parent().get_parent().get_parent().get_node("projectiles").add_child(grenade)
+						$LancerGrenade.play()
+						grenade.apply_central_impulse(direction * -2500)
+								
+						get_tree().current_scene.add_child(grenade)
 						
-				get_tree().current_scene.add_child(grenade)
-				await get_tree().create_timer(5).timeout
-				can_bombe = true
-			
+				
 				
 		STATE.POMPE:
-			if wanna_jump and can_jump:
-				change_state(STATE.JUMP)
-			if wanna_left || wanna_right:
-				change_state(STATE.CONTROL)
-			if wanna_bomb:
-				change_state(STATE.GRENADE)
-			if wanna_rocket:
-				change_state(STATE.ROCKET)
-			aim()
-			
-			if wanna_pompe && can_pompe:
-				play_bras_animation("pompe")
-				$TirPompe.play()
-				can_pompe = false
-				var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
-				print(bodies)
-				for body in bodies:
-					if body.has_method("take_damage"):
-						body.take_damage(damage_pompe)
-				await get_tree().create_timer(5).timeout
-				can_pompe = true
+			if VarEnd.body_can_move == true:
+				if wanna_jump and can_jump:
+					change_state(STATE.JUMP)
+				if wanna_left || wanna_right:
+					change_state(STATE.CONTROL)
+				if wanna_bomb:
+					change_state(STATE.GRENADE)
+				if wanna_rocket:
+					change_state(STATE.ROCKET)
+				aim()
+				
+				if wanna_pompe && can_pompe:
+					if VarEnd.a_tire == false:
+						VarEnd.can_end = false
+						VarEnd.a_tire = true
+						VarEnd.body_can_move = false
+						play_bras_animation("pompe")
+						$TirPompe.play()
+						var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
+						print(bodies)
+						for body in bodies:
+							if body.has_method("take_damage"):
+								body.take_damage(damage_pompe)
+						await get_tree().create_timer(1).timeout
+						VarEnd.a_tire = false
+						VarEnd.body_can_move = true
+						VarEnd.can_end = true
 
 
 #endregion
