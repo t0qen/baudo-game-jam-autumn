@@ -277,3 +277,8 @@ func _on_duree_totale_timeout() -> void:
 func _on_button_pressed() -> void:
 	$CanvasLayer/UI/ColorRect.hide()
 	get_tree().paused = false
+
+
+func _on_aide_toggled(toggled_on: bool) -> void:
+	$"CanvasLayer/UI/aide-menu".visible = toggled_on
+	get_tree().paused = toggled_on

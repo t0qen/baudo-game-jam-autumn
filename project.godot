@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Shattered Rifts"
-run/main_scene="uid://c1836v71tkimw"
+run/main_scene="uid://djdhj7pj2kxvs"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

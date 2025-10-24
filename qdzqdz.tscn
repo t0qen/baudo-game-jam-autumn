@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgqyy88s7arpf"]
+[gd_scene load_steps=4 format=3 uid="uid://cctebo81rnbn"]
 
 [ext_resource type="Texture2D" uid="uid://b7dr8rk4jyebd" path="res://assets/Sprites/beautiful-island-isolated-png.png" id="2_bbm1k"]
 [ext_resource type="Script" uid="uid://ch41sfxp6t1uw" path="res://scripts/destructible_terrain_node.gd" id="2_yff4a"]

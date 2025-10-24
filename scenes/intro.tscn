@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://djdhj7pj2kxvs"]
+
+[ext_resource type="Script" uid="uid://dahib6po6k4hm" path="res://scripts/intro.gd" id="1_ioskq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ioskq"]
+font_size = 25
+
+[node name="intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ioskq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 967.0
+offset_right = 1119.0
+offset_bottom = 1055.0
+theme_override_font_sizes/font_size = 50
+text = "OK, JOUER"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 31.0
+offset_right = 1888.0
+offset_bottom = 950.0
+text = "Dans un monde post-apocalyptique, ou les valeurs ne guident plus personne"
+label_settings = SubResource("LabelSettings_ioskq")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

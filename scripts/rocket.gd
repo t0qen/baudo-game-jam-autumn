@@ -22,7 +22,7 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 		
 		var radius = 800
-		var segments = 32
+		var segments = 16
 		var polygon = PackedVector2Array()
 		for i in range(segments):
 			var angle = TAU * i / segments
