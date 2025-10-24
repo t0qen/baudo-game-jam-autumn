@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cjogh5j76tshk"]
+[gd_scene load_steps=52 format=3 uid="uid://cjogh5j76tshk"]
 
 [ext_resource type="Texture2D" uid="uid://bkobn0l346vu0" path="res://assets/Sprites/Garde/idle/frame_00_delay-0.04s.png" id="1_lt04c"]
 [ext_resource type="Script" uid="uid://bkk4qexdiemxh" path="res://scripts/equipe_qui_gagne.gd" id="1_qmkxp"]
@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://ml20d2gnakt3" path="res://assets/Sprites/Errant/Idle/frame_13_delay-0.04s.png" id="32_7lxfq"]
 [ext_resource type="Texture2D" uid="uid://cpavgnq3kaewi" path="res://assets/Sprites/Errant/Idle/frame_14_delay-0.04s.png" id="33_x3q53"]
 [ext_resource type="Texture2D" uid="uid://xvf2xsq60jaw" path="res://assets/Sprites/Errant/Bras/pompe_2.png" id="34_6qmfn"]
+[ext_resource type="Theme" uid="uid://wwtmfnoaat7r" path="res://scenes/themedefault.tres" id="36_v5g7j"]
+[ext_resource type="FontFile" uid="uid://dbsu8y8i7okhm" path="res://assets/Font/Urban Shadow Sans Serif.otf" id="37_vlb2y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqkym"]
 font = ExtResource("18_t02st")
@@ -272,6 +274,56 @@ _data = {
 &"RESET": SubResource("Animation_1jcgm")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ed2qm"]
+bg_color = Color(0.5367148, 0.43689108, 0.354896, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2d78"]
+bg_color = Color(0.3712062, 0.29355314, 0.23060146, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikxvw"]
+bg_color = Color(0.4438093, 0.35461056, 0.28239065, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmh4o"]
+bg_color = Color(0.19479206, 0.14817962, 0.11032752, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpoxm"]
+bg_color = Color(0.41811082, 0.3328742, 0.26382768, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
 [node name="Equipe qui gagne" type="Node2D"]
 script = ExtResource("1_qmkxp")
 
@@ -339,3 +391,28 @@ autoplay = "IdleMainErrant"
 [node name="Victoire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_eqkym")
 bus = &"SFX"
+
+[node name="menu" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = 211.0
+offset_right = 262.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("36_v5g7j")
+theme_override_fonts/font = ExtResource("37_vlb2y")
+theme_override_font_sizes/font_size = 131
+theme_override_styles/normal = SubResource("StyleBoxFlat_ed2qm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m2d78")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ikxvw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cmh4o")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wpoxm")
+text = "Menu
+"
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
