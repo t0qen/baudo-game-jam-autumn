@@ -7,3 +7,5 @@ var duree_tour_sec : int = 30
 var duree_partie_sec : int = 1800
 
 var is_errant_winner : bool
+
+var joueur_tjr_en_vie : bool = true

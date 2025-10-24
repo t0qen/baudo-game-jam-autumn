@@ -31,7 +31,9 @@ func get_mob_position():
 	if current_bidule:
 		return current_bidule.global_position
 	
-
+func get_current_bidule():
+	return current_bidule
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

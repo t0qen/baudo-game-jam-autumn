@@ -1,7 +1,9 @@
 extends RigidBody2D
 
 @export var is_selected : bool = false
-@export var damage_pompe : int = 10
+@export var damage_pompe : int = 15
+
+signal died(bidule)
 
 # NODES
 @onready var jump_timer: Timer = $jump_timer
@@ -97,9 +99,12 @@ func _physics_process(delta: float) -> void:
 		update_state()
 
 func take_damage(amount : int):
-	current_life = current_life - amount
+	print("Take damage:", amount)
+	current_life -= amount
 	update_life_bar()
-	if current_life < 1:
+
+	if current_life <= 0:
+		print("Appel de die()")
 		is_alive = false
 		die()
 
@@ -134,9 +139,11 @@ func aim():
 			$pivot2.rotation_degrees = -40
 			
 func die():
-	print("died")
+	print("died - is_selected:", is_selected)
 	BiduleManager.ask_to_update_mob_array()
 	BiduleManager.set_current_action("no")
+	emit_signal("died", self)
+	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	
 	

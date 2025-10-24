@@ -19,7 +19,7 @@ func reset_zoom():
 	zoom.y = 0.2
 	
 func _process(delta: float) -> void:
-	print(zoom)
+	pass
 	
 func _physics_process(delta: float) -> void:
 	var movementsVect : Vector2 = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
@@ -29,8 +29,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if !timer.time_left > 0:
 			timer.start()
-	if can_focus:
-		
+	if can_focus && VarBidules.joueur_tjr_en_vie:
 		global_position = BiduleManager.get_mob_position()
 		
 	if Input.is_action_pressed("camera_zoom_up"):
@@ -43,5 +42,4 @@ func _physics_process(delta: float) -> void:
 			zoom = Vector2(0.05, 0.05)
 
 func _on_timer_timeout() -> void:
-	print("TRUEEEEEE")
 	can_focus = true

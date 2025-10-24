@@ -37,6 +37,7 @@ func _ready() -> void:
 	duree_totale_timer.start()
 	BiduleManager.set_main(self)
 	$partie.wait_time = current_timer_time
+	VarBidules.joueur_tjr_en_vie = true
 	spawn_mobs()
 	initialize_ui()
 	start()
@@ -57,6 +58,8 @@ func spawn_mobs():
 		current_errant.global_position = current_sp.global_position
 		current_errant.set_current("errant")
 		$team_container/team_errants.add_child(current_errant)
+		current_errant.connect("died", Callable(self, "_on_mob_died"))
+		
 	#garde
 	var gardes_spawn_points = []
 	for i in $"spawns-points/gardes".get_children():
@@ -68,6 +71,8 @@ func spawn_mobs():
 		current_garde.global_position = current_sp.global_position
 		current_garde.set_current("garde")
 		$team_container/team_gardes.add_child(current_garde)
+		current_garde.connect("died", Callable(self, "_on_mob_died"))
+		
 	#for i in range(VarBidules.nbr_errants):
 		#var current_sp = $"spawns-points/errants".get_child(randi_range(0, 9))
 		#if current_sp in errants_taken_sp:
@@ -205,6 +210,7 @@ func update_game():
 	$CanvasLayer/UI/ColorRect.show()
 	get_tree().paused = true
 	VarEnd.can_end = false
+	VarBidules.joueur_tjr_en_vie = true
 	start()
 	
 func change_playing_team(): # quelle team joue
@@ -289,4 +295,13 @@ func _on_aide_toggled(toggled_on: bool) -> void:
 
 
 func _on_fin_map_body_entered(body: Node2D) -> void:
-	body.queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage(500000)
+
+func _on_mob_died(dead_bidule):
+	print("Signal reçu de:", dead_bidule.name)
+	if dead_bidule.is_selected:
+		print("Le joueur sélectionné est mort, on update la partie")
+		VarBidules.joueur_tjr_en_vie = false
+		update_game()
+		

@@ -45,7 +45,7 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 				var dir = (body.global_position - global_position).normalized()
 				var distance = global_position.distance_to(body.global_position)
 				var force = clamp(3000.0 / max(distance, 50.0), 400, 2000) # Force selon distance
-				body.apply_impulse(dir * force)
+				body.apply_impulse(dir * force * 3)
 		
 		
 		# "Destruct" prend un polygone (forme du trou) et une position globale

@@ -37,8 +37,8 @@ func _on_timer_timeout() -> void:
 		if body is RigidBody2D:
 			var dir = (body.global_position - global_position).normalized()
 			var distance = global_position.distance_to(body.global_position)
-			var force = clamp(2000.0 / max(distance, 20.0), 200, 1200) # Force selon distance
-			body.apply_impulse(dir * force)
+			var force = clamp(3000.0 / max(distance, 50.0), 400, 2000) # Force selon distance
+			body.apply_impulse(dir * force * 3)
 	
 	
 	self.hide()
@@ -46,7 +46,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_explosion_patate_et_grenade_finished() -> void:
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	VarEnd.can_end = true
 	VarEnd.a_tire = false
 	
