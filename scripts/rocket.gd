@@ -71,7 +71,6 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		
 		
 func _on_explosion_patate_et_grenade_finished() -> void:
-	VarEnd.has_game_ended = false
 	queue_free()
 
 

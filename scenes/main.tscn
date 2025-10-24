@@ -416,25 +416,13 @@ theme = ExtResource("7_85g3d")
 text = "ZOOM CAMERA (EA / QE)"
 label_settings = SubResource("LabelSettings_choun")
 
-[node name="focus" type="Button" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 6427.0
-offset_top = 5066.0
-offset_right = 7718.0
-offset_bottom = 5302.0
-focus_mode = 0
-theme = ExtResource("7_85g3d")
-theme_override_fonts/font = ExtResource("8_choun")
-theme_override_font_sizes/font_size = 130
-text = "FOCUS MOB SELECTIONNE"
-
 [node name="aide" type="Button" parent="CanvasLayer/UI"]
 process_mode = 3
 layout_mode = 0
-offset_left = 7230.0
-offset_top = 4791.0
-offset_right = 7707.0
-offset_bottom = 5027.0
+offset_left = 7275.0
+offset_top = 5105.0
+offset_right = 7701.47
+offset_bottom = 5316.0
 focus_mode = 0
 theme = ExtResource("7_85g3d")
 theme_override_fonts/font = ExtResource("8_choun")
@@ -496,13 +484,12 @@ collision_layer = 16
 collision_mask = 6
 
 [node name="bas" type="CollisionShape2D" parent="fin map"]
-position = Vector2(3775.25, 2246)
+position = Vector2(1052, 1974)
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]
 [connection signal="timeout" from="duree_totale" to="." method="_on_duree_totale_timeout"]
-[connection signal="pressed" from="CanvasLayer/UI/focus" to="." method="_on_focus_pressed"]
 [connection signal="toggled" from="CanvasLayer/UI/aide" to="." method="_on_aide_toggled"]
 [connection signal="pressed" from="CanvasLayer/UI/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="fin map" to="." method="_on_fin_map_body_entered"]

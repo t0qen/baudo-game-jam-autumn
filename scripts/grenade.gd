@@ -51,7 +51,6 @@ func _on_explosion_patate_et_grenade_finished() -> void:
 	VarEnd.a_tire = false
 	
 	#VarEnd.body_can_move = true
-	VarEnd.has_game_ended = false
 	queue_free()
 
 
