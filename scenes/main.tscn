@@ -310,6 +310,7 @@ offset_left = 1416.0
 offset_top = 809.0
 offset_right = 3646.0
 offset_bottom = 1501.0
+mouse_default_cursor_shape = 2
 theme = ExtResource("7_85g3d")
 theme_override_font_sizes/font_size = 400
 text = "C'EST BON"
