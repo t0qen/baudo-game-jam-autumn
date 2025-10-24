@@ -186,6 +186,8 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 		VarBidules.is_errant_winner = true
 		await get_tree().create_timer(3).timeout
 		get_tree().paused = false
+		Transition.transition()
+		await Transition.on_transition_finished
 		get_tree().change_scene_to_file("res://scenes/equipe_qui_gagne.tscn")
 		
 	elif team_b_mobs.is_empty():
@@ -194,6 +196,8 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 		VarBidules.is_errant_winner = false
 		await get_tree().create_timer(3).timeout
 		get_tree().paused = false
+		Transition.transition()
+		await Transition.on_transition_finished
 		get_tree().change_scene_to_file("res://scenes/equipe_qui_gagne.tscn")
 		
 func start():
