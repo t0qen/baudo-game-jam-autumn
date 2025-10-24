@@ -163,11 +163,11 @@ func update_temps_restant():
 	
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
 	team_a_mobs.clear()
-	for mob_a in $team_container/team_errants.get_children():
+	for mob_a in $team_container/team_gardes.get_children():
 		if mob_a.is_alive:
 			team_a_mobs.append(mob_a)
 	team_b_mobs.clear()
-	for mob_b in $team_container/team_gardes.get_children():
+	for mob_b in $team_container/team_errants.get_children():
 		if mob_b.is_alive:
 			team_b_mobs.append(mob_b)
 	if team_a_mobs.is_empty():
@@ -208,7 +208,7 @@ func change_playing_team(): # quelle team joue
 		$CanvasLayer/UI/Label.text = "LES ERRANTS"
 	else:
 		current_playing_team = TEAM.A 
-		$CanvasLayer/UI/Label.text = "GARDES"
+		$CanvasLayer/UI/Label.text = "LES GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
 	update_mob_array()
