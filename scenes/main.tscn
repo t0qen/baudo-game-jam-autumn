@@ -310,20 +310,10 @@ label_settings = SubResource("LabelSettings_o6xl0")
 [node name="armes" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_left = 7770.0
-offset_top = 4421.0
+offset_top = 3859.9998
 offset_right = 9490.0
 offset_bottom = 5323.0
 theme = ExtResource("7_85g3d")
-
-[node name="pompe" type="Label" parent="CanvasLayer/UI/armes"]
-layout_mode = 0
-offset_left = 90.00012
-offset_top = 638.9999
-offset_right = 2310.0
-offset_bottom = 838.9999
-theme = ExtResource("7_85g3d")
-text = "POMPE (0)"
-label_settings = SubResource("LabelSettings_choun")
 
 [node name="control" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
@@ -332,27 +322,13 @@ offset_top = 88.99988
 offset_right = 2310.0
 offset_bottom = 288.99988
 theme = ExtResource("7_85g3d")
-text = "CONTROL (ZQSD / WASD)"
-label_settings = SubResource("LabelSettings_choun")
-
-[node name="patator" type="Label" parent="CanvasLayer/UI/armes"]
-layout_mode = 0
-offset_left = 90.00012
-offset_top = 449.99988
-offset_right = 2310.0
-offset_bottom = 649.9999
-theme = ExtResource("7_85g3d")
-text = "PATATOR (9)"
-label_settings = SubResource("LabelSettings_choun")
-
-[node name="grenade" type="Label" parent="CanvasLayer/UI/armes"]
-layout_mode = 0
-offset_left = 96.00012
-offset_top = 265.99988
-offset_right = 2316.0
-offset_bottom = 465.99988
-theme = ExtResource("7_85g3d")
-text = "GRENADE (8)"
+text = "CONTROL (QD / AD)
+GRENADE (8)
+PATATOR (9)
+POMPE (0)
+VISER (zs / WS)
+CAMERA (fleches)
+ZOOM CAMERA (EA / QE)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="focus" type="Button" parent="CanvasLayer/UI"]
