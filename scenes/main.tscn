@@ -11,10 +11,14 @@
 [ext_resource type="AudioStream" uid="uid://xrxadkj2loap" path="res://assets/sound/in game/in game.mp3" id="8_tipki"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
-font_size = 200
+font = ExtResource("8_choun")
+font_size = 245
 
 [sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
-font_size = 175
+font = ExtResource("8_choun")
+font_size = 234
+shadow_color = Color(0, 0, 0, 0.7607843)
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
 font = ExtResource("8_choun")
@@ -29,7 +33,9 @@ shadow_color = Color(0, 0, 0, 0.64705884)
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
-font_size = 300
+font_size = 430
+shadow_color = Color(0, 0, 0, 0.76862746)
+shadow_offset = Vector2(10, 10)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
@@ -149,6 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="aide-menu" type="Control" parent="CanvasLayer/UI"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -164,37 +171,34 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7254902)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/aide-menu"]
+[node name="ColorRect" type="Panel" parent="CanvasLayer/UI/aide-menu"]
 layout_mode = 0
 offset_left = 1170.0
 offset_top = 1470.0
 offset_right = 8709.999
-offset_bottom = 3400.0
-color = Color(0.051970966, 0.05197096, 0.05197095, 1)
+offset_bottom = 3450.0
+theme = ExtResource("7_85g3d")
 
 [node name="Label" type="Label" parent="CanvasLayer/UI/aide-menu"]
 layout_mode = 0
 offset_left = 2990.0
 offset_top = 425.0
-offset_right = 5803.0
+offset_right = 5838.0
 offset_bottom = 715.0001
-text = "temps restant pour ce tour  ^"
+text = "Temps restant pour ce tour.  ^"
 label_settings = SubResource("LabelSettings_85g3d")
 
 [node name="Label6" type="Label" parent="CanvasLayer/UI/aide-menu"]
 layout_mode = 0
-offset_left = 1230.0001
-offset_top = 1535.0
-offset_right = 8869.999
-offset_bottom = 3233.0
+offset_left = 1220.0
+offset_top = 1510.0
+offset_right = 8669.999
+offset_bottom = 3427.0
 text = "Regles du jeux
 ============
-Deux equipes s'affrontent, les Errants et les Gardes, dans un jeux au tour par tour.
-Une partie est decomposee en tour. Au debut de chaque tour, un mob est selection-
-ne pour jouer dans une equipe. Ce mob controlable peut faire differentes choses telles
-que bouger, tirer, etc. Si le joueur tire avec une grenade ou le patator par exemple, le
-tour s'arrete egalement. Les tours alternent d'une equipe a une autre."
+Deux equipes s'affrontent, les Errants et les Gardes, dans un jeu au tour par tour. Une partie est decomposee en tours. Au debut de chaque tour, un personnage est selectionne pour jouer dans une equipe. Ce personnage controlable peut faire differentes actions tel que bouger, tirer, etc... Si le joueur tire avec une grenade ou le patator par exemple, le tour s'arrete egalement. Les tours alternent d'une equipe a une autre."
 label_settings = SubResource("LabelSettings_ya4ey")
+autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="CanvasLayer/UI/aide-menu"]
 layout_mode = 0
@@ -202,28 +206,28 @@ offset_left = 510.0
 offset_top = 440.0
 offset_right = 3323.0
 offset_bottom = 989.0
-text = "^  equipe qui joue 
-     actuelement"
+text = "^  Equipe qui joue 
+     actuellement."
 label_settings = SubResource("LabelSettings_85g3d")
 
 [node name="Label3" type="Label" parent="CanvasLayer/UI/aide-menu"]
 layout_mode = 0
-offset_left = 2895.0
-offset_top = 4695.0
-offset_right = 5708.0
-offset_bottom = 5244.0
-text = "<  points de vie totaux 
-    de chaque equipe"
+offset_left = 2770.0
+offset_top = 4725.0
+offset_right = 5583.0
+offset_bottom = 5274.0
+text = "<  Points de vie totaux 
+    de chaque equipe."
 label_settings = SubResource("LabelSettings_85g3d")
 
 [node name="Label4" type="Label" parent="CanvasLayer/UI/aide-menu"]
 layout_mode = 0
-offset_left = 5075.0
-offset_top = 4025.0
-offset_right = 7888.0
-offset_bottom = 4574.0
-text = "action en cours effectue
- par le mob selectionne    >"
+offset_left = 4640.0
+offset_top = 4185.0
+offset_right = 7866.0
+offset_bottom = 4842.0
+text = "Action en cours effectuee
+par le personnage selectionne    >"
 label_settings = SubResource("LabelSettings_85g3d")
 
 [node name="Label5" type="Label" parent="CanvasLayer/UI/aide-menu"]
@@ -232,8 +236,8 @@ offset_left = 7020.0
 offset_top = 495.0
 offset_right = 9100.0
 offset_bottom = 1044.0
-text = "temps restant de   ^
-la partie au total"
+text = "Temps restant de   ^
+la partie."
 label_settings = SubResource("LabelSettings_85g3d")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
@@ -313,42 +317,42 @@ theme = ExtResource("7_85g3d")
 
 [node name="pompe" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 641.0
-offset_right = 2348.0
-offset_bottom = 841.0
+offset_left = 90.00012
+offset_top = 638.9999
+offset_right = 2310.0
+offset_bottom = 838.9999
 theme = ExtResource("7_85g3d")
-text = "POMPE (TOUCHE 3)"
+text = "POMPE (0)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="control" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 91.0
-offset_right = 2348.0
-offset_bottom = 291.0
+offset_left = 90.00012
+offset_top = 88.99988
+offset_right = 2310.0
+offset_bottom = 288.99988
 theme = ExtResource("7_85g3d")
-text = "CONTROL (ZQSD)"
+text = "CONTROL (ZQSD / WASD)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="patator" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 452.0
-offset_right = 2348.0
-offset_bottom = 652.0
+offset_left = 90.00012
+offset_top = 449.99988
+offset_right = 2310.0
+offset_bottom = 649.9999
 theme = ExtResource("7_85g3d")
-text = "PAtATOR (TOUCHE 2)"
+text = "PATATOR (9)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="grenade" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
-offset_left = 134.0
-offset_top = 268.0
-offset_right = 2354.0
-offset_bottom = 468.0
+offset_left = 96.00012
+offset_top = 265.99988
+offset_right = 2316.0
+offset_bottom = 465.99988
 theme = ExtResource("7_85g3d")
-text = "GRENADE (TOUCHE !)"
+text = "GRENADE (8)"
 label_settings = SubResource("LabelSettings_choun")
 
 [node name="focus" type="Button" parent="CanvasLayer/UI"]
@@ -378,34 +382,34 @@ toggle_mode = true
 text = "AIDE
 "
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI"]
-process_mode = 3
+[node name="ColorRect" type="Panel" parent="CanvasLayer/UI"]
 visible = false
 layout_mode = 0
-offset_left = 2274.0
-offset_top = 2002.0
-offset_right = 7341.0
-offset_bottom = 3756.0
-color = Color(0, 0, 0, 1)
+offset_left = 2275.0
+offset_top = 1999.9999
+offset_right = 7345.0
+offset_bottom = 3760.0
+theme = ExtResource("7_85g3d")
 
 [node name="Label2" type="Label" parent="CanvasLayer/UI/ColorRect"]
 layout_mode = 0
-offset_left = -251.0
-offset_top = 136.0
-offset_right = 5308.0
-offset_bottom = 786.0
+offset_left = -252.0
+offset_top = 138.00012
+offset_right = 5307.0
+offset_bottom = 788.0001
 theme = ExtResource("7_85g3d")
 text = "PASSE LE CLAVIER A TON POTE"
 label_settings = SubResource("LabelSettings_tipki")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/UI/ColorRect"]
 process_mode = 3
 layout_mode = 0
-offset_left = 1416.0
-offset_top = 809.0
-offset_right = 3646.0
-offset_bottom = 1501.0
+offset_left = 1415.0
+offset_top = 811.0001
+offset_right = 3645.0
+offset_bottom = 1503.0001
 mouse_default_cursor_shape = 2
 theme = ExtResource("7_85g3d")
 theme_override_font_sizes/font_size = 400
