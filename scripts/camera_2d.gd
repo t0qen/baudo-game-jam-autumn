@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		if !timer.time_left > 0:
 			timer.start()
-	if	can_focus:
+	if can_focus:
+		
 		global_position = BiduleManager.get_mob_position()
 		
 	if Input.is_action_pressed("camera_zoom_up"):

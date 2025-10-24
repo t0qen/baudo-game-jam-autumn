@@ -46,7 +46,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_explosion_patate_et_grenade_finished() -> void:
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
 	VarEnd.can_end = true
 	VarEnd.a_tire = false
 	

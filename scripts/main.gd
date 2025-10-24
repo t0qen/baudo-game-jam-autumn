@@ -273,6 +273,8 @@ func _on_duree_totale_timeout() -> void:
 	
 	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
+	Transition.transition()
+	await Transition.on_transition_finished
 	get_tree().change_scene_to_file("res://scenes/temps_ecoule.tscn")
 
 
@@ -284,3 +286,7 @@ func _on_button_pressed() -> void:
 func _on_aide_toggled(toggled_on: bool) -> void:
 	$"CanvasLayer/UI/aide-menu".visible = toggled_on
 	get_tree().paused = toggled_on
+
+
+func _on_fin_map_body_entered(body: Node2D) -> void:
+	body.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=19 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qh585tq4xhgo" path="res://scenes/team_errants.tscn" id="2_jyhfs"]
@@ -36,6 +36,18 @@ shadow_offset = Vector2(5, 5)
 font_size = 430
 shadow_color = Color(0, 0, 0, 0.76862746)
 shadow_offset = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(701.5, 7699)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
+size = Vector2(507, 7299.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
+size = Vector2(19757, 1134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
+size = Vector2(60061.5, 1696)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
@@ -124,6 +136,10 @@ position = Vector2(5009, -896)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(4800, 2700)
 zoom = Vector2(0.2, 0.2)
+limit_left = -7590
+limit_top = -5870
+limit_right = 9590
+limit_bottom = 2445
 script = ExtResource("7_o6xl0")
 
 [node name="Timer" type="Timer" parent="Camera2D"]
@@ -318,9 +334,9 @@ theme = ExtResource("7_85g3d")
 [node name="pompe" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
 offset_left = 50.000126
-offset_top = 59.999634
+offset_top = 624.9996
 offset_right = 2270.0002
-offset_bottom = 1568.9996
+offset_bottom = 810.9996
 theme = ExtResource("7_85g3d")
 text = "POMPE (0)"
 label_settings = SubResource("LabelSettings_choun")
@@ -370,9 +386,9 @@ label_settings = SubResource("LabelSettings_choun")
 [node name="aim" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
 offset_left = 60.000126
-offset_top = 619.9999
+offset_top = 419.99988
 offset_right = 2280.0002
-offset_bottom = 994.9999
+offset_bottom = 794.9999
 theme = ExtResource("7_85g3d")
 text = "VISER (zs / WS)
 "
@@ -381,9 +397,9 @@ label_settings = SubResource("LabelSettings_choun")
 [node name="camera" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
 offset_left = 50.000126
-offset_top = 429.9999
+offset_top = 239.99962
 offset_right = 2270.0002
-offset_bottom = 804.9999
+offset_bottom = 614.99963
 theme = ExtResource("7_85g3d")
 text = "CAMERA (fleches)
 "
@@ -392,9 +408,9 @@ label_settings = SubResource("LabelSettings_choun")
 [node name="zoom" type="Label" parent="CanvasLayer/UI/armes"]
 layout_mode = 0
 offset_left = 55.000126
-offset_top = 239.99992
+offset_top = 69.99963
 offset_right = 2275.0002
-offset_bottom = 439.99994
+offset_bottom = 269.99963
 theme = ExtResource("7_85g3d")
 text = "ZOOM CAMERA (EA / QE)"
 label_settings = SubResource("LabelSettings_choun")
@@ -459,9 +475,33 @@ theme = ExtResource("7_85g3d")
 theme_override_font_sizes/font_size = 400
 text = "C'EST BON"
 
+[node name="Limites de la map" type="StaticBody2D" parent="."]
+collision_mask = 8
+
+[node name="gauche" type="CollisionShape2D" parent="Limites de la map"]
+position = Vector2(-7236, -2159)
+shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="droite" type="CollisionShape2D" parent="Limites de la map"]
+position = Vector2(9353, -2064)
+shape = SubResource("RectangleShape2D_choun")
+
+[node name="Haut" type="CollisionShape2D" parent="Limites de la map"]
+position = Vector2(1090.5, -5338)
+shape = SubResource("RectangleShape2D_ya4ey")
+
+[node name="fin map" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 6
+
+[node name="bas" type="CollisionShape2D" parent="fin map"]
+position = Vector2(3775.25, 2246)
+shape = SubResource("RectangleShape2D_eb6dy")
+
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]
 [connection signal="timeout" from="duree_totale" to="." method="_on_duree_totale_timeout"]
 [connection signal="pressed" from="CanvasLayer/UI/focus" to="." method="_on_focus_pressed"]
 [connection signal="toggled" from="CanvasLayer/UI/aide" to="." method="_on_aide_toggled"]
 [connection signal="pressed" from="CanvasLayer/UI/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="fin map" to="." method="_on_fin_map_body_entered"]

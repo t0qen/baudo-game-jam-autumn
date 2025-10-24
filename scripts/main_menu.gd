@@ -27,6 +27,11 @@ var input_actions = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	VarBidules.base_life = 100
+	VarBidules.nbr_errants = 4
+	VarBidules.nbr_gardes = 4
+	VarBidules.duree_partie_sec = 1800
+	VarBidules.duree_tour_sec = 30
 	$PopUpOptions.hide()
 	$PopUp.hide()
 	_create_action_list()
@@ -49,15 +54,30 @@ func _on_start_pressed() -> void:
 	$PopUp.show()
 
 func _on_commencer_pressed() -> void:
-	VarBidules.base_life = $"PopUp/Points de vie Button".get_item_id($"PopUp/Points de vie Button".selected)
-	VarBidules.nbr_errants = $"PopUp/Errants Button".get_item_id($"PopUp/Errants Button".selected)
-	VarBidules.nbr_gardes = $"PopUp/Gardes Button".get_item_id($"PopUp/Gardes Button".selected)
-	VarBidules.duree_partie_sec = $"PopUp/Durée de la partie Button".get_item_id($"PopUp/Durée de la partie Button".selected)
-	VarBidules.duree_tour_sec = $"PopUp/Durée du tour Button".get_item_id($"PopUp/Durée du tour Button".selected)
+	# Points de vie
+	if $"PopUp/Points de vie Button".get_item_id($"PopUp/Points de vie Button".selected) != -1:
+		VarBidules.base_life = $"PopUp/Points de vie Button".get_item_id($"PopUp/Points de vie Button".selected)
+	# Errants
+	if $"PopUp/Errants Button".get_item_id($"PopUp/Errants Button".selected) != -1:
+		VarBidules.nbr_errants = $"PopUp/Errants Button".get_item_id($"PopUp/Errants Button".selected)
+	# Gardes
+	if $"PopUp/Gardes Button".get_item_id($"PopUp/Gardes Button".selected) != -1:
+		VarBidules.nbr_gardes = $"PopUp/Gardes Button".get_item_id($"PopUp/Gardes Button".selected)
+	# Durée de partie
+	if $"PopUp/Durée de la partie Button".get_item_id($"PopUp/Durée de la partie Button".selected) != -1:
+		VarBidules.duree_partie_sec = $"PopUp/Durée de la partie Button".get_item_id($"PopUp/Durée de la partie Button".selected)
+	# Durée de tour
+	if $"PopUp/Durée du tour Button".get_item_id($"PopUp/Durée du tour Button".selected) != -1:
+		VarBidules.duree_tour_sec = $"PopUp/Durée du tour Button".get_item_id($"PopUp/Durée du tour Button".selected)
+		
+	Transition.transition()
+	await Transition.on_transition_finished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 func _on_credits_pressed() -> void:
+	Transition.transition()
+	await Transition.on_transition_finished
 	get_tree().change_scene_to_file("res://scenes/crédits.tscn")
 
 func _create_action_list():

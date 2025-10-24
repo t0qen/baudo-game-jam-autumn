@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Victoire.play()
@@ -20,8 +18,10 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	pass
 
 
 func _on_menu_pressed() -> void:
-	pass # Replace with function body.
+	Transition.transition()
+	await Transition.on_transition_finished
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

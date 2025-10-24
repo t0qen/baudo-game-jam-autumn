@@ -33,7 +33,7 @@ offset_top = -96.0
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "TEMPS ECOULE !"
+text = "TEMPS ÉCOULÉ !"
 label_settings = SubResource("LabelSettings_akbt6")
 horizontal_alignment = 1
 

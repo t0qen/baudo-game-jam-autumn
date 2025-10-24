@@ -20,12 +20,12 @@ height = 266.0
 
 [node name="Rocket" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 23
 mass = 0.1
 gravity_scale = 0.2
 script = ExtResource("1_l0y3s")
-maxdamage = 75
-mindamage = 25
+maxdamage = 50
+mindamage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.7289283e-09, 4.7683716e-07)
@@ -35,7 +35,7 @@ shape = SubResource("CapsuleShape2D_r4mtq")
 
 [node name="DetectionMinDegat" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionMinDegat"]
 rotation = -1.5707964

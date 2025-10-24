@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 BiduleManager="*res://scripts/bidule_manager.gd"
 VarBidules="*res://scripts/var_bidules.gd"
 VarEnd="*res://scripts/var_end.gd"
+Transition="*res://scenes/transition.tscn"
 
 [display]
 
@@ -147,6 +148,7 @@ camera_focus={
 2d_physics/layer_2="garde"
 2d_physics/layer_3="errant"
 2d_physics/layer_4="projectiles"
+2d_physics/layer_5="killzone"
 
 [rendering]
 
