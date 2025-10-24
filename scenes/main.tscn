@@ -310,7 +310,7 @@ label_settings = SubResource("LabelSettings_o6xl0")
 [node name="armes" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_left = 7770.0
-offset_top = 3859.9998
+offset_top = 3660.0002
 offset_right = 9490.0
 offset_bottom = 5323.0
 theme = ExtResource("7_85g3d")
@@ -323,6 +323,7 @@ offset_right = 2310.0
 offset_bottom = 288.99988
 theme = ExtResource("7_85g3d")
 text = "CONTROL (QD / AD)
+SAUT (espace)
 GRENADE (8)
 PATATOR (9)
 POMPE (0)
