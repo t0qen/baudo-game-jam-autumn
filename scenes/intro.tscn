@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dahib6po6k4hm" path="res://scripts/intro.gd" id="1_ioskq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ioskq"]
-font_size = 25
+font_size = 29
 
 [node name="intro" type="Control"]
 layout_mode = 3
@@ -26,32 +26,31 @@ color = Color(0, 0, 0, 1)
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 818.0
-offset_top = 967.0
+offset_top = 889.0
 offset_right = 1119.0
-offset_bottom = 1055.0
+offset_bottom = 977.0
 theme_override_font_sizes/font_size = 50
 text = "OK, JOUER"
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 31.0
-offset_right = 1888.0
-offset_bottom = 950.0
-text = "Dans un monde post-apocalyptique, ou les valeurs ne guident plus personne, ou seuls l'instint de survie pousse les gens a agir,
-des failles misterieuses sont apparues susitant des conflits de plus en plus important. Des sources inconnues, elles produisent une 
-energie incomparable tres convoitee, souvent appelee Rift. Differents groupes armes se sont allie par interet pour tenter d'en prendre le controle, parmis 
-eux, deux sortent du lot, non par leurs armes mais car ils nourrissent une determination fanatique d'arriver a leur fin.
-C'est donc le moment de presenter, les Errants, groupe rebel, qui sait se debrouiller tout seul, pensant que les failles peuvent sauver
-le monde mais pour cela, ils doivent les controler esclusivement. L'autre groupe, les Gardes, pourraient etre consideres comme les
-\"gentils\", ceux qui ont raison. Ainsi ils veulent interdire l'acces aux failles, les securiser, pour empecher toute personne de les utiliser.
-L'emplois du conditionel pour exprimer leur caractere n'est pas a tort, en effet, leurs methodes sont tres critiquees et c'est pour cela 
-qu'ils ne sont pas tres populaires par rapport aux Errants. Ces deux groupes se vouent une haine universelle et incomenurable.
-On les appels communement les \"Maudis\", maudis par le sort du destin, maudis par les failles, maudis par leur volonte de pouvoir.
-A vrai dire, les failles sont connues pour exercer un force demoniaque sur ceux qui la cotoie quotidiennement.
-C'est de cette maniere que le Errants et les Gardes se combatirent jusqu'a leur autodestruction totale.
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -841.0
+offset_top = -444.0
+offset_right = 841.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dans un monde post-apocalyptique où les valeurs ne guident plus personne, où seul l’instinct de survie pousse les gens à agir, des failles mystérieuses sont apparues, suscitant des conflits de plus en plus importants. D’origine inconnue, elles produisent une énergie incomparable et très convoitée, souvent appelée Rift. Certains survivant se sont alliés par intérêt en groupes armés pour tenter d’en prendre le contrôle. Parmi eux, deux se distinguent,non par leurs armes, mais par la détermination fanatique qui les anime à atteindre leur but. C’est donc le moment de présenter les Errants, un groupe rebelle, débrouillard, convaincu que les failles peuvent sauver le monde, mais qu’il faut pour cela qu'ils puisssent les contrôler exclusivement. L’autre groupe, les Gardes, pourrait être considéré comme les « gentils », ceux qui ont raison. Ainsi, ils veulent interdire l’accès aux failles, les sécuriser, afin d’empêcher quiconque de les utiliser. L’emploi du conditionnel pour décrire leur nature n’est pas anodin : en effet, leurs méthodes sont très critiquées, 
+et c’est pourquoi ils ne sont pas aussi populaires que les Errants. Ces deux groupes se vouent une haine universelle et incommensurable. On les appelle communément les Maudits : maudits par le sort du destin, maudits par les failles, maudits par leur volonté de pouvoir. À vrai dire, les failles sont connues pour exercer une force démoniaque sur ceux qui les côtoient quotidiennement.
+ C’est ainsi que les Errants et les Gardes se combattirent jusqu’à leur autodestruction totale. 
 
-Votre experience sur ce jeux, jouable a deux joueurs, se portera sur un de ces combats."
+Votre expérience sur ce jeu, jouable à deux joueurs, portera sur l’un de ces combats."
 label_settings = SubResource("LabelSettings_ioskq")
+autowrap_mode = 3
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
