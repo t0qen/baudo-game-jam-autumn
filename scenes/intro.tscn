@@ -40,7 +40,7 @@ offset_right = 1888.0
 offset_bottom = 950.0
 text = "Dans un monde post-apocalyptique, ou les valeurs ne guident plus personne, ou seuls l'instint de survie pousse les gens a agir,
 des failles misterieuses sont apparues susitant des conflits de plus en plus important. Des sources inconnues, elles produisent une 
-energie incomparable tres convoitee. Differents groupes armes se sont allie par interet pour tenter d'en prendre le controle, parmis 
+energie incomparable tres convoitee, souvent appelee Rift. Differents groupes armes se sont allie par interet pour tenter d'en prendre le controle, parmis 
 eux, deux sortent du lot, non par leurs armes mais car ils nourrissent une determination fanatique d'arriver a leur fin.
 C'est donc le moment de presenter, les Errants, groupe rebel, qui sait se debrouiller tout seul, pensant que les failles peuvent sauver
 le monde mais pour cela, ils doivent les controler esclusivement. L'autre groupe, les Gardes, pourraient etre consideres comme les
@@ -48,7 +48,10 @@ le monde mais pour cela, ils doivent les controler esclusivement. L'autre groupe
 L'emplois du conditionel pour exprimer leur caractere n'est pas a tort, en effet, leurs methodes sont tres critiquees et c'est pour cela 
 qu'ils ne sont pas tres populaires par rapport aux Errants. Ces deux groupes se vouent une haine universelle et incomenurable.
 On les appels communement les \"Maudis\", maudis par le sort du destin, maudis par les failles, maudis par leur volonte de pouvoir.
-O"
+A vrai dire, les failles sont connues pour exercer un force demoniaque sur ceux qui la cotoie quotidiennement.
+C'est de cette maniere que le Errants et les Gardes se combatirent jusqu'a leur autodestruction totale.
+
+Votre experience sur ce jeux, jouable a deux joueurs, se portera sur un de ces combats."
 label_settings = SubResource("LabelSettings_ioskq")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
