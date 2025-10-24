@@ -1,7 +1,7 @@
 extends Camera2D
 
-@export var deplacement : float = 40
-@export var zoomForce : float = 0.01
+@export var deplacement : float = 80
+@export var zoomForce : float = 0.03
 @onready var timer: Timer = $Timer
 
 var base_zoom : Vector2 = Vector2(0.2, 0.2)
@@ -19,7 +19,7 @@ func reset_zoom():
 	zoom.y = 0.2
 	
 func _process(delta: float) -> void:
-	pass
+	print(zoom)
 	
 func _physics_process(delta: float) -> void:
 	var movementsVect : Vector2 = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
@@ -32,11 +32,14 @@ func _physics_process(delta: float) -> void:
 	if	can_focus:
 		global_position = BiduleManager.get_mob_position()
 		
-	if Input.is_action_just_pressed("camera_zoom_up"):
+	if Input.is_action_pressed("camera_zoom_up"):
 		zoom += Vector2(zoomForce, zoomForce)
-	if Input.is_action_just_pressed("camera_zoom_down"):
+		if zoom > Vector2(0.86, 0.86):
+			zoom = Vector2(0.86, 0.86)
+	if Input.is_action_pressed("camera_zoom_down"):
 		zoom -= Vector2(zoomForce, zoomForce)
-	
+		if zoom < Vector2(0.05, 0.05):
+			zoom = Vector2(0.05, 0.05)
 
 func _on_timer_timeout() -> void:
 	print("TRUEEEEEE")

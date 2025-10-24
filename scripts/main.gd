@@ -100,45 +100,45 @@ func spawn_mobs():
 	#print("FINISHED")
 
 func update_mob_action(action):
-	$Camera2D/UI/armes/pompe.modulate = Color("white")
-	$Camera2D/UI/armes/control.modulate = Color("white")
-	$Camera2D/UI/armes/patator.modulate = Color("white")
-	$Camera2D/UI/armes/grenade.modulate = Color("white")
+	$CanvasLayer/UI/armes/pompe.modulate = Color("white")
+	$CanvasLayer/UI/armes/control.modulate = Color("white")
+	$CanvasLayer/UI/armes/patator.modulate = Color("white")
+	$CanvasLayer/UI/armes/grenade.modulate = Color("white")
 	
 	match action:
 		"pompe":
-			$Camera2D/UI/armes/pompe.modulate = Color("green")
+			$CanvasLayer/UI/armes/pompe.modulate = Color("green")
 		"control":
-			$Camera2D/UI/armes/control.modulate = Color("green")
+			$CanvasLayer/UI/armes/control.modulate = Color("green")
 		"patator":
-			$Camera2D/UI/armes/patator.modulate = Color("green")
+			$CanvasLayer/UI/armes/patator.modulate = Color("green")
 		"grenade":
-			$Camera2D/UI/armes/grenade.modulate = Color("green")
+			$CanvasLayer/UI/armes/grenade.modulate = Color("green")
 	
 	
 	
 func update_partie_duree_pb():
-	$Camera2D/UI/ProgressBar.value = $partie.time_left
+	$CanvasLayer/UI/ProgressBar.value = $partie.time_left
 	
 func initialize_ui():
-	$Camera2D/UI/ProgressBar.max_value = current_timer_time
-	$Camera2D/UI/ProgressBar.value = $Camera2D/UI/ProgressBar.max_value 
-	$Camera2D/UI/Label.text = "LES GARDES"
+	$CanvasLayer/UI/ProgressBar.max_value = current_timer_time
+	$CanvasLayer/UI/ProgressBar.value = $CanvasLayer/UI/ProgressBar.max_value 
+	$CanvasLayer/UI/Label.text = "LES GARDES"
 	
-	$Camera2D/UI/gardes.max_value = VarBidules.base_life * VarBidules.nbr_gardes
-	$Camera2D/UI/gardes.value = $Camera2D/UI/gardes.max_value
-	$Camera2D/UI/errants.max_value = VarBidules.base_life * VarBidules.nbr_errants
-	$Camera2D/UI/errants.value = $Camera2D/UI/errants.max_value
+	$CanvasLayer/UI/gardes.max_value = VarBidules.base_life * VarBidules.nbr_gardes
+	$CanvasLayer/UI/gardes.value = $CanvasLayer/UI/gardes.max_value
+	$CanvasLayer/UI/errants.max_value = VarBidules.base_life * VarBidules.nbr_errants
+	$CanvasLayer/UI/errants.value = $CanvasLayer/UI/errants.max_value
 	
 func update_total_life_pb():
 	var total_life_gardes : int
 	for i in $team_container/team_gardes.get_children():
 		total_life_gardes = total_life_gardes + i.current_life
-	$Camera2D/UI/gardes.value = total_life_gardes
+	$CanvasLayer/UI/gardes.value = total_life_gardes
 	var total_life_errants : int
 	for i in $team_container/team_errants.get_children():
 		total_life_errants = total_life_errants + i.current_life
-	$Camera2D/UI/errants.value = total_life_errants
+	$CanvasLayer/UI/errants.value = total_life_errants
 	
 func _process(delta: float) -> void:
 	update_partie_duree_pb()
@@ -150,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func update_temps_restant():
-	$Camera2D/UI/Label6.text = str(int($duree_totale.time_left / 60)) + "mn " + str(int($duree_totale.time_left) % 60) + "s"
+	$CanvasLayer/UI/Label6.text = str(int($duree_totale.time_left / 60)) + "mn " + str(int($duree_totale.time_left) % 60) + "s"
 	
 	
 func update_mob_array(): # actualise les errants et les gardes dans le tableau 
@@ -189,7 +189,7 @@ func update_game():
 	print("GAME UPDATED")
 	change_playing_team()
 	select_mob()
-	$Camera2D/UI/ColorRect.show()
+	$CanvasLayer/UI/ColorRect.show()
 	get_tree().paused = true
 	
 	
@@ -197,10 +197,10 @@ func update_game():
 func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:
 		current_playing_team = TEAM.B
-		$Camera2D/UI/Label.text = "LES ERRANTS"
+		$CanvasLayer/UI/Label.text = "LES ERRANTS"
 	else:
 		current_playing_team = TEAM.A 
-		$Camera2D/UI/Label.text = "GARDES"
+		$CanvasLayer/UI/Label.text = "GARDES"
 
 func select_mob(): # on regarde quel bidule doit jouer
 	update_mob_array()
@@ -266,5 +266,5 @@ func _on_duree_totale_timeout() -> void:
 
 
 func _on_button_pressed() -> void:
-	$Camera2D/UI/ColorRect.hide()
+	$CanvasLayer/UI/ColorRect.hide()
 	get_tree().paused = false
