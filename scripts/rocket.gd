@@ -8,7 +8,7 @@ func _ready() -> void:
 	VarEnd.can_end = false
 	VarEnd.a_tire = true
 	$PatateEnFeu.play()
-	VarEnd.body_can_move = false
+	#VarEnd.body_can_move = false
 	
 
 
@@ -22,7 +22,7 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 		
 		var radius = 800
-		var segments = 16
+		var segments = 32
 		var polygon = PackedVector2Array()
 		for i in range(segments):
 			var angle = TAU * i / segments
@@ -56,16 +56,23 @@ func _on_detection_max_degat_body_entered(body1: Node2D) -> void:
 		await get_tree().create_timer(0.5).timeout
 		$CollisionShape2D.disabled = true
 		$Sprite2D.hide()
-		await get_tree().create_timer(0.1).timeout
-		VarEnd.body_can_move = true
+		#await get_tree().create_timer(0.1).timeout
+		$Timer.start()
+		await get_tree().create_timer(1).timeout
 		VarEnd.can_end = true
 		VarEnd.a_tire = false
+		VarEnd.body_can_move = true
+		
 		for i in range($CPUParticles2D.amount):
 			if $CPUParticles2D.amount == 0:
 				return
 			$CPUParticles2D.amount -= 1
 			await get_tree().create_timer(0.1).timeout
 		
-
+		
 func _on_explosion_patate_et_grenade_finished() -> void:
 	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	pass

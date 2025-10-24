@@ -251,10 +251,7 @@ func select_mob(): # on regarde quel bidule doit jouer
 	
 	
 func _on_partie_timeout() -> void:
-	
 	update_game() # quand le timer de la partie est finie on update -> changement de team
-	
-
 
 func _on_focus_pressed() -> void:
 	$Camera2D.focus()

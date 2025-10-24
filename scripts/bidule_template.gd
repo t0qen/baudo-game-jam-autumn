@@ -467,10 +467,10 @@ func update_state():
 				aim()
 				
 				if wanna_pompe && can_pompe:
-					if VarEnd.a_tire == false:
+					if !VarEnd.a_tire:
 						VarEnd.can_end = false
 						VarEnd.a_tire = true
-						VarEnd.body_can_move = false
+						#VarEnd.body_can_move = false
 						play_bras_animation("pompe")
 						$TirPompe.play()
 						var bodies = $aim_gauche/Pompe.get_overlapping_bodies()
@@ -478,9 +478,10 @@ func update_state():
 						for body in bodies:
 							if body.has_method("take_damage"):
 								body.take_damage(damage_pompe)
-						await get_tree().create_timer(1).timeout
+						#VarEnd.body_can_move = true
+						await get_tree().create_timer(3).timeout
 						VarEnd.a_tire = false
-						VarEnd.body_can_move = true
+						
 						VarEnd.can_end = true
 
 

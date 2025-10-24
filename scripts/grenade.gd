@@ -5,7 +5,7 @@ extends RigidBody2D
 func _ready() -> void:
 	VarEnd.can_end = false
 	VarEnd.a_tire = true
-	VarEnd.body_can_move = false
+	#VarEnd.body_can_move = false
 	self.show()
 	$Timer.start()
 
@@ -18,7 +18,7 @@ func _on_timer_timeout() -> void:
 	var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 	
 	var radius = 700.0
-	var segments = 16
+	var segments = 32
 	var polygon = PackedVector2Array()
 	for i in range(segments):
 		var angle = TAU * i / segments
@@ -46,10 +46,11 @@ func _on_timer_timeout() -> void:
 
 
 func _on_explosion_patate_et_grenade_finished() -> void:
+	await get_tree().create_timer(3).timeout
 	VarEnd.can_end = true
 	VarEnd.a_tire = false
-	await get_tree().create_timer(0.1).timeout
-	VarEnd.body_can_move = true
+	
+	#VarEnd.body_can_move = true
 	queue_free()
 
 

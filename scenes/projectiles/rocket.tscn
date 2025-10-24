@@ -83,5 +83,10 @@ stream = ExtResource("5_dtva2")
 volume_db = 1.908
 bus = &"SFX"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="DetectionMaxDegat" to="." method="_on_detection_max_degat_body_entered"]
 [connection signal="finished" from="ExplosionPatateEtGrenade" to="." method="_on_explosion_patate_et_grenade_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
