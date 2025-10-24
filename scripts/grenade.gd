@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var damage : int
+@export var damage : int = 50
 
 func _ready() -> void:
 	self.show()
@@ -11,10 +11,11 @@ func _physics_process(delta):
 
 func _on_timer_timeout() -> void:
 	
+			
 	# On récupère le terrain (nom exact: "Terrain1") depuis le parent ou la scène
 	var terrain = get_parent().get_parent().get_node("DestructiblePolygon2D")
 	
-	var radius = 400.0
+	var radius = 700.0
 	var segments = 32
 	var polygon = PackedVector2Array()
 	for i in range(segments):
@@ -34,7 +35,7 @@ func _on_timer_timeout() -> void:
 		if body is RigidBody2D:
 			var dir = (body.global_position - global_position).normalized()
 			var distance = global_position.distance_to(body.global_position)
-			var force = clamp(3000.0 / max(distance, 10.0), 200, 1500) # Force selon distance
+			var force = clamp(2000.0 / max(distance, 20.0), 200, 1200) # Force selon distance
 			body.apply_impulse(dir * force)
 	
 	self.hide()
