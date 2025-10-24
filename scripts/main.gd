@@ -32,7 +32,11 @@ var current_playing_mob_b
 var winner_team : TEAM = TEAM.A
 var current_timer_time = VarBidules.duree_tour_sec
 
+var est_mort_avant = false
+
 func _ready() -> void:
+	
+	VarEnd.has_game_ended = false
 	duree_totale_timer.wait_time = VarBidules.duree_partie_sec
 	duree_totale_timer.start()
 	BiduleManager.set_main(self)
@@ -207,9 +211,13 @@ func start():
 	update_mob_array()
 	select_mob()
 	partie_timer.start()
+	VarEnd.has_game_ended = false
 	
 # TODO connecter un signal pour chaque mob comme ca quand il y en a un qui meurt main.gd le sait et update_mob_array()
 func update_game():
+	if VarEnd.has_game_ended:
+		return
+	VarEnd.has_game_ended = true
 	if !VarEnd.the_end:
 		print("GAME UPDATED")
 		change_playing_team()
@@ -276,12 +284,17 @@ func _on_focus_pressed() -> void:
 
 
 func _on_duree_totale_timeout() -> void:
+	if VarEnd.has_game_ended:
+		return
+	VarEnd.has_game_ended = true
+
 	get_tree().paused = true
 	update_mob_array()
 	if len(team_a_mobs) > len(team_b_mobs):
 		VarBidules.is_errant_winner = false
 	else:
 		VarBidules.is_errant_winner = true
+	VarEnd.has_game_ended = false
 	
 	
 	await get_tree().create_timer(3).timeout
