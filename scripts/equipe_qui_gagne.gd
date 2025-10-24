@@ -2,6 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	VarEnd.the_end = false
 	$Aura.hide()
 	$Aura2.hide()
 	$Victoire.play()

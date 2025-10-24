@@ -182,6 +182,7 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 			team_b_mobs.append(mob_b)
 	if team_a_mobs.is_empty():
 		print("TEAM B GAGNE")
+		VarEnd.the_end = true
 		get_tree().paused = true
 		VarBidules.is_errant_winner = true
 		await get_tree().create_timer(3).timeout
@@ -192,6 +193,7 @@ func update_mob_array(): # actualise les errants et les gardes dans le tableau
 		
 	elif team_b_mobs.is_empty():
 		print("TEAM A GAGNE")
+		VarEnd.the_end = true
 		get_tree().paused = true
 		VarBidules.is_errant_winner = false
 		await get_tree().create_timer(3).timeout
@@ -208,14 +210,15 @@ func start():
 	
 # TODO connecter un signal pour chaque mob comme ca quand il y en a un qui meurt main.gd le sait et update_mob_array()
 func update_game():
-	print("GAME UPDATED")
-	change_playing_team()
-	select_mob()
-	$CanvasLayer/UI/ColorRect.show()
-	get_tree().paused = true
-	VarEnd.can_end = false
-	VarBidules.joueur_tjr_en_vie = true
-	start()
+	if !VarEnd.the_end:
+		print("GAME UPDATED")
+		change_playing_team()
+		select_mob()
+		$CanvasLayer/UI/ColorRect.show()
+		get_tree().paused = true
+		VarEnd.can_end = false
+		VarBidules.joueur_tjr_en_vie = true
+		start()
 	
 func change_playing_team(): # quelle team joue
 	if current_playing_team == TEAM.A:

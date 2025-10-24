@@ -11,10 +11,12 @@ config_version=5
 [application]
 
 config/name="The Shattered Rifts"
+config/version="1.0.0.0"
 run/main_scene="uid://djdhj7pj2kxvs"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-boot_splash/show_image=false
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://6h6823ujv5dg"
+config/icon="uid://ceb2ll4m4yclj"
 
 [autoload]
 
