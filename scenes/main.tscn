@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1836v71tkimw"]
+[gd_scene load_steps=21 format=3 uid="uid://c1836v71tkimw"]
 
 [ext_resource type="Script" uid="uid://c6ynwnu2equ4x" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="Texture2D" uid="uid://df4fhpjb728dx" path="res://assets/Sprites/background and faille dzdqdzq.jpg" id="2_choun"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://22ku8sqquovf" path="res://scripts/camera_2d.gd" id="7_o6xl0"]
 [ext_resource type="FontFile" uid="uid://dbsu8y8i7okhm" path="res://assets/Font/Urban Shadow Sans Serif.otf" id="8_choun"]
 [ext_resource type="AudioStream" uid="uid://xrxadkj2loap" path="res://assets/sound/in game/in game.mp3" id="8_tipki"]
+[ext_resource type="Texture2D" uid="uid://ddn1s23glx6sk" path="res://assets/Sprites/brouillard.png" id="11_ya4ey"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
 font = ExtResource("8_choun")
@@ -494,6 +495,18 @@ collision_mask = 6
 [node name="bas" type="CollisionShape2D" parent="fin map"]
 position = Vector2(1024, 7469.5)
 shape = SubResource("RectangleShape2D_eb6dy")
+
+[node name="Brouillard" type="Sprite2D" parent="."]
+modulate = Color(0.7588467, 0.6952392, 0.5367469, 1)
+position = Vector2(9073, 4689.1255)
+scale = Vector2(4.4362273, 4.4362273)
+texture = ExtResource("11_ya4ey")
+
+[node name="Brouillard2" type="Sprite2D" parent="."]
+modulate = Color(0.7607843, 0.69411767, 0.5372549, 1)
+position = Vector2(-9098, 4961.1255)
+scale = Vector2(4.4362273, 4.4362273)
+texture = ExtResource("11_ya4ey")
 
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="partie" to="." method="_on_partie_timeout"]
