@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var is_selected : bool = false
-@export var damage_pompe : int = 15
+@export var damage_pompe : int = 20
 
 signal died(bidule)
 
