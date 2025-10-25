@@ -22,7 +22,6 @@ var input_actions = {
 	"camera_down": "Camera en bas",
 	"camera_zoom_up": "Zoomer",
 	"camera_zoom_down": "Dezoomer",
-	"camera_focus": "Camera sur le joueur"
 }
 
 # Called when the node enters the scene tree for the first time.
