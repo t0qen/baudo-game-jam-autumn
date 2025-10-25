@@ -140,6 +140,7 @@ limit_left = -7590
 limit_top = -5870
 limit_right = 9590
 limit_bottom = 2445
+position_smoothing_enabled = true
 script = ExtResource("7_o6xl0")
 
 [node name="Timer" type="Timer" parent="Camera2D"]
@@ -462,6 +463,7 @@ offset_bottom = 1503.0001
 mouse_default_cursor_shape = 2
 theme = ExtResource("7_85g3d")
 theme_override_font_sizes/font_size = 400
+button_mask = 7
 text = "C'EST BON"
 
 [node name="Limites de la map" type="StaticBody2D" parent="."]

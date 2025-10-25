@@ -1,7 +1,7 @@
 extends Camera2D
 
 @export var deplacement : float = 80
-@export var zoomForce : float = 0.03
+@export var zoomForce : float = 0.01
 @onready var timer: Timer = $Timer
 
 var base_zoom : Vector2 = Vector2(0.2, 0.2)

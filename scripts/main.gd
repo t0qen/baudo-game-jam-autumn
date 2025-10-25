@@ -216,6 +216,7 @@ func update_game():
 		print("GAME UPDATED")
 		change_playing_team()
 		select_mob()
+		$CanvasLayer/UI/ColorRect/Button.grab_focus()
 		$CanvasLayer/UI/ColorRect.show()
 		get_tree().paused = true
 		VarEnd.can_end = false
