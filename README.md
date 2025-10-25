@@ -1,2 +1,6 @@
-# baudo-game-jam-autumn
- A repo to store Baudo Game Jam Autumn Edition.
+**The Shattered Rifts**
+
+
+
+Play now :
+https://als1925.itch.io/the-shattered-rifts?secret=X74CxgqHWupjxT3NlAOD4xJgD8s
