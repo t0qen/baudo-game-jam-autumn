@@ -71,7 +71,7 @@ func _on_commencer_pressed() -> void:
 		
 	Transition.transition()
 	await Transition.on_transition_finished
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/cinematique.tscn")
 
 
 func _on_credits_pressed() -> void:
@@ -132,3 +132,9 @@ func _update_action_list(button, event):
 
 func _on_option_pressed() -> void:
 	$PopUpOptions.show()
+
+
+func _on_intro_pressed() -> void:
+	Transition.transition()
+	await Transition.on_transition_finished
+	get_tree().change_scene_to_file("res://scenes/intro.tscn")

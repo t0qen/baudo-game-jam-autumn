@@ -38,8 +38,8 @@ func _physics_process(delta: float) -> void:
 			zoom = Vector2(0.86, 0.86)
 	if Input.is_action_pressed("camera_zoom_down"):
 		zoom -= Vector2(zoomForce, zoomForce)
-		if zoom < Vector2(0.05, 0.05):
-			zoom = Vector2(0.05, 0.05)
+		if zoom < Vector2(0.1, 0.1):
+			zoom = Vector2(0.1, 0.1)
 
 func _on_timer_timeout() -> void:
 	can_focus = true

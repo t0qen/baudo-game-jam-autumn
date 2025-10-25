@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://sxko6vnsa1yf"]
+
+[ext_resource type="Script" uid="uid://br1t0xs2twe25" path="res://scripts/cinematique.gd" id="1_4fl41"]
+[ext_resource type="VideoStream" uid="uid://dq5qramrn5me5" path="res://assets/cinematique-final.ogv" id="1_fx3wa"]
+
+[node name="cinematique" type="Node2D"]
+script = ExtResource("1_4fl41")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_fx3wa")
+autoplay = true
+bus = &"Music"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

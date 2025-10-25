@@ -19,7 +19,7 @@ font = ExtResource("2_nmshm")
 font_size = 51
 
 [sub_resource type="Animation" id="Animation_j7yof"]
-length = 50.0
+length = 55.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,10 +27,10 @@ tracks/0/path = NodePath("Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 50),
+"times": PackedFloat32Array(0, 55),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-657.5, -13), Vector2(-657.5, -2282.495)]
+"values": [Vector2(-657.5, -13), Vector2(-657.5, -2437.955)]
 }
 
 [sub_resource type="Animation" id="Animation_3o1fj"]
@@ -80,7 +80,7 @@ anchor_bottom = 0.5
 offset_left = -657.5
 offset_top = -13.0
 offset_right = 657.5
-offset_bottom = 2234.0
+offset_bottom = 2344.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "//CREDITS//
@@ -104,6 +104,9 @@ DarkPhoenix3254
 //SFX//
 Pixabay.com
 
+//DESSIN//
+Pere de Al's
+
 github.com/t0qen/baudo-game-jam-autumn
 
 Réalisé en octobre 2025 lors de la
@@ -120,26 +123,26 @@ label_settings = SubResource("LabelSettings_nmshm")
 horizontal_alignment = 1
 
 [node name="Youtube1" type="Sprite2D" parent="Label"]
-position = Vector2(74.5, 2183)
+position = Vector2(74.5, 2325.2756)
 scale = Vector2(0.059467383, 0.05946739)
 texture = ExtResource("3_1hgnr")
 
 [node name="Youtube2" type="Sprite2D" parent="Label"]
-position = Vector2(342.49997, 2183)
+position = Vector2(342.49997, 2325.2756)
 scale = Vector2(0.059467383, 0.05946739)
 texture = ExtResource("3_1hgnr")
 
 [node name="Github" type="Sprite2D" parent="Label"]
-position = Vector2(644.5, 2184)
+position = Vector2(644.5, 2326.2756)
 scale = Vector2(0.10203125, 0.10203125)
 texture = ExtResource("4_1hgnr")
 
 [node name="Als" type="Label" parent="Label"]
 layout_mode = 0
 offset_left = -1.5
-offset_top = 2256.0
+offset_top = 2398.2756
 offset_right = 152.5
-offset_bottom = 2308.0
+offset_bottom = 2450.2756
 text = "@AlsMC"
 label_settings = SubResource("LabelSettings_0lxtj")
 horizontal_alignment = 1
@@ -148,9 +151,9 @@ vertical_alignment = 1
 [node name="OBCD" type="Label" parent="Label"]
 layout_mode = 0
 offset_left = 185.5
-offset_top = 2256.0
+offset_top = 2398.2756
 offset_right = 501.5
-offset_bottom = 2308.0
+offset_bottom = 2450.2756
 text = "@OBCDanimation"
 label_settings = SubResource("LabelSettings_0lxtj")
 horizontal_alignment = 1
@@ -159,25 +162,25 @@ vertical_alignment = 1
 [node name="T0quen" type="Label" parent="Label"]
 layout_mode = 0
 offset_left = 483.5
-offset_top = 2256.0
+offset_top = 2398.2756
 offset_right = 799.5
-offset_bottom = 2308.0
+offset_bottom = 2450.2756
 text = "T0quen"
 label_settings = SubResource("LabelSettings_0lxtj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Discord" type="Sprite2D" parent="Label"]
-position = Vector2(1073.5001, 2184)
+position = Vector2(1073.5001, 2326.2756)
 scale = Vector2(0.08030802, 0.08030803)
 texture = ExtResource("5_0lxtj")
 
 [node name="DarkPhoenix" type="Label" parent="Label"]
 layout_mode = 0
 offset_left = 913.5
-offset_top = 2256.0
+offset_top = 2398.2756
 offset_right = 1249.5
-offset_bottom = 2308.0
+offset_bottom = 2450.2756
 text = "darkphoenix3254"
 label_settings = SubResource("LabelSettings_0lxtj")
 horizontal_alignment = 1
@@ -194,7 +197,7 @@ scale = Vector2(0.18194444, 0.18194444)
 texture = ExtResource("8_bvi5s")
 
 [node name="LogoAltf44" type="Sprite2D" parent="Label"]
-position = Vector2(658.5, 2551)
+position = Vector2(658.5, 2679)
 scale = Vector2(0.35351563, 0.35351563)
 texture = ExtResource("8_amex7")
 
